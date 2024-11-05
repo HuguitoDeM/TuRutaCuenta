@@ -27,8 +27,9 @@ const OverlayDiv = styled.div`
   );
 `;
 const TextInTheMiddle = styled.div`
+  box-sizing: border-box;
   color: white;
-  padding-left: 17rem;
+  padding-left: 10rem;
   font-size: 4.5rem;
   margin: auto;
   .titleWithColor {
@@ -38,19 +39,66 @@ const TextInTheMiddle = styled.div`
     font-size: 2rem;
     text-align: justify;
   }
+  @media (max-width: 1440px) {
+    padding-left: 30px;
+    padding-right: 40px;
+    font-size: 2.5rem;
+    p {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding-left: 30px;
+    padding-right: 40px;
+    font-size: 2.2rem;
+    margin: 0;
+    margin-bottom: 3rem;
+    p {
+      font-size: 1.4rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding-left: 15px;
+    padding-right: 20px;
+    font-size: 1.9rem;
+    p {
+      font-size: 1rem;
+    }
+  }
 `;
 
 const MainContentHome = styled.div`
   display: flex;
   justify-content: space-around;
   margin-top: 6rem;
+
+  @media (max-width: 1440px) {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 2.5rem;
+  }
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 2.5rem;
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+  }
+  @media (max-width: 480px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 export const Home = () => {
   return (
     <HomeContainer>
       <OverlayDiv>
-        <Navbar NavbarHome={true} />
+        <Navbar />
         <MainContentHome>
           <TextInTheMiddle>
             <h2>CUENTANOS</h2>

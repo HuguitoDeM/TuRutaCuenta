@@ -7,6 +7,18 @@ const CardsRotativas = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    background-color: #000000;
+    gap: 60px;
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+
+    gap: 30px;
+  }
 `;
 
 const CardRotativas = () => {

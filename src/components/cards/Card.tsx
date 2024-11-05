@@ -90,12 +90,12 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   background: #ffffff;
-
   overflow: hidden;
   height: 750px;
   width: 450px;
   border-radius: 5px;
   padding-bottom: 30px;
+  box-sizing: border-box;
   img {
     height: 303px;
     width: 333px;
@@ -133,6 +133,114 @@ const Card = styled.div`
     opacity: 0.7;
     animation: ${moveCard2} 60s infinite;
     animation-delay: 0s;
+  }
+  @media (max-width: 1440px) {
+    gap: 10px;
+    height: 520px;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    img {
+      height: 260px;
+      width: 350px;
+    }
+    &.card1,
+    &.card2,
+    &.card3 {
+      animation: none;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1rem;
+      margin: 0;
+    }
+    button {
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    gap: 10px;
+    height: 490px;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    img {
+      height: 240px;
+      width: 240px;
+    }
+    &.card1,
+    &.card2,
+    &.card3 {
+      animation: none;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1rem;
+      margin: 0;
+    }
+    button {
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    img {
+      height: 303px;
+      width: 333px;
+      border-radius: 15px;
+      margin: auto;
+    }
+    &.card1,
+    &.card2,
+    &.card3 {
+      animation: none;
+      z-index: 3;
+      opacity: 0.9;
+      transform: scale(1) translateX(0px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 360px;
+    height: 620px;
+    font-size: 15px;
+    gap: 30px;
+    img {
+      height: 303px;
+      width: 333px;
+      border-radius: 15px;
+      margin: 0;
+      margin-top: 20px;
+    }
+    &.card1,
+    &.card2,
+    &.card3 {
+      animation: none;
+      z-index: 3;
+      opacity: 0.9;
+      transform: scale(1) translateX(0px);
+    }
+    h3 {
+      margin-top: 0px;
+    }
+    p {
+      font-size: 1rem;
+    }
   }
 `;
 
