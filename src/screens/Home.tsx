@@ -29,15 +29,17 @@ const OverlayDiv = styled.div`
 const TextInTheMiddle = styled.div`
   box-sizing: border-box;
   color: white;
-  padding-left: 10rem;
-  font-size: 4.5rem;
+  padding-left: 2rem;
+  font-size: 3rem;
   margin: auto;
   .titleWithColor {
     color: #9fcfbb;
   }
+
   p {
-    font-size: 2rem;
+    font-size: 1rem;
     text-align: justify;
+    max-width: 700px;
   }
   @media (max-width: 1440px) {
     padding-left: 30px;
@@ -98,7 +100,7 @@ export const Home = () => {
   return (
     <HomeContainer>
       <OverlayDiv>
-        <Navbar />
+        <Navbar NavbarHome={true} />
         <MainContentHome>
           <TextInTheMiddle>
             <h2>CUENTANOS</h2>

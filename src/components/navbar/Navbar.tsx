@@ -18,7 +18,6 @@ const NavbarMenu = styled.nav`
   align-items: center;
   &.NavbarHome {
     background-color: transparent;
-    margin-top: 3.5rem;
   }
 `;
 const NavbarOptions = styled.ul`

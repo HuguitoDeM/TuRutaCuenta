@@ -7,11 +7,13 @@ const CardsRotativas = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
-
+  @media (max-width: 1440px) {
+    margin-top: 4rem;
+  }
   @media (max-width: 768px) {
     flex-direction: column;
     background-color: #000000;
-    gap: 60px;
+    gap: 30px;
   }
 
   @media (max-width: 480px) {
@@ -43,7 +45,7 @@ const CardRotativas = () => {
       />
       <Cards
         className="card3"
-        title="China y mis impresiones"
+        title="China el mejor viaje"
         body={descripciones[2]}
         img="https://i.pinimg.com/564x/73/6a/60/736a60c7b542f19d6bc673a115aadb8a.jpg"
       />
