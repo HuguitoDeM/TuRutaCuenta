@@ -127,6 +127,12 @@ const Card = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
+    h3 {
+      font-size: 2.5rem;
+    }
+    p {
+      font-size: 1.33rem;
+    }
     img {
       height: 60%;
       width: 90%;

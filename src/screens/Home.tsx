@@ -1,6 +1,10 @@
 import styled from "styled-components";
-import Navbar from "../components/navbar/Navbar";
+
 import CardRotativas from "../components/cards/CardRotativas";
+import { UseWindoWidth } from "../hooks/useWidthScreen";
+import NavbarDestock from "../components/navbar/NavbarDestock";
+import NavbarMobile from "../components/navbar/NavbarMobile";
+import TextInTheMiddleHome from "../components/contentHome/TextInTheMiddle";
 
 const HomeContainer = styled.div`
   width: 100vw;
@@ -26,55 +30,11 @@ const OverlayDiv = styled.div`
     rgba(85, 85, 85, 0) 100%
   );
 `;
-const TextInTheMiddle = styled.div`
-  box-sizing: border-box;
-  color: white;
-  padding-left: 2rem;
-  font-size: 3rem;
-  margin: auto;
-  .titleWithColor {
-    color: #9fcfbb;
-  }
-
-  p {
-    font-size: 1rem;
-    text-align: justify;
-    max-width: 700px;
-  }
-  @media (max-width: 1440px) {
-    padding-left: 30px;
-    padding-right: 40px;
-    font-size: 2.5rem;
-    p {
-      font-size: 1.2rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    padding-left: 30px;
-    padding-right: 40px;
-    font-size: 2.2rem;
-    margin: 0;
-    margin-bottom: 3rem;
-    p {
-      font-size: 1.4rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    padding-left: 15px;
-    padding-right: 20px;
-    font-size: 1.9rem;
-    p {
-      font-size: 1rem;
-    }
-  }
-`;
 
 const MainContentHome = styled.div`
   display: flex;
   justify-content: space-around;
-  margin-top: 6rem;
+  margin-top: 2rem;
 
   @media (max-width: 1440px) {
     flex-direction: column;
@@ -97,25 +57,17 @@ const MainContentHome = styled.div`
 `;
 
 export const Home = () => {
+  const WidthScreen = UseWindoWidth();
+
   return (
     <HomeContainer>
       <OverlayDiv>
-        <Navbar NavbarHome={true} />
+        {WidthScreen > 769 ? <NavbarDestock NavbarHome={true} /> : ""}
         <MainContentHome>
-          <TextInTheMiddle>
-            <h2>CUENTANOS</h2>
-            <h2 className="titleWithColor">TUS EXPERIENCIAS</h2>
-            <p>
-              Esta aplicación permite a los usuarios compartir sus rutas y
-              lugares favoritos con otros, creando una comunidad donde nadie se
-              pierde de los mejores sitios para explorar. Desde experiencias
-              personales hasta recomendaciones únicas, los usuarios pueden
-              descubrir y añadir sus destinos preferidos para que todos puedan
-              disfrutar y explorar.
-            </p>
-          </TextInTheMiddle>
+          <TextInTheMiddleHome />
           <CardRotativas />
         </MainContentHome>
+        {WidthScreen > 769 ? "" : <NavbarMobile />}
       </OverlayDiv>
     </HomeContainer>
   );

@@ -14,11 +14,12 @@ const CardsRotativas = styled.div`
     flex-direction: column;
     background-color: #000000;
     gap: 30px;
+    padding-bottom: 5rem;
   }
 
   @media (max-width: 480px) {
     flex-direction: column;
-
+    padding-bottom: 3rem;
     gap: 30px;
   }
 `;

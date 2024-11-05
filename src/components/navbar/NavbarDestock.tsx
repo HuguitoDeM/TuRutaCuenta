@@ -2,15 +2,14 @@ import styled from "styled-components";
 import Icon from "../Icons/Icons";
 
 const NavbarContainer = styled.div`
-display: flex;
-width: 100%;
-position fixed;
+  display: flex;
+  width: 100%;
 `;
 const NavbarMenu = styled.nav`
   display: flex;
+  position fixed;
   justify-content: space-between;
   width: 100%;
-  height: 50px;
   background-color: #000000;
   height: 90px;
   box-sizing: border-box;
@@ -33,6 +32,7 @@ const HomeOption = styled.li`
   display: flex;
   position: relative;
   align-items: center;
+
   svg:hover {
     cursor: pointer;
     transform: translateY(-5px);
@@ -44,7 +44,7 @@ const ExplorerOption = styled(HomeOption)`
     position: absolute;
     background-color: black;
     border: none;
-    border-radius: 99999px;
+    border-radius: 99px;
     margin-left: 3px;
   }
   svg:hover {
@@ -81,16 +81,20 @@ const UserLoginButton = styled.button`
   align-items: center;
   width: 180px;
   border: none;
-  border-radius: 9999px 0% 0% 9999px;
+  border-radius: 99px 0% 0% 99px;
   font-size: 22px;
   gap: 30px;
   svg {
     background-color: white;
-    border-radius: 99999px;
+    border-radius: 99px;
     margin-left: 8px;
   }
   &:hover {
     cursor: pointer;
+    background-color: gray;
+    svg {
+      background-color: gray;
+    }
   }
 `;
 
@@ -98,7 +102,7 @@ interface props {
   NavbarHome?: boolean;
 }
 
-const Navbar = ({ NavbarHome = false }: props) => {
+const NavbarDestock = ({ NavbarHome = false }: props) => {
   return (
     <NavbarContainer>
       <NavbarMenu className={NavbarHome ? "NavbarHome" : ""}>
@@ -121,7 +125,7 @@ const Navbar = ({ NavbarHome = false }: props) => {
           </ExplorerOption>
         </NavbarOptions>
         <UserLoginButton>
-          <Icon name="User" size={37} />
+          <Icon name="User" size={37} color="black" />
           <p>Log In</p>
         </UserLoginButton>
       </NavbarMenu>
@@ -129,4 +133,4 @@ const Navbar = ({ NavbarHome = false }: props) => {
   );
 };
 
-export default Navbar;
+export default NavbarDestock;
