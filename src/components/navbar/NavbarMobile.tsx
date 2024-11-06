@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Icon from "../Icons/Icons";
+import { useNavigate } from "react-router-dom";
 
 const NavbarContainer = styled.div`
   display: flex;
@@ -49,6 +50,7 @@ const SearchOption = styled(HomeOption)``;
 const UserOption = styled(HomeOption)``;
 
 const NavbarMobile = () => {
+  const navigate = useNavigate();
   return (
     <NavbarContainer>
       <NavbarMenu>
@@ -59,7 +61,7 @@ const NavbarMobile = () => {
           <SearchOption>
             <Icon name="Explorador" size={50} color="gray" />
           </SearchOption>
-          <UserOption>
+          <UserOption onClick={() => navigate("/login")}>
             <Icon name="User" size={50} />
           </UserOption>
         </NavbarOptions>

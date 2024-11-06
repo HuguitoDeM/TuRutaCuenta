@@ -60,15 +60,21 @@ export const Home = () => {
   const WidthScreen = UseWindoWidth();
 
   return (
-    <HomeContainer>
-      <OverlayDiv>
-        {WidthScreen > 769 ? <NavbarDestock NavbarHome={true} /> : ""}
-        <MainContentHome>
-          <TextInTheMiddleHome />
-          <CardRotativas />
-        </MainContentHome>
-        {WidthScreen > 769 ? "" : <NavbarMobile />}
-      </OverlayDiv>
-    </HomeContainer>
+    <>
+      <HomeContainer>
+        <OverlayDiv>
+          {WidthScreen > 769 ? (
+            <NavbarDestock NavbarHome={true} login={false} />
+          ) : (
+            ""
+          )}
+          <MainContentHome>
+            <TextInTheMiddleHome />
+            <CardRotativas />
+          </MainContentHome>
+          {WidthScreen > 769 ? "" : <NavbarMobile />}
+        </OverlayDiv>
+      </HomeContainer>
+    </>
   );
 };
