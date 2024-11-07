@@ -7,14 +7,35 @@ const SearchResultContainer = styled.div`
   heigth: 250px;
   padding: 30px;
   background-color: gray;
-  margin-top: 30px;
+  margin-bottom: 20px;
   border-radius: 30px;
   justify-content: space-between;
   img {
     width: 480px;
     height: 175px;
     border-radius: 30px;
-    margin-left: 30px;
+  }
+  @media (max-width: 1024px) {
+    img {
+      margin-left: 0px;
+      margin-right: 15px;
+    }
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    img {
+      width: 100%;
+      margin-right: 0px;
+    }
+  }
+  @media (max-width: 425px) {
+    width: 90%;
+    img {
+      margin-bottom: 10px;
+    }
+  }
+  &.color {
+    background-color: #bea17c;
   }
 `;
 
@@ -24,37 +45,44 @@ const Text = styled.div`
   flex-direction: column;
   gap: 40px;
   margin-left: 30px;
+  @media (max-width: 1024px) {
+    margin-left: 0;
+    gap: 20px;
+  }
+  &.color {
+    color: white;
+  }
 `;
 
 const Title = styled.h2`
   font-size: 18px;
-  margin-left: 60px;
 `;
 
 const Description = styled.p`
-  font-size: 12px;
-  margin-left: 60px;
+  font-size: 13px;
 `;
 
 interface props {
-  busqueda: string;
+  imagen: string;
+  titulo: string;
+  descripcion: string;
+  id: string;
+  color?: boolean;
 }
 
-const SearchResult = ({ busqueda }: props) => {
+const SearchResult = ({
+  id,
+  titulo,
+  imagen,
+  descripcion,
+  color = false,
+}: props) => {
   return (
-    <SearchResultContainer>
-      <img
-        src="https://i.pinimg.com/564x/2b/33/3a/2b333a2b558f3bed5025479c64b887e0.jpg"
-        alt=""
-      />
-      <Text>
-        <Title>Take a Rowing Lesson</Title>
-        <Description>
-          Learn the art of rowing like a Venetian from a local instructor while
-          navigating the city's intricate network of canals. This immersive
-          activity allows you to appreciate the city's beauty while engaging in
-          a centuries-old tradition.
-        </Description>
+    <SearchResultContainer key={id} className={color ? "color" : ""}>
+      <img src={imagen} alt={titulo} />
+      <Text className={color ? "color" : ""}>
+        <Title>{titulo}</Title>
+        <Description>{descripcion}</Description>
       </Text>
     </SearchResultContainer>
   );

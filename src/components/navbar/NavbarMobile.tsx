@@ -21,7 +21,6 @@ const NavbarOptions = styled.ul`
 const NavbarMenu = styled.nav`
   width: 100%;
   display: flex;
-
   box-sizing: border-box;
   align-items: center;
   background-color: gray;
@@ -38,8 +37,13 @@ const HomeOption = styled.li`
   width: 13%;
   height: 100%;
   svg {
-    width: 100%;
+    width: 60%;
     height: 100%;
+  }
+  @media (max-width: 425px) {
+    svg {
+      width: 100%;
+    }
   }
   svg:hover {
     cursor: pointer;
@@ -56,13 +60,13 @@ const NavbarMobile = () => {
       <NavbarMenu>
         <NavbarOptions>
           <HomeOption onClick={() => navigate("/home")}>
-            <Icon name="Home" size={50} />
+            <Icon name="Home" size={40} />
           </HomeOption>
           <SearchOption onClick={() => navigate("/busquedas")}>
-            <Icon name="Explorador" size={50} color="gray" />
+            <Icon name="Explorador" size={40} color="gray" />
           </SearchOption>
           <UserOption onClick={() => navigate("/login")}>
-            <Icon name="User" size={50} />
+            <Icon name="User" size={40} />
           </UserOption>
         </NavbarOptions>
       </NavbarMenu>

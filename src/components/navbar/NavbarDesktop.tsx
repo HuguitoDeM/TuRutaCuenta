@@ -115,17 +115,12 @@ const UserLoginButton = styled.button`
 
 interface props {
   NavbarHome?: boolean;
-  navbarSearch?: boolean;
+
   login: boolean;
   user?: string;
 }
 
-const NavbarDesktop = ({
-  NavbarHome = false,
-  login,
-  user,
-  navbarSearch = false,
-}: props) => {
+const NavbarDesktop = ({ NavbarHome = false, login, user }: props) => {
   const navigate = useNavigate();
   return (
     <NavbarContainer>
@@ -143,7 +138,7 @@ const NavbarDesktop = ({
               <Icon name="Home" size={40} />
             </HomeOption>
           )}
-          {!navbarSearch && (
+          {!NavbarHome && (
             <ExplorerOption onClick={() => navigate("/busquedas")}>
               <Icon name="Explorador" size={45} />
             </ExplorerOption>
