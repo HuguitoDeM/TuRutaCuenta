@@ -25,10 +25,10 @@ const NavbarMenu = styled.nav`
   box-sizing: border-box;
   align-items: center;
   background-color: gray;
-  background: linear-gradient(
-    185deg,
-    rgba(128, 128, 128, 1) 0%,
-    rgba(98, 98, 98, 0.9472163865546218) 3%
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.7707457983193278) 96%,
+    rgba(193, 193, 193, 0.4766281512605042) 100%
   );
 `;
 const HomeOption = styled.li`
@@ -55,10 +55,10 @@ const NavbarMobile = () => {
     <NavbarContainer>
       <NavbarMenu>
         <NavbarOptions>
-          <HomeOption>
+          <HomeOption onClick={() => navigate("/home")}>
             <Icon name="Home" size={50} />
           </HomeOption>
-          <SearchOption>
+          <SearchOption onClick={() => navigate("/busquedas")}>
             <Icon name="Explorador" size={50} color="gray" />
           </SearchOption>
           <UserOption onClick={() => navigate("/login")}>

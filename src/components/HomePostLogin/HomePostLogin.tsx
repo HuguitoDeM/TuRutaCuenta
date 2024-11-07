@@ -1,25 +1,26 @@
 import styled from "styled-components";
-import NavbarDestock from "../navbar/NavbarDestock";
 import PostsHome from "./PostsHome";
+import NavbarDesktop from "../navbar/NavbarDesktop";
+import { UseWindoWidth } from "../../hooks/useWidthScreen";
+import NavbarMobile from "../navbar/NavbarMobile";
 
 const HomeContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: white;
   overflow-x: hidden;
+  background-color: #38147a;
 `;
 const MainContent = styled.div`
   margin-top: 5px;
   column-count: 6;
+
   padding-left: 20px;
   padding-right: 10px;
   @media (max-width: 1440px) {
     column-count: 3;
   }
-  @media (max-width: 768px) {
-    column-count: 3;
-  }
-  @media (max-width: 580px) {
+  @media (max-width: 924px) {
     column-count: 2;
   }
 `;
@@ -68,12 +69,15 @@ const img = [
   "https://i.pinimg.com/736x/33/11/2c/33112c8c9be991e771d7f67e63eca047.jpg",
 ];
 const HomePostLogin = () => {
+  const WidthScreen = UseWindoWidth();
+
   return (
     <HomeContainer>
-      <NavbarDestock login={true} user="Huguito" />
+      {WidthScreen > 769 ? <NavbarDesktop login={true} user="Huguito" /> : ""}
       <MainContent>
         <PostsHome titulos={titles} imagenes={img} />
       </MainContent>
+      {WidthScreen > 769 ? "" : <NavbarMobile />}
     </HomeContainer>
   );
 };

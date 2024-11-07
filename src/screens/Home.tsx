@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 import CardRotativas from "../components/cards/CardRotativas";
 import { UseWindoWidth } from "../hooks/useWidthScreen";
-import NavbarDestock from "../components/navbar/NavbarDestock";
 import NavbarMobile from "../components/navbar/NavbarMobile";
 import TextInTheMiddleHome from "../components/contentHome/TextInTheMiddle";
+import NavbarDesktop from "../components/navbar/NavbarDesktop";
 
 const HomeContainer = styled.div`
   width: 100vw;
@@ -64,7 +64,7 @@ export const Home = () => {
       <HomeContainer>
         <OverlayDiv>
           {WidthScreen > 769 ? (
-            <NavbarDestock NavbarHome={true} login={false} />
+            <NavbarDesktop NavbarHome={true} login={false} />
           ) : (
             ""
           )}

@@ -5,19 +5,28 @@ import { useNavigate } from "react-router-dom";
 const NavbarContainer = styled.div`
   display: flex;
   width: 100%;
+  height: 90px;
+  @media (max-width: 1024px) {
+    height: 70px;
+  }
 `;
 const NavbarMenu = styled.nav`
   display: flex;
-  position fixed;
+  z-index: 3;
   justify-content: space-between;
   width: 100%;
   background-color: #000000;
+  position: fixed;
   height: 90px;
   box-sizing: border-box;
   font-size: 1.5rem;
   align-items: center;
+
   &.NavbarHome {
     background-color: transparent;
+  }
+  @media (max-width: 1024px) {
+    height: 70px;
   }
 `;
 const NavbarOptions = styled.ul`
@@ -27,6 +36,15 @@ const NavbarOptions = styled.ul`
   gap: 6rem;
   padding-left: 3rem;
   align-items: center;
+  @media (max-width: 1024px) {
+    justify-content: center;
+    li {
+      svg {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
 `;
 
 const HomeOption = styled.li`
@@ -40,39 +58,25 @@ const HomeOption = styled.li`
   }
 `;
 
-const ExplorerOption = styled(HomeOption)`
-  svg {
-    position: absolute;
-    background-color: black;
-    border: none;
-    border-radius: 99px;
-    margin-left: 3px;
-  }
-  svg:hover {
-    transform: translateY(0px);
-    cursor: default;
-  }
-  input {
-    font-size: 18px;
-    padding-left: 55px;
-    border: 3px solid white;
-    background-color: white;
-    height: 44px;
-    border-radius: 50px;
-    outline: none;
-  }
-`;
+const ExplorerOption = styled(HomeOption)``;
 
 const LogoNavbar = styled(HomeOption)`
-
+  &:hover {
+    cursor: pointer;
+  }
   svg:hover {
     transform: translateY(0px);
-    cursor: default;
+  }
+  @media (max-width: 1024px) {
+    p {
+      font-size: 18px;
+    }
+  }
 `;
 
 const TextLogo = styled.div`
   color: white;
-  font-size: 28px;
+  font-size: 22px;
   margin-left: 15px;
 `;
 const UserLoginButton = styled.button`
@@ -90,6 +94,7 @@ const UserLoginButton = styled.button`
     border-radius: 99px;
     margin-left: 8px;
   }
+
   &:hover {
     cursor: pointer;
     background-color: gray;
@@ -97,36 +102,52 @@ const UserLoginButton = styled.button`
       background-color: gray;
     }
   }
+  @media (max-width: 1024px) {
+    font-size: 18px;
+    width: 150px;
+    height: 40px;
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
 `;
 
 interface props {
   NavbarHome?: boolean;
+  navbarSearch?: boolean;
   login: boolean;
   user?: string;
 }
 
-const NavbarDestock = ({ NavbarHome = false, login, user }: props) => {
+const NavbarDesktop = ({
+  NavbarHome = false,
+  login,
+  user,
+  navbarSearch = false,
+}: props) => {
   const navigate = useNavigate();
   return (
     <NavbarContainer>
       <NavbarMenu className={NavbarHome ? "NavbarHome" : ""}>
         <NavbarOptions>
-          <LogoNavbar>
-            <Icon name="logo" size={65} />
+          <LogoNavbar onClick={() => navigate("/")}>
+            <Icon name="logo" size={55} />
             <TextLogo>
               <p>Tu ruta</p>
               <p>cuenta</p>
             </TextLogo>
           </LogoNavbar>
           {!NavbarHome && (
-            <HomeOption>
-              <Icon name="Home" size={50} />
+            <HomeOption onClick={() => navigate("/home")}>
+              <Icon name="Home" size={40} />
             </HomeOption>
           )}
-          <ExplorerOption>
-            <Icon name="Explorador" size={45} />
-            <input placeholder="Destino turístico" />
-          </ExplorerOption>
+          {!navbarSearch && (
+            <ExplorerOption onClick={() => navigate("/busquedas")}>
+              <Icon name="Explorador" size={45} />
+            </ExplorerOption>
+          )}
         </NavbarOptions>
         <UserLoginButton onClick={() => navigate("/login")}>
           <Icon name="User" size={37} color="black" />
@@ -137,4 +158,4 @@ const NavbarDestock = ({ NavbarHome = false, login, user }: props) => {
   );
 };
 
-export default NavbarDestock;
+export default NavbarDesktop;
