@@ -7,6 +7,7 @@ import Searches from "../components/searches/Searches";
 import ModelTwo from "../components/typesOfPost/ModelTwo";
 import ModelThree from "../components/typesOfPost/ModelThree";
 import ModelFour from "../components/typesOfPost/ModelFour";
+import { NewPost } from "../components/newPost/NewPost";
 
 export const Rutas = () => {
   return (
@@ -20,6 +21,7 @@ export const Rutas = () => {
         <Route path="/post2" element={<ModelTwo />} />
         <Route path="/post3" element={<ModelThree />} />
         <Route path="/post4" element={<ModelFour />} />
+        <Route path="new-post" element={<NewPost />} />
       </Routes>
     </Router>
   );
