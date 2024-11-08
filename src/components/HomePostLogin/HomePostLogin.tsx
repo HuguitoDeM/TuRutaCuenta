@@ -9,7 +9,7 @@ const HomeContainer = styled.div`
   height: 100%;
   background-color: white;
   overflow-x: hidden;
-  background-color: #38147a;
+  background-color: #a7a7a7;
 `;
 const MainContent = styled.div`
   margin-top: 5px;

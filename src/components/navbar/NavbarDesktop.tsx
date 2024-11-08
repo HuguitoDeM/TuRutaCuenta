@@ -22,7 +22,7 @@ const NavbarMenu = styled.nav`
   font-size: 1.5rem;
   align-items: center;
 
-  &.NavbarHome {
+  &.color {
     background-color: transparent;
   }
   @media (max-width: 1024px) {
@@ -115,16 +115,21 @@ const UserLoginButton = styled.button`
 
 interface props {
   NavbarHome?: boolean;
-
+  color?: boolean;
   login: boolean;
   user?: string;
 }
 
-const NavbarDesktop = ({ NavbarHome = false, login, user }: props) => {
+const NavbarDesktop = ({
+  NavbarHome = false,
+  color = false,
+  login,
+  user,
+}: props) => {
   const navigate = useNavigate();
   return (
     <NavbarContainer>
-      <NavbarMenu className={NavbarHome ? "NavbarHome" : ""}>
+      <NavbarMenu className={color ? "color" : ""}>
         <NavbarOptions>
           <LogoNavbar onClick={() => navigate("/")}>
             <Icon name="logo" size={55} />

@@ -64,7 +64,7 @@ export const Home = () => {
       <HomeContainer>
         <OverlayDiv>
           {WidthScreen > 769 ? (
-            <NavbarDesktop NavbarHome={true} login={false} />
+            <NavbarDesktop NavbarHome={true} login={false} color={true} />
           ) : (
             ""
           )}

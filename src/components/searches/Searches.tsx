@@ -11,6 +11,10 @@ const SearchesContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  background-image: url("https://th.bing.com/th/id/R.afb22a25fa2559cd391c6bda4203998a?rik=VWKkHA7g6Lhnhg&pid=ImgRaw&r=0");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
 const Resultados = styled.div`
@@ -186,7 +190,11 @@ const Searches = () => {
 
   return (
     <SearchesContainer>
-      {WidthScreen > 769 ? <NavbarDesktop login={true} user="Huguito" /> : ""}
+      {WidthScreen > 769 ? (
+        <NavbarDesktop login={true} color={true} user="Huguito" />
+      ) : (
+        ""
+      )}
       <Resultados>
         <input placeholder="Blogs" onChange={handleBusquedaOnChange} />
         {resultados.map((post, index) => (
