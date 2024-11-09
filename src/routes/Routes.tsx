@@ -6,7 +6,7 @@ import ModelOne from "../components/typesOfPost/ModelOne";
 import Searches from "../components/searches/Searches";
 import ModelTwo from "../components/typesOfPost/ModelTwo";
 import ModelThree from "../components/typesOfPost/ModelThree";
-import ModelFour from "../components/typesOfPost/ModelFour";
+import ModelFour from "../components/typesOfPost/modelFour/ModelFour";
 import { NewPost } from "../components/newPost/NewPost";
 
 export const Rutas = () => {

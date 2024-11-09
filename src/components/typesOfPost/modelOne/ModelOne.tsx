@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import NavbarDesktop from "../navbar/NavbarDesktop";
 
 const PostContainer = styled.div`
   display: flex;
@@ -71,7 +70,6 @@ const ThirdImage = styled(SecondImage)`
 const ModelOne = () => {
   return (
     <PostContainer>
-      <NavbarDesktop login={true} user="Huguito" />
       <MainTitle>
         <span>fecha</span>
         <h2>Read it on our Blog</h2>

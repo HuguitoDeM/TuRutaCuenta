@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import NavbarDesktop from "../navbar/NavbarDesktop";
+import NavbarDesktop from "../../navbar/NavbarDesktop";
 
 const PostContainer = styled.div`
   display: flex;
