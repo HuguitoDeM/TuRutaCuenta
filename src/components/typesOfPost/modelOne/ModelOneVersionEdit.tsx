@@ -138,7 +138,7 @@ const ModelOneVersionEdit = ({ newPost = false }) => {
       <MainTitle>
         <Title>
           <label htmlFor="titulo">Titulo</label>
-          <input type="text" placeholder="Write here..." name="titulo" />
+          <input type="text" placeholder="Titulo" name="titulo" />
         </Title>
       </MainTitle>
       <ContenidoArriba>
