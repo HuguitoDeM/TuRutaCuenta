@@ -3,6 +3,7 @@ import NavbarDesktop from "../navbar/NavbarDesktop";
 import { useState } from "react";
 import ModelOneVersionEdit from "../typesOfPost/modelOne/ModelOneVersionEdit";
 import ModelTwoVersionEdit from "../typesOfPost/modelTwo/ModelTwoVersionEdit";
+import ModelThreeVersionEdit from "../typesOfPost/modelThree/ModelThreeVersionEdit";
 
 const NewPostContainer = styled.div``;
 const TiposDePublicaciones = styled.div`
@@ -73,6 +74,7 @@ export const NewPost = () => {
       </TiposDePublicaciones>
       {seleccionado === "1" && <ModelOneVersionEdit newPost={true} />}
       {seleccionado === "2" && <ModelTwoVersionEdit newPost={true} />}
+      {seleccionado === "3" && <ModelThreeVersionEdit newPost={true} />}
     </NewPostContainer>
   );
 };
