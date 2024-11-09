@@ -4,6 +4,7 @@ import { useState } from "react";
 import ModelOneVersionEdit from "../typesOfPost/modelOne/ModelOneVersionEdit";
 import ModelTwoVersionEdit from "../typesOfPost/modelTwo/ModelTwoVersionEdit";
 import ModelThreeVersionEdit from "../typesOfPost/modelThree/ModelThreeVersionEdit";
+import ModelFourVersionEdit from "../typesOfPost/modelFour/ModelFourVersionEdit";
 
 const NewPostContainer = styled.div``;
 const TiposDePublicaciones = styled.div`
@@ -75,6 +76,7 @@ export const NewPost = () => {
       {seleccionado === "1" && <ModelOneVersionEdit newPost={true} />}
       {seleccionado === "2" && <ModelTwoVersionEdit newPost={true} />}
       {seleccionado === "3" && <ModelThreeVersionEdit newPost={true} />}
+      {seleccionado === "4" && <ModelFourVersionEdit newPost={true} />}
     </NewPostContainer>
   );
 };
