@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import NavbarDesktop from "../navbar/NavbarDesktop";
 
 const PostContainer = styled.div`
   display: flex;
@@ -63,7 +62,6 @@ const LineaAbajo = styled.div`
 const ModelTwo = () => {
   return (
     <PostContainer>
-      <NavbarDesktop login={true} user="Huguito" />
       <MainContent>
         <span>fecha</span>
         <h2>ON THE BLOG</h2>

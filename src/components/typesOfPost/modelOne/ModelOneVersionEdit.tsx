@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
-const PostContainer = styled.div`
+const EditContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  margin-top: 0.5rem;
+  &.NewPost {
+    transform: scale(0.9);
+  }
 `;
 
 const TextLeft = styled.div`
@@ -16,11 +20,58 @@ const TextLeft = styled.div`
   margin-right: 15px;
 `;
 
-const TextBody = styled.div``;
-const Subtitulo = styled.div``;
+const Title = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  position: static;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  label {
+    font-size: 1rem;
+    color: #818cf8;
+    font-weight: 700;
+    position: relative;
+    top: 0.5rem;
+    margin: 0 25% 0 0;
+    padding: 0 3px;
+    background: white;
+    width: fit-content;
+  }
+  input {
+    padding: 11px 10px;
+    font-size: 1.45rem;
+    width: 30%;
+    border: 2px #818cf8 solid;
+    border-radius: 5px;
+    outline: none;
+  }
+  textArea {
+    padding: 11px 10px;
+    margin: auto;
+    width: 90%;
+    font-size: 0.75rem;
+    border: 2px #818cf8 solid;
+    border-radius: 5px;
+    outline: none;
+  }
+`;
+const TextBody = styled(Title)`
+  margin: auto;
+  label {
+    margin-right: 70%;
+  }
+`;
 
-const Title = styled.div``;
-
+const Subtitulo = styled(Title)`
+  label {
+    margin-right: 70%;
+  }
+  input {
+    width: 90%;
+  }
+`;
 const MainTitle = styled.div`
   display: flex;
   font-size: 32px;
@@ -47,7 +98,14 @@ const FirstImage = styled.div`
   border: 3px solid black;
 `;
 
-const Imagenes = styled.div``;
+const Imagenes = styled.div`
+  width: 100%;
+  height: 100%;
+  img {
+    width: 100%;
+    height: 300px;
+  }
+`;
 
 const ContenidoArriba = styled.div`
   display: flex;
@@ -74,33 +132,27 @@ const ThirdImage = styled(SecondImage)`
   margin-right: 15px;
 `;
 
-const ModelOne = () => {
+const ModelOneVersionEdit = ({ newPost = false }) => {
   return (
-    <PostContainer>
+    <EditContainer className={newPost ? "NewPost" : ""}>
       <MainTitle>
-        <span>fecha</span>
         <Title>
-          <label htmlFor="">Titulo</label>
-          <textarea
-            id="myTextArea"
-            rows={5}
-            cols={50}
-            placeholder="Escribe tu titulo"
-          />
+          <label htmlFor="titulo">Titulo</label>
+          <input type="text" placeholder="Write here..." name="titulo" />
         </Title>
       </MainTitle>
       <ContenidoArriba>
         <TextLeft>
           <Subtitulo>
-            <label htmlFor="">SubTitulo</label>
-            <input type="text" />
+            <label htmlFor="subtitulo1">SubTitulo</label>
+            <input type="text" name="subtitulo1" />
           </Subtitulo>
 
           <TextBody>
             <label htmlFor="">Texto</label>
             <textarea
               id="myTextArea"
-              rows={5}
+              rows={15}
               cols={50}
               placeholder="Escribe tu texto"
             />
@@ -117,9 +169,8 @@ const ModelOne = () => {
             />
             <label htmlFor="imageUpload" style={{ cursor: "pointer" }}>
               <img
-                src="https://thumbs.dreamstime.com/b/picture-icon-vector-photo-gallery-icon-symbol-picture-icon-vector-photo-gallery-icon-symbol-279330833.jpg"
+                src="https://static.vecteezy.com/system/resources/previews/016/017/372/non_2x/image-upload-free-png.png"
                 alt="Subir imagen"
-                style={{ width: "150px", height: "150px", objectFit: "cover" }}
               />
             </label>
           </Imagenes>
@@ -133,7 +184,7 @@ const ModelOne = () => {
             <label htmlFor="">Texto</label>
             <textarea
               id="myTextArea"
-              rows={5}
+              rows={15}
               cols={50}
               placeholder="Escribe tu texto"
             />
@@ -151,9 +202,8 @@ const ModelOne = () => {
             />
             <label htmlFor="imageUpload" style={{ cursor: "pointer" }}>
               <img
-                src="https://thumbs.dreamstime.com/b/picture-icon-vector-photo-gallery-icon-symbol-picture-icon-vector-photo-gallery-icon-symbol-279330833.jpg"
+                src="https://static.vecteezy.com/system/resources/previews/016/017/372/non_2x/image-upload-free-png.png"
                 alt="Subir imagen"
-                style={{ width: "150px", height: "150px", objectFit: "cover" }}
               />
             </label>
           </Imagenes>
@@ -167,7 +217,7 @@ const ModelOne = () => {
             <label htmlFor="">Texto</label>
             <textarea
               id="myTextArea"
-              rows={5}
+              rows={15}
               cols={50}
               placeholder="Escribe tu texto"
             />
@@ -183,16 +233,15 @@ const ModelOne = () => {
             />
             <label htmlFor="imageUpload" style={{ cursor: "pointer" }}>
               <img
-                src="https://thumbs.dreamstime.com/b/picture-icon-vector-photo-gallery-icon-symbol-picture-icon-vector-photo-gallery-icon-symbol-279330833.jpg"
+                src="https://static.vecteezy.com/system/resources/previews/016/017/372/non_2x/image-upload-free-png.png"
                 alt="Subir imagen"
-                style={{ width: "150px", height: "150px", objectFit: "cover" }}
               />
             </label>
           </Imagenes>
         </ThirdImage>
       </ContenidoAbajo>
-    </PostContainer>
+    </EditContainer>
   );
 };
 
-export default ModelOne;
+export default ModelOneVersionEdit;

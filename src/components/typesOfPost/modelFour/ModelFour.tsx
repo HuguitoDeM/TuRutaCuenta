@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import NavbarDesktop from "../../navbar/NavbarDesktop";
 
 const PostContainer = styled.div`
   display: flex;
@@ -61,7 +60,6 @@ const RightImages = styled.div`
 const ModelFour = () => {
   return (
     <PostContainer>
-      <NavbarDesktop login={true} user="Huguito" />
       <span>fecha</span>
       <ContentBody>
         <FirstImage>

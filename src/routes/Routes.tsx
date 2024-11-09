@@ -2,12 +2,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "../screens/Home";
 import Login from "../components/login/Login";
 import HomePostLogin from "../components/homePostLogin/HomePostLogin";
-import ModelOne from "../components/typesOfPost/ModelOne";
+
 import Searches from "../components/searches/Searches";
-import ModelTwo from "../components/typesOfPost/ModelTwo";
-import ModelThree from "../components/typesOfPost/ModelThree";
+
 import ModelFour from "../components/typesOfPost/modelFour/ModelFour";
 import { NewPost } from "../components/newPost/NewPost";
+import ModelOne from "../components/typesOfPost/modelOne/ModelOne";
+import ModelTwo from "../components/typesOfPost/modelTwo/ModelTwo";
+import ModelThree from "../components/typesOfPost/modelThree/ModelThree";
 
 export const Rutas = () => {
   return (

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import NavbarDesktop from "../navbar/NavbarDesktop";
 import { useState } from "react";
+import ModelOneVersionEdit from "../typesOfPost/modelOne/ModelOneVersionEdit";
 
 const NewPostContainer = styled.div``;
 const TiposDePublicaciones = styled.div`
@@ -32,7 +33,7 @@ const Opcion3 = styled(Opcion1)``;
 const Opcion4 = styled(Opcion3)``;
 
 export const NewPost = () => {
-  const [seleccionado, setSeleccionado] = useState("");
+  const [seleccionado, setSeleccionado] = useState("1");
   const handleSeleccionado = (e: React.MouseEvent<HTMLDivElement>) => {
     setSeleccionado(e.currentTarget.id);
   };
@@ -69,6 +70,7 @@ export const NewPost = () => {
           <img src="/ModelFour.png" alt="" />
         </Opcion4>
       </TiposDePublicaciones>
+      {seleccionado === "1" && <ModelOneVersionEdit newPost={true} />}
     </NewPostContainer>
   );
 };
