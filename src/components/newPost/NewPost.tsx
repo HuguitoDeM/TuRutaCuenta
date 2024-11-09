@@ -15,8 +15,8 @@ const TiposDePublicaciones = styled.div`
 `;
 
 const Opcion1 = styled.div`
-  height: 150px;
-  width: 180px;
+  height: 10%;
+  width: 10%;
   img {
     height: 100%;
     width: 100%;

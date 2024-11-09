@@ -88,10 +88,9 @@ const MainTitle = styled.div`
 `;
 const FirstImage = styled.div`
   display: flex;
-  width: 100%;
+  margin-top: 1rem;
   height: 100%;
-
-  padding: 5px;
+  padding-top: 1.5rem;
   border: 3px solid black;
   display: flex;
   width: 100%;
