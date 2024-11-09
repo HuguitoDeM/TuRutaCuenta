@@ -46,14 +46,6 @@ const Title = styled.div`
     outline: none;
   }
 `;
-const FirstImage = styled.div`
-  margin: auto;
-  width: 98%;
-  img {
-    height: 200px;
-    width: 100%;
-  }
-`;
 const ContentBody = styled.div`
   width: 98%;
   margin: auto;
@@ -62,25 +54,54 @@ const ContentBody = styled.div`
   gap: 30px;
 `;
 const SecondImage = styled.div`
-  width: 50%;
-  img {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 69%;
+    img {
+      width: 100%;
+      height: 200px;
+    }
   }
 `;
 const ThirdImage = styled.div`
+  display: flex;
   width: 100%;
-  margin: auto;
-  img {
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 250px;
+    img {
+      width: 100%;
+      height: 200px;
+    }
   }
 `;
 const Imagenes = styled.div`
   width: 100%;
+  height: 100%;
   border: 1px solid black;
   img {
     width: 100%;
+  }
+`;
+const FirstImage = styled.div`
+  display: flex;
+  width: 100%;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    img {
+      width: 100%;
+      height: 200px;
+    }
   }
 `;
 const ContentRight = styled.div`
@@ -98,6 +119,7 @@ const TextCenter = styled.div`
   }
 `;
 const Subtitulo = styled(Title)`
+  height: 50%;
   label {
     margin-right: 70%;
   }

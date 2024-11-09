@@ -90,12 +90,20 @@ const FirstImage = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
-  img {
-    width: 100%;
-    height: 300px;
-  }
+
   padding: 5px;
   border: 3px solid black;
+  display: flex;
+  width: 100%;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
 `;
 
 const Imagenes = styled.div`
@@ -122,9 +130,17 @@ const SecondImage = styled(FirstImage)`
   margin-left: 15px;
   height: 300px;
   width: 40%;
-  img {
-    height: 100%;
+  display: flex;
+  width: 100%;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
+    img {
+      width: 100%;
+      height: 200px;
+    }
   }
 `;
 const ThirdImage = styled(SecondImage)`

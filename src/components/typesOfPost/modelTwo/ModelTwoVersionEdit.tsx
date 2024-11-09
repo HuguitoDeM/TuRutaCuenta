@@ -69,6 +69,18 @@ const AllImages = styled.div`
   width: 100%;
   margin-top: 1rem;
   border: 1px solid black;
+  display: flex;
+  width: 100%;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    img {
+      width: 100%;
+      height: 200px;
+    }
+  }
 `;
 
 const Imagenes = styled.div`

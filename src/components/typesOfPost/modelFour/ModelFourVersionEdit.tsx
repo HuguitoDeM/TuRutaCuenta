@@ -21,10 +21,15 @@ const FirstImage = styled.div`
   padding-right: 2rem;
   font-size: 30px;
   align-items: center;
-  img {
-    filter: grayscale(100%);
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 100%;
+    img {
+      width: 100%;
+      height: 200px;
+    }
   }
 `;
 
@@ -32,6 +37,7 @@ const ContentRight = styled.div`
   display: flex;
   width: 80%;
   flex-direction: column;
+  gap: 1rem;
 `;
 
 const Title = styled.div`
@@ -108,11 +114,22 @@ const Imagenes = styled.div`
   }
 `;
 const RightImages = styled.div`
-  display: flex;
   justify-content: space-around;
   margin: auto;
-  width: 97%;
-  gap: 2rem;
+  width: 98%;
+  gap: 1rem;
+  display: flex;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    img {
+      width: 100%;
+      height: 200px;
+    }
+  }
 `;
 const ModelFourVersionEdit = ({ newPost = false }) => {
   return (
