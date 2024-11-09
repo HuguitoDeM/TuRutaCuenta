@@ -33,7 +33,7 @@ const Title = styled.div`
     padding: 11px 10px;
     font-size: 1.45rem;
     width: 30%;
-    border: 2px #818cf8 solid;
+    border: 2px black solid;
     border-radius: 5px;
     outline: none;
   }
@@ -42,7 +42,7 @@ const Title = styled.div`
     margin: auto;
     width: 90%;
     font-size: 0.75rem;
-    border: 2px #818cf8 solid;
+    border: 2px black solid;
     border-radius: 5px;
     outline: none;
   }
