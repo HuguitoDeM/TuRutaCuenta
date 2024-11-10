@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import NavbarDesktop from "../navbar/NavbarDesktop";
+import NavbarDesktop from "../components/navbar/NavbarDesktop";
 import { useState } from "react";
-import ModelOneVersionEdit from "../typesOfPost/modelOne/ModelOneVersionEdit";
-import ModelTwoVersionEdit from "../typesOfPost/modelTwo/ModelTwoVersionEdit";
-import ModelThreeVersionEdit from "../typesOfPost/modelThree/ModelThreeVersionEdit";
-import ModelFourVersionEdit from "../typesOfPost/modelFour/ModelFourVersionEdit";
+import ModelOneVersionEdit from "../components/typesOfPost/modelOne/ModelOneVersionEdit";
+import ModelTwoVersionEdit from "../components/typesOfPost/modelTwo/ModelTwoVersionEdit";
+import ModelThreeVersionEdit from "../components/typesOfPost/modelThree/ModelThreeVersionEdit";
+import ModelFourVersionEdit from "../components/typesOfPost/modelFour/ModelFourVersionEdit";
 
 const NewPostContainer = styled.div``;
 const TiposDePublicaciones = styled.div`

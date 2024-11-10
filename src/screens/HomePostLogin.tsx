@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import PostsHome from "./PostsHome";
-import NavbarDesktop from "../navbar/NavbarDesktop";
-import { UseWindoWidth } from "../../hooks/useWidthScreen";
-import NavbarMobile from "../navbar/NavbarMobile";
+import PostsHome from "../components/homePostLogin/PostsHome";
+import NavbarDesktop from "../components/navbar/NavbarDesktop";
+import { UseWindoWidth } from "../hooks/useWidthScreen";
+import NavbarMobile from "../components/navbar/NavbarMobile";
 
 const HomeContainer = styled.div`
   width: 100%;

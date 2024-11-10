@@ -1,21 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const LoginContainer = styled.div`
+const RegisterContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100vw;
   height: 100vh;
   align-items: center;
 `;
-const FormLogin = styled.form`
+const FormRegister = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 450px;
   width: 350px;
   flex-direction: column;
-  gap: 40px;
+  gap: 30px;
   background: #e3e3e3;
   box-shadow: 16px 16px 32px #c8c8c8, -16px -16px 32px #fefefe;
   border-radius: 8px;
@@ -27,7 +27,7 @@ const FormLogin = styled.form`
     cursor: pointer;
   }
 `;
-const TituloLogin = styled.a`
+const TituloRegister = styled.a`
   color: #000;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -81,11 +81,12 @@ const UserNameInputBox = styled.div`
     border-radius: 8px;
   }
 `;
+const EmailInputBox = styled(UserNameInputBox)``;
 const PasswordInputBox = styled(UserNameInputBox)``;
 
 const ButtonEnter = styled.button`
   height: 45px;
-  width: 100px;
+  width: 150px;
   border-radius: 5px;
   border: 2px solid #000;
   cursor: pointer;
@@ -100,7 +101,7 @@ const ButtonEnter = styled.button`
     color: white;
   }
 `;
-const Login = () => {
+const Register = () => {
   const navigate = useNavigate();
 
   const handleOnSubmit = () => {
@@ -108,22 +109,26 @@ const Login = () => {
     navigate("/home");
   };
   return (
-    <LoginContainer>
-      <FormLogin onSubmit={handleOnSubmit}>
-        <TituloLogin>LOG IN</TituloLogin>
+    <RegisterContainer>
+      <FormRegister onSubmit={handleOnSubmit}>
+        <TituloRegister>REGISTRO</TituloRegister>
         <UserNameInputBox>
           <input type="text" required />
           <span>USERNAME</span>
         </UserNameInputBox>
+        <EmailInputBox>
+          <input type="email" required />
+          <span>EMAIL</span>
+        </EmailInputBox>
         <PasswordInputBox>
           <input type="text" required />
           <span>PASSWORD</span>
         </PasswordInputBox>
-        <ButtonEnter>ENTRAR</ButtonEnter>
-        <p onClick={() => navigate("/registro")}>¿Ya tienes cuenta?</p>
-      </FormLogin>
-    </LoginContainer>
+        <ButtonEnter>REGISTRARSE</ButtonEnter>
+        <p onClick={() => navigate("/login")}>¿Ya tienes cuenta?</p>
+      </FormRegister>
+    </RegisterContainer>
   );
 };
 
-export default Login;
+export default Register;
