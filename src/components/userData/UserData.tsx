@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import PostsHome from "../homePostLogin/PostsHome";
+import getData from "../../services/getData";
 import { useNavigate } from "react-router-dom";
 
 const titles = [
@@ -111,30 +112,35 @@ const Destinos = styled.div`
   }
 
   @media (max-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    grid-template-columns: repeat(3, 1fr);
   }
 
   @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @media (max-width: 480px) {
-    grid-template-columns: 1fr; /* Una columna */
+    grid-template-columns: 1fr;
   }
 `;
 
 const UsersData = () => {
+  const userData = getData();
   const navigate = useNavigate();
+  const handleCloseSesion = () => {
+    localStorage.removeItem("loginUser");
+    navigate("/");
+  };
   return (
     <UserData>
       <img
-        src="https://i.pinimg.com/736x/f7/9a/6c/f79a6cca3df4afcbda1d3900155f0703.jpg"
+        src="https://static.vecteezy.com/system/resources/previews/002/387/693/non_2x/user-profile-icon-free-vector.jpg"
         alt=""
       />
-      <Nombre>Huguito</Nombre>
-      <Correo>hugojavierdesideriomatinez@gmail.com</Correo>
+      <Nombre>{userData.name}</Nombre>
+      <Correo>{userData.email}</Correo>
       <CerrarSesion>
-        <button onClick={() => navigate("/")}>Cerrar Sesión</button>
+        <button onClick={handleCloseSesion}>Cerrar Sesión</button>
       </CerrarSesion>
       <MisDestinos>
         <p>Mis Destinos</p>

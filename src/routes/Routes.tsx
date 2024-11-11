@@ -10,6 +10,7 @@ import ModelTwo from "../components/typesOfPost/modelTwo/ModelTwo";
 import ModelThree from "../components/typesOfPost/modelThree/ModelThree";
 import Register from "../components/register/Register";
 import UserSetting from "../screens/UserSetting";
+import ProtectedRoute from "./ProtectedRoute";
 
 export const Rutas = () => {
   return (
@@ -18,14 +19,42 @@ export const Rutas = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Register />} />
-        <Route path="/home" element={<HomePostLogin />} />
-        <Route path="/busquedas" element={<Searches />} />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <HomePostLogin />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/busquedas"
+          element={
+            <ProtectedRoute>
+              <Searches />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/new-post"
+          element={
+            <ProtectedRoute>
+              <NewPost />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute>
+              <UserSetting />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/post1" element={<ModelOne />} />
         <Route path="/post2" element={<ModelTwo />} />
         <Route path="/post3" element={<ModelThree />} />
         <Route path="/post4" element={<ModelFour />} />
-        <Route path="/new-post" element={<NewPost />} />
-        <Route path="/settings" element={<UserSetting />} />
       </Routes>
     </Router>
   );

@@ -42,7 +42,7 @@ export const NewPost = () => {
   };
   return (
     <NewPostContainer>
-      <NavbarDesktop login={true} user="Huguito" />
+      <NavbarDesktop />
       <TiposDePublicaciones>
         <Opcion1
           id="1"

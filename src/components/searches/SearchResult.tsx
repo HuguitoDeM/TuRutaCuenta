@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import getBlogs from "../../services/getBlogs";
+import { useEffect, useState } from "react";
 
 const SearchResultContainer = styled.div`
   display: flex;
@@ -62,29 +64,64 @@ const Description = styled.p`
   font-size: 13px;
 `;
 
-interface props {
-  imagen: string;
-  titulo: string;
-  descripcion: string;
+interface Blog {
   id: string;
-  color?: boolean;
+  title: string;
+  img: string;
+  description: string;
+  userID: string;
 }
 
-const SearchResult = ({
-  id,
-  titulo,
-  imagen,
-  descripcion,
-  color = false,
-}: props) => {
+interface props {
+  busqueda: string;
+}
+
+const SearchResult = ({ busqueda }: props) => {
+  const [resultados, setResultados] = useState<Blog[]>([]);
+
+  const obtenerData = async () => {
+    try {
+      const resultado: Blog[] | undefined = await getBlogs();
+      if (resultado) {
+        const blogs = Object.values(resultado);
+        const filteredBlogs = blogs.filter(
+          (item) =>
+            item.title &&
+            item.title.toLowerCase().includes(busqueda.toLowerCase())
+        );
+        setResultados(filteredBlogs);
+      }
+    } catch (error) {
+      console.error("error: ", error);
+    }
+  };
+  useEffect(() => {
+    obtenerData();
+  }, [busqueda]);
+
   return (
-    <SearchResultContainer key={id} className={color ? "color" : ""}>
-      <img src={imagen} alt={titulo} />
-      <Text className={color ? "color" : ""}>
-        <Title>{titulo}</Title>
-        <Description>{descripcion}</Description>
-      </Text>
-    </SearchResultContainer>
+    <>
+      {resultados ? (
+        resultados.length > 0 ? (
+          resultados.map((post, index) => (
+            <SearchResultContainer
+              key={post.title + index}
+              className={index % 2 !== 0 ? "color" : ""}
+            >
+              <img src={post.img} alt={post.title} />
+              <Text className={index % 2 !== 0 ? "color" : ""}>
+                <Title>{post.title}</Title>
+                <Description>{post.description}</Description>
+              </Text>
+            </SearchResultContainer>
+          ))
+        ) : (
+          <span>No se encontraron destinos.</span>
+        )
+      ) : (
+        <span>Cargando...</span>
+      )}
+    </>
   );
 };
 

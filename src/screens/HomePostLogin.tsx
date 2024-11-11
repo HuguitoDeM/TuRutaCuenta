@@ -73,11 +73,11 @@ const HomePostLogin = () => {
 
   return (
     <HomeContainer>
-      {WidthScreen > 769 ? <NavbarDesktop login={true} user="Huguito" /> : ""}
+      {WidthScreen > 769 ? <NavbarDesktop /> : ""}
       <MainContent>
         <PostsHome titulos={titles} imagenes={img} />
       </MainContent>
-      {WidthScreen > 769 ? "" : <NavbarMobile login={true} />}
+      {WidthScreen > 769 ? "" : <NavbarMobile />}
     </HomeContainer>
   );
 };

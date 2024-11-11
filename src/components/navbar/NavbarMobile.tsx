@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Icon from "../Icons/Icons";
 import { useNavigate } from "react-router-dom";
+import getData from "../../services/getData";
 
 const NavbarContainer = styled.div`
   display: flex;
@@ -54,22 +55,20 @@ const SearchOption = styled(HomeOption)``;
 const NewPost = styled(HomeOption)``;
 
 const UserOption = styled(HomeOption)``;
-interface props {
-  login: boolean;
-}
 
-const NavbarMobile = ({ login }: props) => {
+const NavbarMobile = () => {
+  const userData = getData();
   const navigate = useNavigate();
   return (
     <NavbarContainer>
       <NavbarMenu>
         <NavbarOptions>
           <HomeOption
-            onClick={login ? () => navigate("/home") : () => navigate("/")}
+            onClick={userData ? () => navigate("/home") : () => navigate("/")}
           >
             <Icon name="Home" size={40} />
           </HomeOption>
-          {login ? (
+          {userData ? (
             <SearchOption onClick={() => navigate("/busquedas")}>
               <Icon name="Explorador" size={40} color="gray" />
             </SearchOption>
@@ -77,7 +76,7 @@ const NavbarMobile = ({ login }: props) => {
             ""
           )}
           ;
-          {login ? (
+          {userData ? (
             <NewPost onClick={() => navigate("/new-post")}>
               <Icon name="newPost" size={40} />
             </NewPost>
@@ -86,7 +85,7 @@ const NavbarMobile = ({ login }: props) => {
           )}
           <UserOption
             onClick={
-              login ? () => navigate("/settings") : () => navigate("/login")
+              userData ? () => navigate("/settings") : () => navigate("/login")
             }
           >
             <Icon name="User" size={40} />

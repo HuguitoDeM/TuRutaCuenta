@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Icon from "../Icons/Icons";
 import { useNavigate } from "react-router-dom";
+import getData from "../../services/getData";
 
 const NavbarContainer = styled.div`
   display: flex;
@@ -117,23 +118,17 @@ const UserLoginButton = styled.button`
 interface props {
   NavbarHome?: boolean;
   color?: boolean;
-  login: boolean;
-  user?: string;
 }
 
-const NavbarDesktop = ({
-  NavbarHome = false,
-  color = false,
-  login,
-  user,
-}: props) => {
+const NavbarDesktop = ({ NavbarHome = false, color = false }: props) => {
+  const userData = getData();
   const navigate = useNavigate();
   return (
     <NavbarContainer>
       <NavbarMenu className={color ? "color" : ""}>
         <NavbarOptions>
           <LogoNavbar
-            onClick={login ? () => navigate("/home") : () => navigate("/")}
+            onClick={userData ? () => navigate("/home") : () => navigate("/")}
           >
             <Icon name="logo" size={55} />
             <TextLogo>
@@ -159,11 +154,11 @@ const NavbarDesktop = ({
         </NavbarOptions>
         <UserLoginButton
           onClick={
-            login ? () => navigate("/settings") : () => navigate("/login")
+            userData ? () => navigate("/settings") : () => navigate("/login")
           }
         >
           <Icon name="User" size={37} color="black" />
-          {login ? user : <p>Log In</p>}
+          {userData ? userData.name : <p>Log In</p>}
         </UserLoginButton>
       </NavbarMenu>
     </NavbarContainer>

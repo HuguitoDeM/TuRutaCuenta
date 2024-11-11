@@ -73,7 +73,7 @@ export const Home = () => {
       <HomeContainer>
         <OverlayDiv>
           {WidthScreen > 769 ? (
-            <NavbarDesktop NavbarHome={true} login={false} color={true} />
+            <NavbarDesktop NavbarHome={true} color={true} />
           ) : (
             ""
           )}
@@ -83,7 +83,7 @@ export const Home = () => {
               <CardRotativas />
             </DivCards>
           </MainContentHome>
-          {WidthScreen > 769 ? "" : <NavbarMobile login={false} />}
+          {WidthScreen > 769 ? "" : <NavbarMobile />}
         </OverlayDiv>
       </HomeContainer>
     </>

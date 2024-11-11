@@ -17,9 +17,9 @@ const UserSetting = () => {
   const WidthScreen = UseWindoWidth();
   return (
     <SettingsContainer>
-      {WidthScreen > 769 ? <NavbarDesktop login={true} user="Huguito" /> : ""}
+      {WidthScreen > 769 ? <NavbarDesktop /> : ""}
       <UsersData />
-      {WidthScreen > 769 ? "" : <NavbarMobile login={true} />}
+      {WidthScreen > 769 ? "" : <NavbarMobile />}
     </SettingsContainer>
   );
 };
