@@ -19,7 +19,7 @@ const SearchesContainer = styled.div`
 
 const Resultados = styled.div`
   display: flex;
-  margin-top: 6rem;
+  margin-top: 8rem;
   flex-direction: column;
   width: 100%;
   align-items: center;

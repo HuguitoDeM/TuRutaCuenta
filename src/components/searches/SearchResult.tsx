@@ -101,7 +101,7 @@ const SearchResult = ({ busqueda }: props) => {
 
   return (
     <>
-      {resultados ? (
+      {resultados && busqueda !== "" ? (
         resultados.length > 0 ? (
           resultados.map((post, index) => (
             <SearchResultContainer
@@ -119,7 +119,7 @@ const SearchResult = ({ busqueda }: props) => {
           <span>No se encontraron destinos.</span>
         )
       ) : (
-        <span>Cargando...</span>
+        <></>
       )}
     </>
   );
