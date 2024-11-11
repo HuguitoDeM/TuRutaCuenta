@@ -15,6 +15,7 @@ const SettingsContainer = styled.div`
 
 const UserSetting = () => {
   const WidthScreen = UseWindoWidth();
+
   return (
     <SettingsContainer>
       {WidthScreen > 769 ? <NavbarDesktop /> : ""}

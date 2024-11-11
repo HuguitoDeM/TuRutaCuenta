@@ -32,7 +32,7 @@ interface Blog {
   title: string;
   img: string;
   description: string;
-  userID: string;
+  userId: string;
 }
 
 const HomePostLogin = () => {
@@ -64,7 +64,7 @@ const HomePostLogin = () => {
 
   useEffect(() => {
     obtenerData();
-  }, []);
+  });
   return (
     <HomeContainer>
       {WidthScreen > 769 ? <NavbarDesktop /> : ""}

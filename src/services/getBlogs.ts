@@ -3,7 +3,7 @@ interface Blog {
   title: string;
   img: string;
   description: string;
-  userID: string;
+  userId: string;
 }
 
 const getBlogs = async () => {

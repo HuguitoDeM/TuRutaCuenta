@@ -69,7 +69,7 @@ interface Blog {
   title: string;
   img: string;
   description: string;
-  userID: string;
+  userId: string;
 }
 
 interface props {
@@ -97,7 +97,7 @@ const SearchResult = ({ busqueda }: props) => {
   };
   useEffect(() => {
     obtenerData();
-  }, [busqueda]);
+  });
 
   return (
     <>
