@@ -8,11 +8,11 @@ const CardsRotativas = styled.div`
   justify-content: center;
   align-items: center;
   @media (max-width: 1440px) {
-    margin-top: 4rem;
+    transform: scale(0.7);
   }
   @media (max-width: 768px) {
     flex-direction: column;
-    background-color: #000000;
+
     gap: 30px;
     padding-bottom: 5rem;
   }

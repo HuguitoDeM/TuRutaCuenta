@@ -17,14 +17,13 @@ const Post = styled.div`
 `;
 const Title = styled.h2`
   color: black;
-
   border-radius: 0 0 5px 5px;
   font-size: 16px;
   text-align: center;
 
   @media (max-width: 610px) {
     font-size: 12px;
-    transform: translateY(-35px);
+
     border-radius: 0;
   }
   @media (max-width: 478px) {

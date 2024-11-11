@@ -207,7 +207,7 @@ const Searches = () => {
           />
         ))}
       </Resultados>
-      {WidthScreen > 769 ? "" : <NavbarMobile />}
+      {WidthScreen > 769 ? "" : <NavbarMobile login={true} />}
     </SearchesContainer>
   );
 };

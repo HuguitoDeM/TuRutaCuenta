@@ -1,29 +1,7 @@
 import styled from "styled-components";
-import PostsHome from "../components/homePostLogin/PostsHome";
-import NavbarDesktop from "../components/navbar/NavbarDesktop";
-import { UseWindoWidth } from "../hooks/useWidthScreen";
-import NavbarMobile from "../components/navbar/NavbarMobile";
+import PostsHome from "../homePostLogin/PostsHome";
+import { useNavigate } from "react-router-dom";
 
-const HomeContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  overflow-x: hidden;
-  background-color: #a7a7a7;
-`;
-const MainContent = styled.div`
-  margin-top: 5px;
-  column-count: 6;
-
-  padding-left: 20px;
-  padding-right: 10px;
-  @media (max-width: 1440px) {
-    column-count: 3;
-  }
-  @media (max-width: 924px) {
-    column-count: 2;
-  }
-`;
 const titles = [
   "Explorando los rincones secretos de París",
   "Aventuras en la Gran Muralla China",
@@ -68,18 +46,104 @@ const img = [
   "https://i.pinimg.com/564x/17/c0/c9/17c0c94a3974d0ce09be2dff4b5971c6.jpg",
   "https://i.pinimg.com/736x/33/11/2c/33112c8c9be991e771d7f67e63eca047.jpg",
 ];
-const HomePostLogin = () => {
-  const WidthScreen = UseWindoWidth();
 
+const UserData = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+  img {
+    height: 120px;
+    width: 120px;
+    border-radius: 99px;
+  }
+`;
+
+const Nombre = styled.h2`
+  font-size: 36px;
+`;
+const Correo = styled.span`
+  color: #767676;
+`;
+const MisDestinos = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 3rem;
+  border-bottom: 3px solid black;
+  p {
+    font-size: 19px;
+  }
+`;
+const CerrarSesion = styled.div`
+  button {
+    background-color: red;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 99px;
+    width: 9rem;
+    height: 2.5rem;
+    filter: grayscale(50%);
+    &:hover {
+      cursor: pointer;
+      filter: grayscale(5%);
+    }
+  }
+`;
+const Destinos = styled.div`
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  img {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    max-height: 220px;
+  }
+  h2 {
+    font-size: 15px;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr; /* Una columna */
+  }
+`;
+
+const UsersData = () => {
+  const navigate = useNavigate();
   return (
-    <HomeContainer>
-      {WidthScreen > 769 ? <NavbarDesktop login={true} user="Huguito" /> : ""}
-      <MainContent>
+    <UserData>
+      <img
+        src="https://i.pinimg.com/736x/f7/9a/6c/f79a6cca3df4afcbda1d3900155f0703.jpg"
+        alt=""
+      />
+      <Nombre>Huguito</Nombre>
+      <Correo>hugojavierdesideriomatinez@gmail.com</Correo>
+      <CerrarSesion>
+        <button onClick={() => navigate("/")}>Cerrar Sesión</button>
+      </CerrarSesion>
+      <MisDestinos>
+        <p>Mis Destinos</p>
+      </MisDestinos>
+      <Destinos>
         <PostsHome titulos={titles} imagenes={img} />
-      </MainContent>
-      {WidthScreen > 769 ? "" : <NavbarMobile login={true} />}
-    </HomeContainer>
+      </Destinos>
+    </UserData>
   );
 };
 
-export default HomePostLogin;
+export default UsersData;

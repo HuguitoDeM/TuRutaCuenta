@@ -9,6 +9,7 @@ import ModelOne from "../components/typesOfPost/modelOne/ModelOne";
 import ModelTwo from "../components/typesOfPost/modelTwo/ModelTwo";
 import ModelThree from "../components/typesOfPost/modelThree/ModelThree";
 import Register from "../components/register/Register";
+import UserSetting from "../screens/UserSetting";
 
 export const Rutas = () => {
   return (
@@ -23,7 +24,8 @@ export const Rutas = () => {
         <Route path="/post2" element={<ModelTwo />} />
         <Route path="/post3" element={<ModelThree />} />
         <Route path="/post4" element={<ModelFour />} />
-        <Route path="new-post" element={<NewPost />} />
+        <Route path="/new-post" element={<NewPost />} />
+        <Route path="/settings" element={<UserSetting />} />
       </Routes>
     </Router>
   );

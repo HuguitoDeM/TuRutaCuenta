@@ -7,12 +7,14 @@ import TextInTheMiddleHome from "../components/contentHome/TextInTheMiddle";
 import NavbarDesktop from "../components/navbar/NavbarDesktop";
 
 const HomeContainer = styled.div`
+  position: relative;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-image: url("/pexels-francesco-ungaro-1525041.jpg");
+  overflow-x: hidden;
 `;
 const OverlayDiv = styled.div`
   display: flex;
@@ -35,7 +37,8 @@ const MainContentHome = styled.div`
   display: flex;
   justify-content: space-around;
   margin-top: 2rem;
-
+  width: 100%;
+  height: 100%;
   @media (max-width: 1440px) {
     flex-direction: column;
     gap: 10px;
@@ -49,13 +52,19 @@ const MainContentHome = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     justify-content: center;
+    margin-top: 0.5rem;
   }
   @media (max-width: 480px) {
     flex-direction: column;
     justify-content: center;
   }
 `;
-
+const DivCards = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  overflow: auto;
+`;
 export const Home = () => {
   const WidthScreen = UseWindoWidth();
 
@@ -70,9 +79,11 @@ export const Home = () => {
           )}
           <MainContentHome>
             <TextInTheMiddleHome />
-            <CardRotativas />
+            <DivCards>
+              <CardRotativas />
+            </DivCards>
           </MainContentHome>
-          {WidthScreen > 769 ? "" : <NavbarMobile />}
+          {WidthScreen > 769 ? "" : <NavbarMobile login={false} />}
         </OverlayDiv>
       </HomeContainer>
     </>

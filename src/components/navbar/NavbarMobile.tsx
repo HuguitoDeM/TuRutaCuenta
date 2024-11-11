@@ -51,21 +51,44 @@ const HomeOption = styled.li`
 `;
 const SearchOption = styled(HomeOption)``;
 
-const UserOption = styled(HomeOption)``;
+const NewPost = styled(HomeOption)``;
 
-const NavbarMobile = () => {
+const UserOption = styled(HomeOption)``;
+interface props {
+  login: boolean;
+}
+
+const NavbarMobile = ({ login }: props) => {
   const navigate = useNavigate();
   return (
     <NavbarContainer>
       <NavbarMenu>
         <NavbarOptions>
-          <HomeOption onClick={() => navigate("/home")}>
+          <HomeOption
+            onClick={login ? () => navigate("/home") : () => navigate("/")}
+          >
             <Icon name="Home" size={40} />
           </HomeOption>
-          <SearchOption onClick={() => navigate("/busquedas")}>
-            <Icon name="Explorador" size={40} color="gray" />
-          </SearchOption>
-          <UserOption onClick={() => navigate("/login")}>
+          {login ? (
+            <SearchOption onClick={() => navigate("/busquedas")}>
+              <Icon name="Explorador" size={40} color="gray" />
+            </SearchOption>
+          ) : (
+            ""
+          )}
+          ;
+          {login ? (
+            <NewPost onClick={() => navigate("/new-post")}>
+              <Icon name="newPost" size={40} />
+            </NewPost>
+          ) : (
+            ""
+          )}
+          <UserOption
+            onClick={
+              login ? () => navigate("/settings") : () => navigate("/login")
+            }
+          >
             <Icon name="User" size={40} />
           </UserOption>
         </NavbarOptions>

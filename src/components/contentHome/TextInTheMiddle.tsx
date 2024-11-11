@@ -7,6 +7,7 @@ const TextInTheMiddleContainer = styled.div`
   margin: auto;
 
   @media (max-width: 1440px) {
+    margin-top: 3rem;
     padding-left: 30px;
     padding-right: 40px;
   }

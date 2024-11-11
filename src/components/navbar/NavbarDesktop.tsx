@@ -58,6 +58,7 @@ const HomeOption = styled.li`
   }
 `;
 
+const NewPostOption = styled(HomeOption)``;
 const ExplorerOption = styled(HomeOption)``;
 
 const LogoNavbar = styled(HomeOption)`
@@ -131,7 +132,9 @@ const NavbarDesktop = ({
     <NavbarContainer>
       <NavbarMenu className={color ? "color" : ""}>
         <NavbarOptions>
-          <LogoNavbar onClick={() => navigate("/")}>
+          <LogoNavbar
+            onClick={login ? () => navigate("/home") : () => navigate("/")}
+          >
             <Icon name="logo" size={55} />
             <TextLogo>
               <p>Tu ruta</p>
@@ -148,8 +151,17 @@ const NavbarDesktop = ({
               <Icon name="Explorador" size={45} />
             </ExplorerOption>
           )}
+          {!NavbarHome && (
+            <NewPostOption onClick={() => navigate("/new-post")}>
+              <Icon name="newPost" size={45} />
+            </NewPostOption>
+          )}
         </NavbarOptions>
-        <UserLoginButton onClick={() => navigate("/login")}>
+        <UserLoginButton
+          onClick={
+            login ? () => navigate("/settings") : () => navigate("/login")
+          }
+        >
           <Icon name="User" size={37} color="black" />
           {login ? user : <p>Log In</p>}
         </UserLoginButton>
