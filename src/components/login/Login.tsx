@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import authService from "../../services/authService";
+import { useState } from "react";
+import Icon from "../Icons/Icons";
 
 const LoginContainer = styled.div`
   display: flex;
@@ -100,23 +103,60 @@ const ButtonEnter = styled.button`
     color: white;
   }
 `;
+const ErrorMessage = styled.div`
+  display: flex;
+  gap: 10px;
+  p {
+    color: red;
+    font-size: 19px;
+    text-decoration: none;
+  }
+`;
 const Login = () => {
+  const [usuario, setUsuario] = useState("");
+  const [contraseña, setContraseña] = useState("");
+  const [messageError, setMessageError] = useState("");
   const navigate = useNavigate();
 
-  const handleOnSubmit = () => {
-    //checkear los inputs
-    navigate("/home");
+  const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const resultado = await authService({ usuario, contraseña });
+    if (resultado === "usuario no encontrado") {
+      setMessageError(resultado);
+    } else if (resultado === "contraseña incorrecta") {
+      setMessageError(resultado);
+    } else if (resultado) {
+      setMessageError("");
+      navigate("/home");
+    }
+    setUsuario("");
+    setContraseña("");
   };
   return (
     <LoginContainer>
       <FormLogin onSubmit={handleOnSubmit}>
         <TituloLogin>LOG IN</TituloLogin>
+        <ErrorMessage>
+          {messageError && (
+            <>
+              <Icon name="error" /> <p>{messageError}</p>
+            </>
+          )}
+        </ErrorMessage>
         <UserNameInputBox>
-          <input type="text" required />
+          <input
+            type="text"
+            onChange={(e) => setUsuario(e.target.value)}
+            required
+          />
           <span>USERNAME</span>
         </UserNameInputBox>
         <PasswordInputBox>
-          <input type="text" required />
+          <input
+            type="password"
+            onChange={(e) => setContraseña(e.target.value)}
+            required
+          />
           <span>PASSWORD</span>
         </PasswordInputBox>
         <ButtonEnter>ENTRAR</ButtonEnter>

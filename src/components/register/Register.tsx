@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import Icon from "../Icons/Icons";
+import { useState } from "react";
+import authServiceRegistro from "../../services/authServiceRegistro";
 
 const RegisterContainer = styled.div`
   display: flex;
@@ -101,27 +104,64 @@ const ButtonEnter = styled.button`
     color: white;
   }
 `;
+const ErrorMessage = styled.div`
+  display: flex;
+  gap: 10px;
+  p {
+    color: red;
+    font-size: 19px;
+    text-decoration: none;
+  }
+`;
 const Register = () => {
+  const [usuario, setUsuario] = useState("");
+  const [contraseña, setContraseña] = useState("");
+  const [email, setEmail] = useState("");
+  const [messageError, setMessageError] = useState("");
   const navigate = useNavigate();
 
-  const handleOnSubmit = () => {
-    //checkear los inputs
-    navigate("/home");
+  const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const resultado = await authServiceRegistro({ usuario, contraseña, email });
+    if (resultado === "usuario ya existe") {
+      setMessageError(resultado);
+    } else if (resultado === "usuario creado con exito") {
+      navigate("/home");
+    }
   };
   return (
     <RegisterContainer>
       <FormRegister onSubmit={handleOnSubmit}>
         <TituloRegister>REGISTRO</TituloRegister>
+        <ErrorMessage>
+          {messageError && (
+            <>
+              <Icon name="error" /> <p>{messageError}</p>
+            </>
+          )}
+        </ErrorMessage>
         <UserNameInputBox>
-          <input type="text" required />
+          <input
+            type="text"
+            onChange={(e) => setUsuario(e.target.value)}
+            required
+          />
           <span>USERNAME</span>
         </UserNameInputBox>
         <EmailInputBox>
-          <input type="email" required />
+          <input
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
           <span>EMAIL</span>
         </EmailInputBox>
         <PasswordInputBox>
-          <input type="text" required />
+          <input
+            type="password"
+            onChange={(e) => setContraseña(e.target.value)}
+            required
+          />
           <span>PASSWORD</span>
         </PasswordInputBox>
         <ButtonEnter>REGISTRARSE</ButtonEnter>
