@@ -64,6 +64,7 @@ const Destinos = styled.div`
     width: 100%;
     border-radius: 10px;
     max-height: 220px;
+    object-fit: cover;
   }
   h2 {
     font-size: 15px;

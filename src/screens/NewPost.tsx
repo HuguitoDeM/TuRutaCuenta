@@ -5,6 +5,8 @@ import ModelOneVersionEdit from "../components/typesOfPost/modelOne/ModelOneVers
 import ModelTwoVersionEdit from "../components/typesOfPost/modelTwo/ModelTwoVersionEdit";
 import ModelThreeVersionEdit from "../components/typesOfPost/modelThree/ModelThreeVersionEdit";
 import ModelFourVersionEdit from "../components/typesOfPost/modelFour/ModelFourVersionEdit";
+import { UseWindoWidth } from "../hooks/useWidthScreen";
+import NavbarMobile from "../components/navbar/NavbarMobile";
 
 const NewPostContainer = styled.div``;
 const TiposDePublicaciones = styled.div`
@@ -37,12 +39,15 @@ const Opcion4 = styled(Opcion3)``;
 
 export const NewPost = () => {
   const [seleccionado, setSeleccionado] = useState("1");
+  const WidthScreen = UseWindoWidth();
+
   const handleSeleccionado = (e: React.MouseEvent<HTMLDivElement>) => {
     setSeleccionado(e.currentTarget.id);
   };
   return (
     <NewPostContainer>
-      <NavbarDesktop />
+      {WidthScreen > 769 ? <NavbarDesktop /> : ""}
+
       <TiposDePublicaciones>
         <Opcion1
           id="1"
@@ -77,6 +82,7 @@ export const NewPost = () => {
       {seleccionado === "2" && <ModelTwoVersionEdit newPost={true} />}
       {seleccionado === "3" && <ModelThreeVersionEdit newPost={true} />}
       {seleccionado === "4" && <ModelFourVersionEdit newPost={true} />}
+      {WidthScreen > 769 ? "" : <NavbarMobile />}
     </NewPostContainer>
   );
 };

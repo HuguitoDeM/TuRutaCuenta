@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "../screens/Home";
 import Login from "../components/login/Login";
 import HomePostLogin from "../screens/HomePostLogin";
-import Searches from "../components/searches/Searches";
+import Searches from "../screens/Searches";
 import ModelFour from "../components/typesOfPost/modelFour/ModelFour";
 import { NewPost } from "../screens/NewPost";
 import ModelOne from "../components/typesOfPost/modelOne/ModelOne";

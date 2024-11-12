@@ -8,16 +8,24 @@ const EditContainer = styled.div`
   &.NewPost {
     transform: scale(0.9);
   }
+  @media (max-width: 768px) {
+    gap: 0rem;
+  }
 `;
 
 const TextLeft = styled.div`
   display: flex;
-  flex-direction: column;
   font-size: 17px;
+  flex-direction: column;
   width: 40%;
   gap: 15px;
   margin-left: 15px;
   margin-right: 15px;
+  @media (max-width: 768px) {
+    width: 100%;
+    font-size: 15px;
+    gap: 0px;
+  }
 `;
 
 const Title = styled.div`
@@ -56,6 +64,15 @@ const Title = styled.div`
     border-radius: 5px;
     outline: none;
   }
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    input {
+      width: 90%;
+    }
+    label {
+      margin-right: 60%;
+    }
+  }
 `;
 const TextBody = styled(Title)`
   margin: auto;
@@ -85,6 +102,9 @@ const MainTitle = styled.div`
     font-size: 12px;
     margin-left: 15px;
   }
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+  }
 `;
 const FirstImage = styled.div`
   display: flex;
@@ -103,6 +123,9 @@ const FirstImage = styled.div`
       width: 100%;
     }
   }
+  @media (max-width: 768px) {
+    width: 95%;
+  }
 `;
 
 const Imagenes = styled.div`
@@ -118,17 +141,26 @@ const ContenidoArriba = styled.div`
   display: flex;
   width: 100%;
   heigth: 100%;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
-const TextRight = styled(TextLeft)``;
+const TextRight = styled(TextLeft)`
+  @media (max-width: 768px) {
+    margin-top: 1rem;
+  }
+`;
 const TextCenter = styled(TextLeft)`
   transform: translateY(-30px);
   width: 100%;
+  @media (max-width: 768px) {
+    transform: translateY(0px);
+  }
 `;
 const ContenidoAbajo = styled(ContenidoArriba)``;
 const SecondImage = styled(FirstImage)`
   margin-left: 15px;
-  height: 300px;
-  width: 40%;
   display: flex;
   width: 100%;
   div {
@@ -138,13 +170,21 @@ const SecondImage = styled(FirstImage)`
     width: 100%;
     img {
       width: 100%;
-      height: 200px;
     }
+  }
+  @media (max-width: 768px) {
+    margin-left: 0;
+    width: 95%;
+    margin-bottom: 1.5rem;
   }
 `;
 const ThirdImage = styled(SecondImage)`
   justify-content: flex-end;
   margin-right: 15px;
+  @media (max-width: 768px) {
+    margin-right: 0;
+    width: 95%;
+  }
 `;
 
 const ModelOneVersionEdit = ({ newPost = false }) => {
@@ -160,7 +200,7 @@ const ModelOneVersionEdit = ({ newPost = false }) => {
         <TextLeft>
           <Subtitulo>
             <label htmlFor="subtitulo1">SubTitulo</label>
-            <input type="text" name="subtitulo1" />
+            <input type="text" placeholder="subtitulo" name="subtitulo1" />
           </Subtitulo>
 
           <TextBody>
@@ -192,8 +232,8 @@ const ModelOneVersionEdit = ({ newPost = false }) => {
         </FirstImage>
         <TextRight>
           <Subtitulo>
-            <label htmlFor="">SubTitulo</label>
-            <input type="text" />
+            <label htmlFor="subtitulo2">SubTitulo</label>
+            <input type="text" placeholder="subtitulo" name="subtitulo2" />
           </Subtitulo>
           <TextBody>
             <label htmlFor="">Texto</label>
@@ -225,8 +265,8 @@ const ModelOneVersionEdit = ({ newPost = false }) => {
         </SecondImage>
         <TextCenter>
           <Subtitulo>
-            <label htmlFor="">SubTitulo</label>
-            <input type="text" />
+            <label htmlFor="subtitulo3">SubTitulo</label>
+            <input type="text" placeholder="subtitulo" name="subtitulo3" />
           </Subtitulo>
           <TextBody>
             <label htmlFor="">Texto</label>

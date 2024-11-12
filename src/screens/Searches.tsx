@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import SearchResult from "./SearchResult";
-import NavbarDesktop from "../navbar/NavbarDesktop";
+import SearchResult from "../components/searches/SearchResult";
+import NavbarDesktop from "../components/navbar/NavbarDesktop";
 import { useState } from "react";
-import { UseWindoWidth } from "../../hooks/useWidthScreen";
-import NavbarMobile from "../navbar/NavbarMobile";
+import { UseWindoWidth } from "../hooks/useWidthScreen";
+import NavbarMobile from "../components/navbar/NavbarMobile";
 
 const SearchesContainer = styled.div`
   width: 100vw;
