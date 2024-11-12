@@ -11,6 +11,11 @@ const PostContainer = styled.div`
     margin-top: 30px;
     margin-left: 20px;
   }
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 25px;
+    }
+  }
 `;
 const FirstImage = styled.div`
   margin: auto;

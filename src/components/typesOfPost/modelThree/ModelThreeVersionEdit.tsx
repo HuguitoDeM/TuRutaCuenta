@@ -63,7 +63,6 @@ const ContentBody = styled.div`
   @media (max-width: 768px) {
     gap: 0px;
     width: 100%;
-
     flex-direction: column;
   }
 `;
