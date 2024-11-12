@@ -15,9 +15,16 @@ const PostContainer = styled.div`
 const FirstImage = styled.div`
   margin: auto;
   width: 98%;
+  margin-top: 1rem;
+
   img {
     height: 200px;
     width: 100%;
+  }
+  @media (max-width: 768px) {
+    img {
+      height: 300px;
+    }
   }
 `;
 const ContentBody = styled.div`
@@ -26,12 +33,25 @@ const ContentBody = styled.div`
   display: flex;
   margin-top: 15px;
   gap: 30px;
+  @media (max-width: 768px) {
+    gap: 0px;
+    width: 100%;
+    flex-direction: column;
+  }
 `;
 const SecondImage = styled.div`
   width: 50%;
   img {
     width: 100%;
     height: 69%;
+  }
+  @media (max-width: 768px) {
+    h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    margin: auto;
+    width: 98%;
   }
 `;
 const ThirdImage = styled.div`
@@ -41,11 +61,19 @@ const ThirdImage = styled.div`
     width: 100%;
     height: 250px;
   }
+  @media (max-width: 768px) {
+    margin: auto;
+    width: 98%;
+  }
 `;
 const ContentRight = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
+  @media (max-width: 768px) {
+    margin: auto;
+    width: 98%;
+  }
 `;
 const TextCenter = styled.div`
   display: flex;
@@ -55,8 +83,17 @@ const TextCenter = styled.div`
   p {
     text-align: justify;
   }
+  @media (max-width: 768px) {
+    margin: auto;
+    width: 98%;
+    margin-bottom: 15px;
+  }
 `;
-const DownText = styled(TextCenter)``;
+const DownText = styled(TextCenter)`
+  @media (max-width: 768px) {
+    margin-top: 15px;
+  }
+`;
 
 const ModelThree = () => {
   return (
@@ -75,7 +112,7 @@ const ModelThree = () => {
             src="https://www.nacion.com/resizer/wX5C3jmGAL6HDgoYzkDEOlxSLkA=/1440x0/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/gruponacion/7TMBJGTD4RGRTNFCFDKGXUZQFQ.jpeg"
             alt=""
           />
-          <h2>Beach Destinations for Relaxation</h2>
+          <h3>Beach Destinations for Relaxation</h3>
         </SecondImage>
         <ContentRight>
           <TextCenter>
