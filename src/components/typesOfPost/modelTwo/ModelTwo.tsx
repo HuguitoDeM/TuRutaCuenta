@@ -18,6 +18,11 @@ const MainContent = styled.div`
     margin: auto;
     font-size: 36px;
   }
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 28px;
+    }
+  }
 `;
 
 const Imagenes = styled.div`
@@ -28,6 +33,16 @@ const Imagenes = styled.div`
   img {
     height: 280px;
     width: 30%;
+    border: 2px solid black;
+  }
+  @media (max-width: 768px) {
+    img {
+      margin: auto;
+      height: 280px;
+      width: 90%;
+    }
+    flex-direction: column;
+    gap: 10px;
   }
 `;
 
@@ -40,6 +55,13 @@ const Text = styled.div`
     font-size: 26px;
   }
   gap: 30px;
+  @media (max-width: 768px) {
+    font-size: 14px;
+    text-align: justify;
+    h3 {
+      font-size: 22px;
+    }
+  }
 `;
 const TextBody = styled.div`
   display: flex;
