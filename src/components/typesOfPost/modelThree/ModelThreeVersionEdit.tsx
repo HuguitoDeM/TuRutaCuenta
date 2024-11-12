@@ -45,6 +45,14 @@ const Title = styled.div`
     border-radius: 5px;
     outline: none;
   }
+  @media (max-width: 768px) {
+    input {
+      width: 95%;
+    }
+    label {
+      margin-right: 60%;
+    }
+  }
 `;
 const ContentBody = styled.div`
   width: 98%;
@@ -52,6 +60,12 @@ const ContentBody = styled.div`
   display: flex;
   margin-top: 15px;
   gap: 30px;
+  @media (max-width: 768px) {
+    gap: 0px;
+    width: 100%;
+
+    flex-direction: column;
+  }
 `;
 const SecondImage = styled.div`
   display: flex;
@@ -63,6 +77,7 @@ const SecondImage = styled.div`
     justify-content: center;
     width: 100%;
     img {
+      margin: auto;
       width: 100%;
       height: 200px;
     }
@@ -120,17 +135,24 @@ const TextCenter = styled.div`
 `;
 const Subtitulo = styled(Title)`
   height: 50%;
+
   label {
     margin-right: 70%;
   }
   input {
     width: 90%;
+    margin-bottom: 7rem;
+  }
+  @media (max-width: 768px) {
+    input {
+      width: 95%;
+      margin-bottom: 0;
+    }
   }
 `;
 const TextParrafo = styled(Title)`
-  margin: auto;
   label {
-    margin-right: 70%;
+    margin-right: 50%;
   }
   textArea {
     width: 95%;

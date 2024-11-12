@@ -13,19 +13,7 @@ const HomeContainer = styled.div`
   overflow-x: hidden;
   background-color: #a7a7a7;
 `;
-const MainContent = styled.div`
-  margin-top: 5px;
-  column-count: 6;
-
-  padding-left: 20px;
-  padding-right: 10px;
-  @media (max-width: 1440px) {
-    column-count: 3;
-  }
-  @media (max-width: 924px) {
-    column-count: 2;
-  }
-`;
+const MainContent = styled.div``;
 
 interface Blog {
   id: string;
@@ -54,8 +42,8 @@ const HomePostLogin = () => {
           .filter((item) => item.title !== undefined)
           .map((item) => item.title);
 
-        setTitles(titlesArray);
-        setImages(imagesArray);
+        setTitles(titlesArray.reverse());
+        setImages(imagesArray.reverse());
       }
     } catch (error) {
       console.error("error: ", error);

@@ -1,3 +1,4 @@
+import Masonry from "react-masonry-css";
 import styled from "styled-components";
 
 const Post = styled.div`
@@ -31,6 +32,23 @@ const Title = styled.h2`
   }
 `;
 
+const MasonryGrid = styled(Masonry)`
+  display: flex;
+  width: auto;
+  margin-top: 2px;
+  & > div {
+    padding-left: 10px; /* Ajusta el padding según sea necesario */
+    background-clip: padding-box;
+  }
+`;
+
+const breakpointColumnsObj = {
+  default: 6,
+  1440: 5,
+  924: 3,
+  610: 2,
+};
+
 interface props {
   imagenes: string[];
   titulos: string[];
@@ -39,12 +57,18 @@ interface props {
 const PostsHome = ({ titulos, imagenes }: props) => {
   return (
     <>
-      {titulos.map((element, index) => (
-        <Post key={index}>
-          <img src={imagenes[index]} alt={element} />
-          <Title>{element}</Title>
-        </Post>
-      ))}
+      <MasonryGrid
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
+        {titulos.map((element, index) => (
+          <Post key={index}>
+            <img src={imagenes[index]} alt={element} />
+            <Title>{element}</Title>
+          </Post>
+        ))}
+      </MasonryGrid>
     </>
   );
 };

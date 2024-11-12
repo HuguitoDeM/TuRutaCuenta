@@ -4,6 +4,9 @@ const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  @media (max-width: 768px) {
+    gap: 0rem;
+  }
 `;
 
 const TextLeft = styled.div`
@@ -14,6 +17,15 @@ const TextLeft = styled.div`
   gap: 15px;
   margin-left: 15px;
   margin-right: 15px;
+  @media (max-width: 768px) {
+    width: 100%;
+    font-size: 15px;
+    gap: 0px;
+    h2 {
+      margin: auto;
+      margin-bottom: 10px;
+    }
+  }
 `;
 
 const MainTitle = styled.div`
@@ -27,7 +39,12 @@ const MainTitle = styled.div`
   }
   span {
     font-size: 12px;
-    margin-left: 15px;
+    margin-right: 15px;
+  }
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+    font-size: 25px;
+    flex-direction: column;
   }
 `;
 const FirstImage = styled.div`
@@ -37,20 +54,37 @@ const FirstImage = styled.div`
   img {
     width: 100%;
     height: 300px;
+    object-fit: cover;
   }
   padding: 5px;
   border: 3px solid black;
+  @media (max-width: 768px) {
+    width: 95%;
+    margin-bottom: 1rem;
+  }
 `;
 
 const ContenidoArriba = styled.div`
   display: flex;
   width: 100%;
   heigth: 100%;
+  @media (max-width: 768px) {
+    width: 90%;
+    margin: auto;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
 `;
 const TextRight = styled(TextLeft)``;
 const TextCenter = styled(TextLeft)`
   transform: translateY(-30px);
   width: 100%;
+  @media (max-width: 768px) {
+    transform: translateY(0px);
+  }
 `;
 const ContenidoAbajo = styled(ContenidoArriba)``;
 const SecondImage = styled(FirstImage)`
@@ -61,18 +95,25 @@ const SecondImage = styled(FirstImage)`
     height: 100%;
     width: 100%;
   }
+  @media (max-width: 768px) {
+    margin-left: 0px;
+    width: 100%;
+  }
 `;
 const ThirdImage = styled(SecondImage)`
   justify-content: flex-end;
   margin-right: 15px;
+  @media (max-width: 768px) {
+    margin-right: 0px;
+  }
 `;
 
 const ModelOne = () => {
   return (
     <PostContainer>
       <MainTitle>
-        <span>fecha</span>
         <h2>Read it on our Blog</h2>
+        <span>fecha</span>
       </MainTitle>
       <ContenidoArriba>
         <TextLeft>

@@ -12,6 +12,9 @@ const EditContainer = styled.div`
 
 const ContentBody = styled.div`
   display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 const FirstImage = styled.div`
   display: flex;
@@ -31,6 +34,11 @@ const FirstImage = styled.div`
       height: 200px;
     }
   }
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
 `;
 
 const ContentRight = styled.div`
@@ -38,6 +46,9 @@ const ContentRight = styled.div`
   width: 80%;
   flex-direction: column;
   gap: 1rem;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const Title = styled.div`
@@ -76,6 +87,14 @@ const Title = styled.div`
     border-radius: 5px;
     outline: none;
   }
+  @media (max-width: 768px) {
+    input {
+      width: 90%;
+    }
+    label {
+      margin: 0 80% 0 50%;
+    }
+  }
 `;
 
 const Subtitulo = styled(Title)`
@@ -84,6 +103,11 @@ const Subtitulo = styled(Title)`
   }
   input {
     width: 95%;
+  }
+  @media (max-width: 768px) {
+    input {
+      width: 90%;
+    }
   }
 `;
 
@@ -95,12 +119,22 @@ const TextParrafo = styled(Title)`
   textArea {
     width: 95%;
   }
+  @media (max-width: 768px) {
+    textArea {
+      width: 90%;
+    }
+  }
 `;
 const TextCenter = styled.div`
   display: flex;
   gap: 15px;
   textArea {
     width: 90%;
+  }
+  @media (max-width: 768px) {
+    textArea {
+      width: 90%;
+    }
   }
 `;
 
@@ -119,7 +153,6 @@ const RightImages = styled.div`
   width: 98%;
   gap: 1rem;
   display: flex;
-
   div {
     display: flex;
     align-items: center;
@@ -128,6 +161,17 @@ const RightImages = styled.div`
     img {
       width: 100%;
       height: 200px;
+    }
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 1rem;
+    div {
+      img {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+      }
     }
   }
 `;
@@ -157,13 +201,14 @@ const ModelFourVersionEdit = ({ newPost = false }) => {
         </FirstImage>
         <ContentRight>
           <Subtitulo>
-            <label htmlFor="">SubTitulo</label>
-            <input type="text" />
+            <label htmlFor="subtitulo">SubTitulo</label>
+            <input type="text" placeholder="subtitulo" name="subtitulo" />
           </Subtitulo>
           <TextParrafo>
-            <label htmlFor="">Texto</label>
+            <label htmlFor="texto">Texto</label>
             <textarea
               id="myTextArea"
+              name="texto"
               rows={10}
               cols={50}
               placeholder="Escribe tu texto"
@@ -171,17 +216,19 @@ const ModelFourVersionEdit = ({ newPost = false }) => {
           </TextParrafo>
           <TextCenter>
             <TextParrafo>
-              <label htmlFor="">Texto</label>
+              <label htmlFor="texto1">Texto</label>
               <textarea
                 id="myTextArea"
+                name="texto1"
                 rows={10}
                 cols={50}
                 placeholder="Escribe tu texto"
               />
             </TextParrafo>
             <TextParrafo>
-              <label htmlFor="">Texto</label>
+              <label htmlFor="texto2">Texto</label>
               <textarea
+                name="texto2"
                 id="myTextArea"
                 rows={10}
                 cols={50}
@@ -190,8 +237,9 @@ const ModelFourVersionEdit = ({ newPost = false }) => {
             </TextParrafo>
           </TextCenter>
           <TextParrafo>
-            <label htmlFor="">Texto</label>
+            <label htmlFor="texto3">Texto</label>
             <textarea
+              name="texto3"
               id="myTextArea"
               rows={10}
               cols={50}

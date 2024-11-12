@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import PostsHome from "../homePostLogin/PostsHome";
 import getData from "../../services/getData";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import getBlogs from "../../services/getBlogs";
 import uploadImages from "../../services/uploadImages";
 import updateImageApi from "../../services/updateImageApi";
+import PostUser from "./postUser";
 
 const UserData = styled.div`
   height: 100%;
@@ -138,8 +138,8 @@ const UsersData = () => {
           .filter((item) => item.userId === userData.id)
           .map((item) => item.title);
 
-        setTitles(titlesArray);
-        setImages(imagesArray);
+        setTitles(titlesArray.reverse());
+        setImages(imagesArray.reverse());
       }
     } catch (error) {
       console.error("error: ", error);
@@ -203,7 +203,7 @@ const UsersData = () => {
         <p>Mis Destinos</p>
       </MisDestinos>
       <Destinos>
-        <PostsHome titulos={titles} imagenes={images} />
+        <PostUser titulos={titles} imagenes={images} />
       </Destinos>
     </UserData>
   );

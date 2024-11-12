@@ -46,6 +46,14 @@ const Title = styled.div`
     border-radius: 5px;
     outline: none;
   }
+  @media (max-width: 768px) {
+    input {
+      width: 90%;
+    }
+    label {
+      margin-right: 60%;
+    }
+  }
 `;
 
 const MainContent = styled.div`
@@ -81,6 +89,10 @@ const AllImages = styled.div`
       height: 200px;
     }
   }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 10px;
+  }
 `;
 
 const Imagenes = styled.div`
@@ -108,6 +120,9 @@ const TextBody = styled.div`
   width: 90%;
   margin: auto;
   gap: 30px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 const LeftText = styled(TextBody)`
   flex-direction: column;

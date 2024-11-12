@@ -8,7 +8,10 @@ import ModelFourVersionEdit from "../components/typesOfPost/modelFour/ModelFourV
 import { UseWindoWidth } from "../hooks/useWidthScreen";
 import NavbarMobile from "../components/navbar/NavbarMobile";
 
-const NewPostContainer = styled.div``;
+const NewPostContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 const TiposDePublicaciones = styled.div`
   display: flex;
   justify-content: center;
@@ -31,6 +34,10 @@ const Opcion1 = styled.div`
     transform: translateY(-10px);
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
     border: 2px solid;
+  }
+  @media (max-width: 768px) {
+    height: 30%;
+    width: 30%;
   }
 `;
 const Opcion2 = styled(Opcion1)``;
