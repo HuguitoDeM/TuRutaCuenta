@@ -85,7 +85,7 @@ export const NewPost = () => {
           <img src="/ModelFour.png" alt="" />
         </Opcion4>
       </TiposDePublicaciones>
-      {seleccionado === "1" && "hola " /*<ModelOneVersionEdit newPost={true}>*/}
+      {seleccionado === "1" && <ModelOneVersionEdit newPost={true} />}
       {seleccionado === "2" && <ModelTwoVersionEdit newPost={true} />}
       {seleccionado === "3" && <ModelThreeVersionEdit newPost={true} />}
       {seleccionado === "4" && <ModelFourVersionEdit newPost={true} />}

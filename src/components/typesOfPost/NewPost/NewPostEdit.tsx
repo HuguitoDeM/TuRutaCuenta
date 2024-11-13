@@ -32,22 +32,7 @@ const NewPostEdit = ({ id }: Props) => {
     <>
       {Edit ? (
         <ModelOneVersionEdit
-          title={currentBlog.title}
-          contentTop={{
-            subtitulo: currentBlog.contentTop.subtitulo,
-            textP: currentBlog.contentTop.textP,
-            img: currentBlog.contentTop.img,
-          }}
-          contentMiddle={{
-            subtitulo: currentBlog.contentMiddle.subtitulo,
-            textP: currentBlog.contentMiddle.textP,
-            img: currentBlog.contentMiddle.img,
-          }}
-          contentBottom={{
-            subtitulo: currentBlog.contentBottom.subtitulo,
-            textP: currentBlog.contentBottom.textP,
-            img: currentBlog.contentBottom.img,
-          }}
+          UpdateBlog={currentBlog}
           guardarEdit={handleEditPost}
         />
       ) : (

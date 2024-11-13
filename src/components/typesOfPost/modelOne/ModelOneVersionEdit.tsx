@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import ImageUpload from "./ImageUpload";
-import React, { useState } from "react";
+import { useState } from "react";
+import updatePostBlogs from "../../../services/updatePostBlogs";
 
 const EditContainer = styled.div`
   display: flex;
@@ -263,193 +264,198 @@ const ThirdImage = styled(SecondImage)`
 
 interface ContentItem {
   subtitulo?: string;
-  textP?: string;
   img?: string;
+  textP?: string;
 }
 
-interface Props {
+interface Blog {
+  id?: string;
   title?: string;
+  img?: string;
+  description?: string;
+  userId?: string;
+  model?: string;
   contentTop?: ContentItem;
   contentMiddle?: ContentItem;
   contentBottom?: ContentItem;
-  guardarEdit: () => void;
+}
+
+interface Props {
+  UpdateBlog?: Blog;
+  guardarEdit?: () => void;
 }
 
 const ModelOneVersionEdit = ({
   newPost = false,
-  title: inicialTitle = "",
-  contentTop = { subtitulo: "", textP: "" },
-  contentMiddle = { subtitulo: "", textP: "" },
-  contentBottom = { subtitulo: "", textP: "" },
+  UpdateBlog = {},
   guardarEdit,
 }: Props & { newPost?: boolean }) => {
-  const [title, setTitle] = useState(inicialTitle);
-
-  const [contenidoTop, setContenidoTop] = useState<ContentItem>({
-    subtitulo: contentTop.subtitulo,
-    textP: contentTop.textP,
+  const [updateBlog, setUpdateBlog] = useState<Blog>({
+    title: UpdateBlog.title ?? "",
+    img: UpdateBlog.img ?? "",
+    description: UpdateBlog.description ?? "",
+    userId: UpdateBlog.userId ?? "",
+    model: UpdateBlog.model ?? "",
+    contentTop: UpdateBlog.contentTop ?? { subtitulo: "", textP: "", img: "" },
+    contentMiddle: UpdateBlog.contentMiddle ?? {
+      subtitulo: "",
+      textP: "",
+      img: "",
+    },
+    contentBottom: UpdateBlog.contentBottom ?? {
+      subtitulo: "",
+      textP: "",
+      img: "",
+    },
   });
 
-  const [contenidoMid, setContenidoMid] = useState<ContentItem>({
-    subtitulo: contentMiddle.subtitulo,
-    textP: contentMiddle.textP,
-  });
-
-  const [contenidoBot, setContenidoBot] = useState<ContentItem>({
-    subtitulo: contentBottom.subtitulo,
-    textP: contentBottom.textP,
-  });
-
-  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
-  };
-
-  const handleTopSubtituloChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setContenidoTop((prev) => ({ ...prev, subtitulo: e.target.value }));
-  };
-
-  const handleTopTextPChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setContenidoTop((prev) => ({ ...prev, textP: e.target.value }));
-  };
-
-  const handleMiddleSubtituloChange = (
-    e: React.ChangeEvent<HTMLInputElement>
+  const handleChange = (
+    section: "contentTop" | "contentMiddle" | "contentBottom",
+    field: "subtitulo" | "textP" | "img",
+    value: string
   ) => {
-    setContenidoMid((prev) => ({ ...prev, subtitulo: e.target.value }));
+    setUpdateBlog((prev) => ({
+      ...prev,
+      [section]: { ...prev[section], [field]: value },
+    }));
   };
-
-  const handleMiddleTextPChange = (
-    e: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setContenidoMid((prev) => ({ ...prev, textP: e.target.value }));
+  const ActualizarEnLaApi = async () => {
+    const response = await updatePostBlogs({ updateBlog });
+    if (response) {
+      guardarEdit && guardarEdit();
+    }
   };
-
-  const handleBottomSubtituloChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setContenidoBot((prev) => ({ ...prev, subtitulo: e.target.value }));
-  };
-
-  const handleBottomTextPChange = (
-    e: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setContenidoBot((prev) => ({ ...prev, textP: e.target.value }));
-  };
-
   return (
     <EditContainer className={newPost ? "NewPost" : ""}>
-      <EditsButtons>
-        <button className="cancelar">
-          <p>Cancelar</p>
-        </button>
-        <button className="guardar" onClick={guardarEdit}>
-          <p>Guardar</p>
-        </button>
-      </EditsButtons>
+      {guardarEdit && (
+        <EditsButtons>
+          <button className="cancelar" onClick={guardarEdit}>
+            <p>Cancelar</p>
+          </button>
+          <button onClick={ActualizarEnLaApi} className="guardar">
+            <p>Guardar</p>
+          </button>
+        </EditsButtons>
+      )}
       <MainTitle>
         <Title>
           <label htmlFor="titulo">Titulo</label>
-
           <input
             type="text"
             placeholder="Titulo"
-            value={title}
-            onChange={handleTitleChange}
+            value={updateBlog.title}
+            onChange={(e) =>
+              setUpdateBlog({ ...updateBlog, title: e.target.value })
+            }
             name="titulo"
           />
         </Title>
       </MainTitle>
+      {updateBlog.contentTop && updateBlog.contentMiddle && (
+        <ContenidoArriba>
+          <TextLeft>
+            <Subtitulo>
+              <label htmlFor="subtitulo1">SubTitulo</label>
+              <input
+                type="text"
+                value={updateBlog.contentTop.subtitulo}
+                onChange={(e) =>
+                  handleChange("contentTop", "subtitulo", e.target.value)
+                }
+                placeholder="subtitulo"
+                name="subtitulo1"
+              />
+            </Subtitulo>
 
-      <ContenidoArriba>
-        <TextLeft>
-          <Subtitulo>
-            <label htmlFor="subtitulo1">SubTitulo</label>
-            <input
-              type="text"
-              value={contenidoTop.subtitulo}
-              onChange={handleTopSubtituloChange}
-              placeholder="subtitulo"
-              name="subtitulo1"
-            />
-          </Subtitulo>
+            <TextBody>
+              <label htmlFor="">Texto</label>
+              <textarea
+                id="myTextArea"
+                value={updateBlog.contentTop.textP}
+                onChange={(e) =>
+                  handleChange("contentTop", "textP", e.target.value)
+                }
+                rows={15}
+                cols={50}
+                placeholder="Escribe tu texto"
+              />
+            </TextBody>
+          </TextLeft>
 
-          <TextBody>
-            <label htmlFor="">Texto</label>
-            <textarea
-              id="myTextArea"
-              value={contenidoTop.textP}
-              onChange={handleTopTextPChange}
-              rows={15}
-              cols={50}
-              placeholder="Escribe tu texto"
-            />
-          </TextBody>
-        </TextLeft>
+          <FirstImage>
+            <ImageUpload url={updateBlog.contentTop.img} />
+          </FirstImage>
 
-        <FirstImage>
-          <ImageUpload url={contentTop?.img} />
-        </FirstImage>
+          <TextRight>
+            <Subtitulo>
+              <label htmlFor="subtitulo2">SubTitulo</label>
+              <input
+                type="text"
+                placeholder="subtitulo"
+                value={updateBlog.contentMiddle.subtitulo}
+                onChange={(e) =>
+                  handleChange("contentMiddle", "subtitulo", e.target.value)
+                }
+                name="subtitulo2"
+              />
+            </Subtitulo>
 
-        <TextRight>
-          <Subtitulo>
-            <label htmlFor="subtitulo2">SubTitulo</label>
-            <input
-              type="text"
-              placeholder="subtitulo"
-              value={contenidoMid.subtitulo}
-              onChange={handleMiddleSubtituloChange}
-              name="subtitulo2"
-            />
-          </Subtitulo>
+            <TextBody>
+              <label htmlFor="">Texto</label>
+              <textarea
+                id="myTextArea"
+                value={updateBlog.contentMiddle.textP}
+                onChange={(e) =>
+                  handleChange("contentMiddle", "textP", e.target.value)
+                }
+                rows={15}
+                cols={50}
+                placeholder="Escribe tu texto"
+              />
+            </TextBody>
+          </TextRight>
+        </ContenidoArriba>
+      )}
+      {updateBlog.contentMiddle && updateBlog.contentBottom && (
+        <ContenidoAbajo>
+          <SecondImage>
+            <ImageUpload url={updateBlog.contentMiddle.img} />
+          </SecondImage>
 
-          <TextBody>
-            <label htmlFor="">Texto</label>
-            <textarea
-              id="myTextArea"
-              value={contenidoMid.textP}
-              onChange={handleMiddleTextPChange}
-              rows={15}
-              cols={50}
-              placeholder="Escribe tu texto"
-            />
-          </TextBody>
-        </TextRight>
-      </ContenidoArriba>
+          <TextCenter>
+            <Subtitulo>
+              <label htmlFor="subtitulo3">SubTitulo</label>
+              <input
+                type="text"
+                placeholder="subtitulo"
+                value={updateBlog.contentBottom.subtitulo}
+                onChange={(e) =>
+                  handleChange("contentBottom", "subtitulo", e.target.value)
+                }
+                name="subtitulo3"
+              />
+            </Subtitulo>
 
-      <ContenidoAbajo>
-        <SecondImage>
-          <ImageUpload url={contentMiddle?.img} />
-        </SecondImage>
+            <TextBody>
+              <label htmlFor="">Texto</label>
+              <textarea
+                id="myTextArea"
+                value={updateBlog.contentBottom.textP}
+                onChange={(e) =>
+                  handleChange("contentBottom", "textP", e.target.value)
+                }
+                rows={15}
+                cols={50}
+                placeholder="Escribe tu texto"
+              />
+            </TextBody>
+          </TextCenter>
 
-        <TextCenter>
-          <Subtitulo>
-            <label htmlFor="subtitulo3">SubTitulo</label>
-            <input
-              type="text"
-              placeholder="subtitulo"
-              value={contenidoBot.subtitulo}
-              onChange={handleBottomSubtituloChange}
-              name="subtitulo3"
-            />
-          </Subtitulo>
-
-          <TextBody>
-            <label htmlFor="">Texto</label>
-            <textarea
-              id="myTextArea"
-              value={contenidoBot.textP}
-              onChange={handleBottomTextPChange}
-              rows={15}
-              cols={50}
-              placeholder="Escribe tu texto"
-            />
-          </TextBody>
-        </TextCenter>
-
-        <ThirdImage>
-          <ImageUpload url={contentBottom?.img} />
-        </ThirdImage>
-      </ContenidoAbajo>
+          <ThirdImage>
+            <ImageUpload url={updateBlog.contentBottom.img} />
+          </ThirdImage>
+        </ContenidoAbajo>
+      )}
     </EditContainer>
   );
 };

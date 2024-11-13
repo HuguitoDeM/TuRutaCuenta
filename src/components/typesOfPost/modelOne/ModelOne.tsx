@@ -140,7 +140,6 @@ const ModelOne = ({
     <PostContainer>
       <EditOption>
         <MenuEdits Edit={Edit} />
-        <span>fecha</span>
       </EditOption>
       <MainTitle>
         <h2>{title}</h2>
