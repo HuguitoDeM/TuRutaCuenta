@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import NavbarDesktop from "../components/navbar/NavbarDesktop";
 import { useState } from "react";
-import ModelOneVersionEdit from "../components/typesOfPost/modelOne/ModelOneVersionEdit";
 import ModelTwoVersionEdit from "../components/typesOfPost/modelTwo/ModelTwoVersionEdit";
 import ModelThreeVersionEdit from "../components/typesOfPost/modelThree/ModelThreeVersionEdit";
 import ModelFourVersionEdit from "../components/typesOfPost/modelFour/ModelFourVersionEdit";
@@ -85,7 +84,7 @@ export const NewPost = () => {
           <img src="/ModelFour.png" alt="" />
         </Opcion4>
       </TiposDePublicaciones>
-      {seleccionado === "1" && <ModelOneVersionEdit newPost={true} />}
+      {seleccionado === "1" && "hola"}
       {seleccionado === "2" && <ModelTwoVersionEdit newPost={true} />}
       {seleccionado === "3" && <ModelThreeVersionEdit newPost={true} />}
       {seleccionado === "4" && <ModelFourVersionEdit newPost={true} />}

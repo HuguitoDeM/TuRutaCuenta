@@ -1,10 +1,13 @@
 import "./App.css";
+import { BlogProvider } from "./context/BlogDataProvider";
 import { Rutas } from "./routes/Routes";
 
 function App() {
   return (
     <>
-      <Rutas />
+      <BlogProvider>
+        <Rutas />
+      </BlogProvider>
     </>
   );
 }

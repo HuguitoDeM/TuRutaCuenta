@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import getBlogs from "../../services/getBlogs";
 import { useEffect, useState } from "react";
+import { useBlog } from "../../context/BlogDataProvider";
 
 const SearchResultContainer = styled.div`
   display: flex;
@@ -77,27 +77,19 @@ interface props {
 }
 
 const SearchResult = ({ busqueda }: props) => {
+  const { blogData } = useBlog();
   const [resultados, setResultados] = useState<Blog[]>([]);
 
-  const obtenerData = async () => {
-    try {
-      const resultado: Blog[] | undefined = await getBlogs();
-      if (resultado) {
-        const blogs = Object.values(resultado);
-        const filteredBlogs = blogs.filter(
-          (item) =>
-            item.title &&
-            item.title.toLowerCase().includes(busqueda.toLowerCase())
-        );
-        setResultados(filteredBlogs);
-      }
-    } catch (error) {
-      console.error("error: ", error);
-    }
-  };
   useEffect(() => {
-    obtenerData();
-  });
+    if (blogData && busqueda !== "") {
+      const filteredBlogs = Object.values(blogData).filter(
+        (item) =>
+          item.title &&
+          item.title.toLowerCase().includes(busqueda.toLowerCase())
+      );
+      setResultados(filteredBlogs);
+    }
+  }, [blogData, busqueda]);
 
   return (
     <>

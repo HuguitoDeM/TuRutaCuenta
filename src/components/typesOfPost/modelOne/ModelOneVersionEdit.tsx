@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import ImageUpload from "./ImageUpload";
+import React, { useState } from "react";
 
 const EditContainer = styled.div`
   display: flex;
@@ -89,6 +91,87 @@ const Subtitulo = styled(Title)`
     width: 90%;
   }
 `;
+const EditsButtons = styled.div`
+  display: flex;
+  width: 100%;
+  height: 45px;
+  justify-content: flex-end;
+  gap: 15px;
+  button {
+    width: 100%;
+    height: 50px;
+    all: unset;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0.6em 2em;
+    border-radius: 0.25em;
+    color: gray;
+    font-size: 1.5em;
+    font-weight: 600;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border 300ms, color 300ms;
+    user-select: none;
+    p {
+      z-index: 1;
+    }
+  }
+  .cancelar {
+    border: gray solid 0.15em;
+  }
+  .guardar {
+    border: mediumspringgreen solid 0.15em;
+  }
+  button:hover {
+    color: #212121;
+  }
+  button:activate {
+    border-color: teal;
+  }
+
+  .guardar::after,
+  .guardar::before {
+    content: "";
+    position: absolute;
+    width: 9em;
+    aspect-ratio: 1;
+    background: mediumspringgreen;
+    opacity: 50%;
+    border-radius: 50%;
+    transition: transform 500ms, background 300ms;
+  }
+  .cancelar::after,
+  .cancelar::before {
+    content: "";
+    position: absolute;
+    width: 9em;
+    aspect-ratio: 1;
+    background: gray;
+    opacity: 50%;
+    border-radius: 50%;
+    transition: transform 500ms, background 300ms;
+  }
+
+  button::before {
+    left: 0;
+    transform: translateX(-8em);
+  }
+  button::after {
+    right: 0;
+    transform: translateX(8em);
+  }
+  button:hover:before {
+    transform: translateX(-1em);
+  }
+  button:hover:after {
+    transform: translateX(1em);
+  }
+  button:active:before,
+  button:active:after {
+    background: teal;
+  }
+`;
 const MainTitle = styled.div`
   display: flex;
   font-size: 32px;
@@ -125,15 +208,6 @@ const FirstImage = styled.div`
   }
   @media (max-width: 768px) {
     width: 95%;
-  }
-`;
-
-const Imagenes = styled.div`
-  width: 100%;
-  height: 100%;
-  img {
-    width: 100%;
-    height: 300px;
   }
 `;
 
@@ -187,26 +261,124 @@ const ThirdImage = styled(SecondImage)`
   }
 `;
 
-const ModelOneVersionEdit = ({ newPost = false }) => {
+interface ContentItem {
+  subtitulo?: string;
+  textP?: string;
+  img?: string;
+}
+
+interface Props {
+  title?: string;
+  contentTop?: ContentItem;
+  contentMiddle?: ContentItem;
+  contentBottom?: ContentItem;
+  guardarEdit: () => void;
+}
+
+const ModelOneVersionEdit = ({
+  newPost = false,
+  title: inicialTitle = "",
+  contentTop = { subtitulo: "", textP: "" },
+  contentMiddle = { subtitulo: "", textP: "" },
+  contentBottom = { subtitulo: "", textP: "" },
+  guardarEdit,
+}: Props & { newPost?: boolean }) => {
+  const [title, setTitle] = useState(inicialTitle);
+
+  const [contenidoTop, setContenidoTop] = useState<ContentItem>({
+    subtitulo: contentTop.subtitulo,
+    textP: contentTop.textP,
+  });
+
+  const [contenidoMid, setContenidoMid] = useState<ContentItem>({
+    subtitulo: contentMiddle.subtitulo,
+    textP: contentMiddle.textP,
+  });
+
+  const [contenidoBot, setContenidoBot] = useState<ContentItem>({
+    subtitulo: contentBottom.subtitulo,
+    textP: contentBottom.textP,
+  });
+
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+  };
+
+  const handleTopSubtituloChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setContenidoTop((prev) => ({ ...prev, subtitulo: e.target.value }));
+  };
+
+  const handleTopTextPChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setContenidoTop((prev) => ({ ...prev, textP: e.target.value }));
+  };
+
+  const handleMiddleSubtituloChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setContenidoMid((prev) => ({ ...prev, subtitulo: e.target.value }));
+  };
+
+  const handleMiddleTextPChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setContenidoMid((prev) => ({ ...prev, textP: e.target.value }));
+  };
+
+  const handleBottomSubtituloChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setContenidoBot((prev) => ({ ...prev, subtitulo: e.target.value }));
+  };
+
+  const handleBottomTextPChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setContenidoBot((prev) => ({ ...prev, textP: e.target.value }));
+  };
+
   return (
     <EditContainer className={newPost ? "NewPost" : ""}>
+      <EditsButtons>
+        <button className="cancelar">
+          <p>Cancelar</p>
+        </button>
+        <button className="guardar" onClick={guardarEdit}>
+          <p>Guardar</p>
+        </button>
+      </EditsButtons>
       <MainTitle>
         <Title>
           <label htmlFor="titulo">Titulo</label>
-          <input type="text" placeholder="Titulo" name="titulo" />
+
+          <input
+            type="text"
+            placeholder="Titulo"
+            value={title}
+            onChange={handleTitleChange}
+            name="titulo"
+          />
         </Title>
       </MainTitle>
+
       <ContenidoArriba>
         <TextLeft>
           <Subtitulo>
             <label htmlFor="subtitulo1">SubTitulo</label>
-            <input type="text" placeholder="subtitulo" name="subtitulo1" />
+            <input
+              type="text"
+              value={contenidoTop.subtitulo}
+              onChange={handleTopSubtituloChange}
+              placeholder="subtitulo"
+              name="subtitulo1"
+            />
           </Subtitulo>
 
           <TextBody>
             <label htmlFor="">Texto</label>
             <textarea
               id="myTextArea"
+              value={contenidoTop.textP}
+              onChange={handleTopTextPChange}
               rows={15}
               cols={50}
               placeholder="Escribe tu texto"
@@ -215,30 +387,27 @@ const ModelOneVersionEdit = ({ newPost = false }) => {
         </TextLeft>
 
         <FirstImage>
-          <Imagenes>
-            <input
-              type="file"
-              accept="image/*"
-              style={{ display: "none" }}
-              id="imageUpload"
-            />
-            <label htmlFor="imageUpload" style={{ cursor: "pointer" }}>
-              <img
-                src="https://static.vecteezy.com/system/resources/previews/016/017/372/non_2x/image-upload-free-png.png"
-                alt="Subir imagen"
-              />
-            </label>
-          </Imagenes>
+          <ImageUpload url={contentTop?.img} />
         </FirstImage>
+
         <TextRight>
           <Subtitulo>
             <label htmlFor="subtitulo2">SubTitulo</label>
-            <input type="text" placeholder="subtitulo" name="subtitulo2" />
+            <input
+              type="text"
+              placeholder="subtitulo"
+              value={contenidoMid.subtitulo}
+              onChange={handleMiddleSubtituloChange}
+              name="subtitulo2"
+            />
           </Subtitulo>
+
           <TextBody>
             <label htmlFor="">Texto</label>
             <textarea
               id="myTextArea"
+              value={contenidoMid.textP}
+              onChange={handleMiddleTextPChange}
               rows={15}
               cols={50}
               placeholder="Escribe tu texto"
@@ -246,53 +415,39 @@ const ModelOneVersionEdit = ({ newPost = false }) => {
           </TextBody>
         </TextRight>
       </ContenidoArriba>
+
       <ContenidoAbajo>
         <SecondImage>
-          <Imagenes>
-            <input
-              type="file"
-              accept="image/*"
-              style={{ display: "none" }}
-              id="imageUpload"
-            />
-            <label htmlFor="imageUpload" style={{ cursor: "pointer" }}>
-              <img
-                src="https://static.vecteezy.com/system/resources/previews/016/017/372/non_2x/image-upload-free-png.png"
-                alt="Subir imagen"
-              />
-            </label>
-          </Imagenes>
+          <ImageUpload url={contentMiddle?.img} />
         </SecondImage>
+
         <TextCenter>
           <Subtitulo>
             <label htmlFor="subtitulo3">SubTitulo</label>
-            <input type="text" placeholder="subtitulo" name="subtitulo3" />
+            <input
+              type="text"
+              placeholder="subtitulo"
+              value={contenidoBot.subtitulo}
+              onChange={handleBottomSubtituloChange}
+              name="subtitulo3"
+            />
           </Subtitulo>
+
           <TextBody>
             <label htmlFor="">Texto</label>
             <textarea
               id="myTextArea"
+              value={contenidoBot.textP}
+              onChange={handleBottomTextPChange}
               rows={15}
               cols={50}
               placeholder="Escribe tu texto"
             />
           </TextBody>
         </TextCenter>
+
         <ThirdImage>
-          <Imagenes>
-            <input
-              type="file"
-              accept="image/*"
-              style={{ display: "none" }}
-              id="imageUpload"
-            />
-            <label htmlFor="imageUpload" style={{ cursor: "pointer" }}>
-              <img
-                src="https://static.vecteezy.com/system/resources/previews/016/017/372/non_2x/image-upload-free-png.png"
-                alt="Subir imagen"
-              />
-            </label>
-          </Imagenes>
+          <ImageUpload url={contentBottom?.img} />
         </ThirdImage>
       </ContenidoAbajo>
     </EditContainer>

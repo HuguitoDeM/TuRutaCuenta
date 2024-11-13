@@ -8,8 +8,8 @@ const MenuEditsContainer = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   padding: 10px 15px;
   font-size: 15px;
   font-weight: bold;
@@ -24,8 +24,8 @@ const DropdownContent = styled.div`
   font-size: 13px;
   position: absolute;
   z-index: 1;
-  background-color: black;
-  border: 2px solid #4caf50;
+  background-color: transparent;
+  border: 1px solid #4caf50;
   border-radius: 0 15px 15px 15px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 
@@ -48,15 +48,18 @@ const PasteButtonWrapper = styled.div`
   }
 `;
 
-// Componente funcional
-const MenuEdits = () => {
+interface Props {
+  Edit: () => void;
+}
+
+const MenuEdits = ({ Edit }: Props) => {
   return (
     <MenuEditsContainer>
       <PasteButtonWrapper>
         <Button>▼</Button>
         <DropdownContent>
-          <OptionsMenu text="Editar" edit={true} />
-          <OptionsMenu text="Borrar" edit={false} />
+          <OptionsMenu text="Editar" ActivarFuncion={Edit} edit={true} />
+          <OptionsMenu text="Borrar" edit={false} ActivarFuncion={Edit} />
         </DropdownContent>
       </PasteButtonWrapper>
     </MenuEditsContainer>

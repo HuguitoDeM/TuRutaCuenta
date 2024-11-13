@@ -115,92 +115,60 @@ const ThirdImage = styled(SecondImage)`
   }
 `;
 
-const ModelOne = () => {
+interface ContentItem {
+  subtitulo: string;
+  textP: string;
+  img: string;
+}
+
+interface Props {
+  title: string;
+  contentTop: ContentItem;
+  contentMiddle: ContentItem;
+  contentBottom: ContentItem;
+  Edit: () => void;
+}
+
+const ModelOne = ({
+  title,
+  contentTop,
+  contentMiddle,
+  contentBottom,
+  Edit,
+}: Props) => {
   return (
     <PostContainer>
       <EditOption>
-        <MenuEdits />
+        <MenuEdits Edit={Edit} />
         <span>fecha</span>
       </EditOption>
-
       <MainTitle>
-        <h2>Read it on our Blog</h2>
+        <h2>{title}</h2>
       </MainTitle>
       <ContenidoArriba>
         <TextLeft>
-          <h2>The Ultimate Guide to Writing</h2>
-          <p>
-            Writing effectively is an art. Start by using simple, everyday words
-            people can easily understand. Be clear and direct to the point. Keep
-            your thoughts flowing logically, and aim for brevity unless you’re
-            writing in the long form. our ideas have a purpose so choose words
-            that accurately express them. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Enim dolores quis laboriosam eaque
-            dignissimos exercitationem possimus repudiandae voluptate veritatis
-            perspiciatis repellat debitis corporis reiciendis magnam
-            voluptatibus, at necessitatibus tenetur consequuntur? Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit. Maiores laborum beatae
-            tenetur perspiciatis blanditiis, culpa magni laudantium. Dignissimos
-            ad sit laudantium dolores quos quo, dolore obcaecati, cum ea, odit
-            ipsam.
-          </p>
+          <h2>{contentTop.subtitulo}</h2>
+          <p>{contentTop.textP}</p>
         </TextLeft>
 
         <FirstImage>
-          <img
-            src="https://thumbs.dreamstime.com/b/picture-icon-vector-photo-gallery-icon-symbol-picture-icon-vector-photo-gallery-icon-symbol-279330833.jpg"
-            alt=""
-          />
+          <img src={contentTop.img} alt={contentTop.subtitulo} />
         </FirstImage>
         <TextRight>
-          <h2>The Ultimate Guide to Writing</h2>
-          <p>
-            Writing effectively is an art. Start by using simple, everyday words
-            people can easily understand. Be clear and direct to the point. Keep
-            your thoughts flowing logically, and aim for brevity unless you’re
-            writing in the long form. our ideas have a purpose so choose words
-            that accurately express them. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Enim dolores quis laboriosam eaque
-            dignissimos exercitationem possimus repudiandae voluptate veritatis
-            perspiciatis repellat debitis corporis reiciendis magnam
-            voluptatibus, at necessitatibus tenetur consequuntur? Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit. Maiores laborum beatae
-            tenetur perspiciatis blanditiis, culpa magni laudantium. Dignissimos
-            ad sit laudantium dolores quos quo, dolore obcaecati, cum ea, odit
-            ipsam.
-          </p>
+          <h2>{contentMiddle.subtitulo}</h2>
+          <p>{contentMiddle.textP}</p>
         </TextRight>
       </ContenidoArriba>
       <ContenidoAbajo>
         <SecondImage>
-          <img
-            src="https://thumbs.dreamstime.com/b/picture-icon-vector-photo-gallery-icon-symbol-picture-icon-vector-photo-gallery-icon-symbol-279330833.jpg"
-            alt=""
-          />
+          <img src={contentMiddle.img} alt={contentMiddle.subtitulo} />
         </SecondImage>
         <TextCenter>
-          <h2>The Ultimate Guide to Writing</h2>
-          <p>
-            Writing effectively is an art. Start by using simple, everyday words
-            people can easily understand. Be clear and direct to the point. Keep
-            your thoughts flowing logically, and aim for brevity unless you’re
-            writing in the long form. our ideas have a purpose so choose words
-            that accurately express them. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Enim dolores quis laboriosam eaque
-            dignissimos exercitationem possimus repudiandae voluptate veritatis
-            perspiciatis repellat debitis corporis reiciendis magnam
-            voluptatibus, at necessitatibus tenetur consequuntur? Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit. Maiores laborum beatae
-            tenetur perspiciatis blanditiis, culpa magni laudantium. Dignissimos
-            ad sit laudantium dolores quos quo, dolore obcaecati, cum ea, odit
-            ipsam.
-          </p>
+          <h2>{contentBottom.subtitulo}</h2>
+          <p>{contentBottom.textP}</p>
         </TextCenter>
         <ThirdImage>
-          <img
-            src="https://thumbs.dreamstime.com/b/picture-icon-vector-photo-gallery-icon-symbol-picture-icon-vector-photo-gallery-icon-symbol-279330833.jpg"
-            alt=""
-          />
+          <img src={contentBottom.img} alt={contentBottom.subtitulo} />
         </ThirdImage>
       </ContenidoAbajo>
     </PostContainer>

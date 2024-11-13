@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import getData from "../../services/getData";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import getBlogs from "../../services/getBlogs";
+
 import uploadImages from "../../services/uploadImages";
 import updateImageApi from "../../services/updateImageApi";
 import PostUser from "./postUser";
+import { useBlog } from "../../context/BlogDataProvider";
 
 const UserData = styled.div`
   height: 100%;
@@ -103,14 +103,6 @@ const Imagenes = styled.div`
   }
 `;
 
-interface Blog {
-  id: string;
-  title: string;
-  img: string;
-  description: string;
-  userId: string;
-}
-
 interface userData {
   id: string;
   name: string;
@@ -121,34 +113,21 @@ interface userData {
 
 const UsersData = () => {
   const userData: userData = getData();
+  const { blogData } = useBlog();
   const imagenDePerfil = userData.fotoPerfil;
-  const [titles, setTitles] = useState<string[]>([]);
-  const [images, setImages] = useState<string[]>([]);
 
-  const obtenerData = async () => {
-    try {
-      const resultado: Blog[] | undefined = await getBlogs();
-      if (resultado) {
-        const blogs = Object.values(resultado);
-
-        const imagesArray = blogs
-          .filter((item) => item.userId === userData.id)
-          .map((item) => item.img);
-        const titlesArray = blogs
-          .filter((item) => item.userId === userData.id)
-          .map((item) => item.title);
-
-        setTitles(titlesArray.reverse());
-        setImages(imagesArray.reverse());
-      }
-    } catch (error) {
-      console.error("error: ", error);
-    }
-  };
-
-  useEffect(() => {
-    obtenerData();
-  });
+  const titles = blogData
+    ? Object.values(blogData)
+        .filter((blog) => blog.userId === userData.id)
+        .map((blog) => blog.title)
+        .reverse()
+    : [];
+  const images = blogData
+    ? Object.values(blogData)
+        .filter((blog) => blog.userId === userData.id)
+        .map((blog) => blog.img)
+        .reverse()
+    : [];
 
   const navigate = useNavigate();
   const handleCloseSesion = () => {

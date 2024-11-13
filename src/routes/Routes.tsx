@@ -5,12 +5,12 @@ import HomePostLogin from "../screens/HomePostLogin";
 import Searches from "../screens/Searches";
 import ModelFour from "../components/typesOfPost/modelFour/ModelFour";
 import { NewPost } from "../screens/NewPost";
-import ModelOne from "../components/typesOfPost/modelOne/ModelOne";
 import ModelTwo from "../components/typesOfPost/modelTwo/ModelTwo";
 import ModelThree from "../components/typesOfPost/modelThree/ModelThree";
 import Register from "../components/register/Register";
 import UserSetting from "../screens/UserSetting";
 import ProtectedRoute from "./ProtectedRoute";
+import NewPostEdit from "../components/typesOfPost/NewPost/NewPostEdit";
 
 export const Rutas = () => {
   return (
@@ -51,7 +51,7 @@ export const Rutas = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/post1" element={<ModelOne />} />
+        <Route path="/post1" element={<NewPostEdit />} />
         <Route path="/post2" element={<ModelTwo />} />
         <Route path="/post3" element={<ModelThree />} />
         <Route path="/post4" element={<ModelFour />} />

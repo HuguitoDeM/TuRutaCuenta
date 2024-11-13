@@ -62,11 +62,12 @@ const OptionsContainer = styled.div<{ $edit: boolean }>`
 interface Props {
   text: string;
   edit: boolean;
+  ActivarFuncion: () => void;
 }
 
-const OptionsMenu: React.FC<Props> = ({ text, edit }) => {
+const OptionsMenu: React.FC<Props> = ({ text, edit, ActivarFuncion }) => {
   return (
-    <OptionsContainer $edit={edit}>
+    <OptionsContainer onClick={ActivarFuncion} $edit={edit}>
       <Icon name={text} />
     </OptionsContainer>
   );

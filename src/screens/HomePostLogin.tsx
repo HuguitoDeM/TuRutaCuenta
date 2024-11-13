@@ -3,8 +3,7 @@ import PostsHome from "../components/homePostLogin/PostsHome";
 import NavbarDesktop from "../components/navbar/NavbarDesktop";
 import { UseWindoWidth } from "../hooks/useWidthScreen";
 import NavbarMobile from "../components/navbar/NavbarMobile";
-import { useEffect, useState } from "react";
-import getBlogs from "../services/getBlogs";
+import { useBlog } from "../context/BlogDataProvider";
 
 const HomeContainer = styled.div`
   width: 100%;
@@ -15,44 +14,22 @@ const HomeContainer = styled.div`
 `;
 const MainContent = styled.div``;
 
-interface Blog {
-  id: string;
-  title: string;
-  img: string;
-  description: string;
-  userId: string;
-}
-
 const HomePostLogin = () => {
   const WidthScreen = UseWindoWidth();
+  const { blogData } = useBlog();
+  const titles = blogData
+    ? Object.values(blogData)
+        .filter((blog) => blog.title !== undefined)
+        .map((blog) => blog.title)
+        .reverse()
+    : [];
+  const images = blogData
+    ? Object.values(blogData)
+        .filter((blog) => blog.img !== undefined)
+        .map((blog) => blog.img)
+        .reverse()
+    : [];
 
-  const [titles, setTitles] = useState<string[]>([]);
-  const [images, setImages] = useState<string[]>([]);
-  const obtenerData = async () => {
-    try {
-      const resultado: Blog[] | undefined = await getBlogs();
-      if (resultado) {
-        const blogs = Object.values(resultado);
-
-        const imagesArray = blogs
-          .filter((item) => item.img !== undefined)
-          .map((item) => item.img);
-
-        const titlesArray = blogs
-          .filter((item) => item.title !== undefined)
-          .map((item) => item.title);
-
-        setTitles(titlesArray.reverse());
-        setImages(imagesArray.reverse());
-      }
-    } catch (error) {
-      console.error("error: ", error);
-    }
-  };
-
-  useEffect(() => {
-    obtenerData();
-  });
   return (
     <HomeContainer>
       {WidthScreen > 769 ? <NavbarDesktop /> : ""}
