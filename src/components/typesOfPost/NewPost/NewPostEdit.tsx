@@ -1,9 +1,28 @@
 import { useState } from "react";
 import ModelOne from "../modelOne/ModelOne";
 import ModelOneVersionEdit from "../modelOne/ModelOneVersionEdit";
+import { useBlog } from "../../../context/BlogDataProvider";
 
-const NewPostEdit = () => {
+interface Props {
+  id: string;
+}
+
+const NewPostEdit = ({ id }: Props) => {
   const [Edit, setEdit] = useState(false);
+
+  const { blogData } = useBlog();
+  const blog = blogData
+    ? Object.values(blogData)
+        .filter((blog) => blog.id === id)
+        .map((blog) => blog)
+    : [];
+  console.log(blog);
+
+  if (blog.length === 0) {
+    return null;
+  }
+
+  const currentBlog = blog[0];
 
   const handleEditPost = () => {
     setEdit(!Edit);
@@ -13,41 +32,41 @@ const NewPostEdit = () => {
     <>
       {Edit ? (
         <ModelOneVersionEdit
-          title="Read it on our Blog"
+          title={currentBlog.title}
           contentTop={{
-            subtitulo: "The Ultimate Guide to Writing",
-            textP: "Writing effectively is an art. Start by using simple...",
-            img: "https://th.bing.com/th/id/R.7fde484fcaaea614c0f986ab4cdece0c?rik=QUQJ2S%2b4i7H6BQ&riu=http%3a%2f%2f2.bp.blogspot.com%2f-a_MZ51-uScA%2fU4fajP8XbRI%2fAAAAAAAACLI%2fVPVjyQAcB4Y%2fs1600%2fimagenes%2bbonitas%2bde%2bflores%2bpara%2bcolocar%2bcomo%2bfondo%2bde%2bpantalla4.jpg&ehk=5LpHzioJJWbchX6z62tIz3N%2bG59V5%2f6gVa3KXpY8%2fGo%3d&risl=&pid=ImgRaw&r=0",
+            subtitulo: currentBlog.contentTop.subtitulo,
+            textP: currentBlog.contentTop.textP,
+            img: currentBlog.contentTop.img,
           }}
           contentMiddle={{
-            subtitulo: "The Art of Clear Communication",
-            textP: "Being clear and direct to the point is crucial...",
-            img: "https://th.bing.com/th/id/R.7fde484fcaaea614c0f986ab4cdece0c?rik=QUQJ2S%2b4i7H6BQ&riu=http%3a%2f%2f2.bp.blogspot.com%2f-a_MZ51-uScA%2fU4fajP8XbRI%2fAAAAAAAACLI%2fVPVjyQAcB4Y%2fs1600%2fimagenes%2bbonitas%2bde%2bflores%2bpara%2bcolocar%2bcomo%2bfondo%2bde%2bpantalla4.jpg&ehk=5LpHzioJJWbchX6z62tIz3N%2bG59V5%2f6gVa3KXpY8%2fGo%3d&risl=&pid=ImgRaw&r=0",
+            subtitulo: currentBlog.contentMiddle.subtitulo,
+            textP: currentBlog.contentMiddle.textP,
+            img: currentBlog.contentMiddle.img,
           }}
           contentBottom={{
-            subtitulo: "Expressing Ideas Accurately",
-            textP: "Choosing the right words to express your ideas...",
-            img: "https://th.bing.com/th/id/R.7fde484fcaaea614c0f986ab4cdece0c?rik=QUQJ2S%2b4i7H6BQ&riu=http%3a%2f%2f2.bp.blogspot.com%2f-a_MZ51-uScA%2fU4fajP8XbRI%2fAAAAAAAACLI%2fVPVjyQAcB4Y%2fs1600%2fimagenes%2bbonitas%2bde%2bflores%2bpara%2bcolocar%2bcomo%2bfondo%2bde%2bpantalla4.jpg&ehk=5LpHzioJJWbchX6z62tIz3N%2bG59V5%2f6gVa3KXpY8%2fGo%3d&risl=&pid=ImgRaw&r=0",
+            subtitulo: currentBlog.contentBottom.subtitulo,
+            textP: currentBlog.contentBottom.textP,
+            img: currentBlog.contentBottom.img,
           }}
           guardarEdit={handleEditPost}
         />
       ) : (
         <ModelOne
-          title="Read it on our Blog"
+          title={currentBlog.title}
           contentTop={{
-            subtitulo: "The Ultimate Guide to Writing",
-            textP: "Writing effectively is an art. Start by using simple...",
-            img: "https://th.bing.com/th/id/R.7fde484fcaaea614c0f986ab4cdece0c?rik=QUQJ2S%2b4i7H6BQ&riu=http%3a%2f%2f2.bp.blogspot.com%2f-a_MZ51-uScA%2fU4fajP8XbRI%2fAAAAAAAACLI%2fVPVjyQAcB4Y%2fs1600%2fimagenes%2bbonitas%2bde%2bflores%2bpara%2bcolocar%2bcomo%2bfondo%2bde%2bpantalla4.jpg&ehk=5LpHzioJJWbchX6z62tIz3N%2bG59V5%2f6gVa3KXpY8%2fGo%3d&risl=&pid=ImgRaw&r=0",
+            subtitulo: currentBlog.contentTop.subtitulo,
+            textP: currentBlog.contentTop.textP,
+            img: currentBlog.contentTop.img,
           }}
           contentMiddle={{
-            subtitulo: "The Art of Clear Communication",
-            textP: "Being clear and direct to the point is crucial...",
-            img: "https://th.bing.com/th/id/R.7fde484fcaaea614c0f986ab4cdece0c?rik=QUQJ2S%2b4i7H6BQ&riu=http%3a%2f%2f2.bp.blogspot.com%2f-a_MZ51-uScA%2fU4fajP8XbRI%2fAAAAAAAACLI%2fVPVjyQAcB4Y%2fs1600%2fimagenes%2bbonitas%2bde%2bflores%2bpara%2bcolocar%2bcomo%2bfondo%2bde%2bpantalla4.jpg&ehk=5LpHzioJJWbchX6z62tIz3N%2bG59V5%2f6gVa3KXpY8%2fGo%3d&risl=&pid=ImgRaw&r=0",
+            subtitulo: currentBlog.contentMiddle.subtitulo,
+            textP: currentBlog.contentMiddle.textP,
+            img: currentBlog.contentMiddle.img,
           }}
           contentBottom={{
-            subtitulo: "Expressing Ideas Accurately",
-            textP: "Choosing the right words to express your ideas...",
-            img: "https://th.bing.com/th/id/R.7fde484fcaaea614c0f986ab4cdece0c?rik=QUQJ2S%2b4i7H6BQ&riu=http%3a%2f%2f2.bp.blogspot.com%2f-a_MZ51-uScA%2fU4fajP8XbRI%2fAAAAAAAACLI%2fVPVjyQAcB4Y%2fs1600%2fimagenes%2bbonitas%2bde%2bflores%2bpara%2bcolocar%2bcomo%2bfondo%2bde%2bpantalla4.jpg&ehk=5LpHzioJJWbchX6z62tIz3N%2bG59V5%2f6gVa3KXpY8%2fGo%3d&risl=&pid=ImgRaw&r=0",
+            subtitulo: currentBlog.contentBottom.subtitulo,
+            textP: currentBlog.contentBottom.textP,
+            img: currentBlog.contentBottom.img,
           }}
           Edit={handleEditPost}
         />

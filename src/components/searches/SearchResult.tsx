@@ -64,12 +64,13 @@ const Description = styled.p`
   font-size: 13px;
 `;
 
-interface Blog {
+interface ResultadosBlogs {
   id: string;
   title: string;
   img: string;
   description: string;
   userId: string;
+  model: string;
 }
 
 interface props {
@@ -78,7 +79,7 @@ interface props {
 
 const SearchResult = ({ busqueda }: props) => {
   const { blogData } = useBlog();
-  const [resultados, setResultados] = useState<Blog[]>([]);
+  const [resultados, setResultados] = useState<ResultadosBlogs[]>([]);
 
   useEffect(() => {
     if (blogData && busqueda !== "") {

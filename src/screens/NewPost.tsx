@@ -6,6 +6,7 @@ import ModelThreeVersionEdit from "../components/typesOfPost/modelThree/ModelThr
 import ModelFourVersionEdit from "../components/typesOfPost/modelFour/ModelFourVersionEdit";
 import { UseWindoWidth } from "../hooks/useWidthScreen";
 import NavbarMobile from "../components/navbar/NavbarMobile";
+import ModelOneVersionEdit from "../components/typesOfPost/modelOne/ModelOneVersionEdit";
 
 const NewPostContainer = styled.div`
   display: flex;
@@ -84,7 +85,7 @@ export const NewPost = () => {
           <img src="/ModelFour.png" alt="" />
         </Opcion4>
       </TiposDePublicaciones>
-      {seleccionado === "1" && "hola"}
+      {seleccionado === "1" && "hola " /*<ModelOneVersionEdit newPost={true}>*/}
       {seleccionado === "2" && <ModelTwoVersionEdit newPost={true} />}
       {seleccionado === "3" && <ModelThreeVersionEdit newPost={true} />}
       {seleccionado === "4" && <ModelFourVersionEdit newPost={true} />}

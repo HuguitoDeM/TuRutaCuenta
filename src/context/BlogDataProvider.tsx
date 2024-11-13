@@ -7,12 +7,22 @@ import {
 } from "react";
 import getBlogs from "../services/getBlogs";
 
+interface contentItem {
+  subtitulo: string;
+  img: string;
+  textP: string;
+}
+
 interface Blog {
   id: string;
   title: string;
   img: string;
   description: string;
   userId: string;
+  model: string;
+  contentTop: contentItem;
+  contentMiddle: contentItem;
+  contentBottom: contentItem;
 }
 
 interface BlogContextType {
@@ -42,8 +52,8 @@ export const BlogProvider = ({ children }: BlogsProviderProps) => {
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
-        const resultado: Blog[] | undefined = await getBlogs();
-        setBlogData(resultado);
+        const resultados: Blog[] | undefined = await getBlogs();
+        setBlogData(resultados);
       } catch (err) {
         setError("Failed to load blogs");
       } finally {
