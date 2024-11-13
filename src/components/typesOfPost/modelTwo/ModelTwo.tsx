@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import MenuEdits from "../../menuEdit/MenuEdits";
 
 const PostContainer = styled.div`
   display: flex;
@@ -23,6 +24,13 @@ const MainContent = styled.div`
       font-size: 28px;
     }
   }
+`;
+
+const EditOption = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  margin-right: 2rem;
 `;
 
 const Imagenes = styled.div`
@@ -84,8 +92,12 @@ const LineaAbajo = styled.div`
 const ModelTwo = () => {
   return (
     <PostContainer>
-      <MainContent>
+      <EditOption>
+        <MenuEdits />
+
         <span>fecha</span>
+      </EditOption>
+      <MainContent>
         <h2>ON THE BLOG</h2>
         <Imagenes>
           <img

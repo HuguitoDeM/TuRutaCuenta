@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import MenuEdits from "../../menuEdit/MenuEdits";
 
 const PostContainer = styled.div`
   display: flex;
@@ -16,6 +17,13 @@ const PostContainer = styled.div`
       font-size: 25px;
     }
   }
+`;
+const EditOption = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
 `;
 const FirstImage = styled.div`
   margin: auto;
@@ -103,7 +111,11 @@ const DownText = styled(TextCenter)`
 const ModelThree = () => {
   return (
     <PostContainer>
-      <span>fecha</span>
+      <EditOption>
+        <MenuEdits />
+        <span>fecha</span>
+      </EditOption>
+
       <h2>ADVENTURE TRAVEL</h2>
       <FirstImage>
         <img

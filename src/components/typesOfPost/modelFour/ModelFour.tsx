@@ -1,12 +1,17 @@
 import styled from "styled-components";
+import MenuEdits from "../../menuEdit/MenuEdits";
 
 const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
-  span {
-    margin-top: 15px;
-    margin-left: 2rem;
-  }
+  overflow-x: hidden;
+`;
+
+const EditOption = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  margin-right: 2rem;
 `;
 
 const ContentBody = styled.div`
@@ -91,7 +96,10 @@ const RightImages = styled.div`
 const ModelFour = () => {
   return (
     <PostContainer>
-      <span>fecha</span>
+      <EditOption>
+        <MenuEdits />
+        <span>fecha</span>
+      </EditOption>
       <ContentBody>
         <FirstImage>
           <img

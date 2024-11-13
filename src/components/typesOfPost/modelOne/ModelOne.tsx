@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import MenuEdits from "../../menuEdit/MenuEdits";
 
 const PostContainer = styled.div`
   display: flex;
@@ -46,6 +47,12 @@ const MainTitle = styled.div`
     font-size: 25px;
     flex-direction: column;
   }
+`;
+const EditOption = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  margin-right: 2rem;
 `;
 const FirstImage = styled.div`
   display: flex;
@@ -111,9 +118,13 @@ const ThirdImage = styled(SecondImage)`
 const ModelOne = () => {
   return (
     <PostContainer>
+      <EditOption>
+        <MenuEdits />
+        <span>fecha</span>
+      </EditOption>
+
       <MainTitle>
         <h2>Read it on our Blog</h2>
-        <span>fecha</span>
       </MainTitle>
       <ContenidoArriba>
         <TextLeft>
