@@ -112,7 +112,9 @@ const ModelThree = () => {
   return (
     <PostContainer>
       <EditOption>
-        <MenuEdits />
+        {
+          //  <MenuEdits />
+        }
         <span>fecha</span>
       </EditOption>
 

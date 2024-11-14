@@ -93,8 +93,9 @@ const ModelTwo = () => {
   return (
     <PostContainer>
       <EditOption>
-        <MenuEdits />
-
+        {
+          //  <MenuEdits />
+        }
         <span>fecha</span>
       </EditOption>
       <MainContent>

@@ -41,7 +41,7 @@ const Title = styled.div`
     padding: 11px 10px;
     margin: auto;
     width: 90%;
-    font-size: 0.75rem;
+    font-size: 1rem;
     border: 2px black solid;
     border-radius: 5px;
     outline: none;

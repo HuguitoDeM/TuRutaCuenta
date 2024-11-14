@@ -6,7 +6,7 @@ const EditContainer = styled.div`
   gap: 1rem;
   margin-top: 0.5rem;
   &.NewPost {
-    transform: scale(0.8);
+    transform: scale(0.9);
   }
 `;
 const Title = styled.div`
@@ -40,7 +40,7 @@ const Title = styled.div`
     padding: 11px 10px;
     margin: auto;
     width: 90%;
-    font-size: 0.75rem;
+    font-size: 1rem;
     border: 2px black solid;
     border-radius: 5px;
     outline: none;
@@ -155,6 +155,7 @@ const TextParrafo = styled(Title)`
   }
   textArea {
     width: 95%;
+    font-size: 1rem;
   }
 `;
 const DownText = styled(TextCenter)``;

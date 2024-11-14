@@ -2,22 +2,32 @@ import styled from "styled-components";
 
 const Imagenes = styled.div`
   width: 100%;
-  height: 100%;
+
   img {
     width: 100%;
-    height: 300px;
   }
 `;
 
 interface Props {
+  id: string;
   url?: string;
+  UploadImage: (e: React.ChangeEvent<HTMLInputElement>) => Promise<void>;
 }
 
-const ImageUpload = ({ url }: Props) => {
+const ImageUpload = ({ id, url, UploadImage }: Props) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    UploadImage(e);
+  };
   return (
     <Imagenes>
-      <input type="file" accept="image/*" style={{ display: "none" }} />
-      <label style={{ cursor: "pointer" }}>
+      <input
+        id={`imagen${id}`}
+        type="file"
+        accept="image/*"
+        onChange={handleFileChange}
+        style={{ display: "none" }}
+      />
+      <label htmlFor={`imagen${id}`} style={{ cursor: "pointer" }}>
         <img
           src={
             url

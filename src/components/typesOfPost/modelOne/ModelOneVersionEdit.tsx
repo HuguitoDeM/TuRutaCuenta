@@ -1,18 +1,51 @@
 import styled from "styled-components";
 import ImageUpload from "./ImageUpload";
-import { useState } from "react";
+import React, { useState } from "react";
 import updatePostBlogs from "../../../services/updatePostBlogs";
+import getData from "../../../services/getData";
+import uploadImages from "../../../services/uploadImages";
+import addNewBlog from "../../../services/addNewBlog";
+import { useNavigate } from "react-router-dom";
 
-const EditContainer = styled.div`
+const EditContainer = styled.form`
   display: flex;
   flex-direction: column;
   gap: 3rem;
   margin-top: 0.5rem;
-  &.NewPost {
+  .NewPost {
     transform: scale(0.9);
   }
   @media (max-width: 768px) {
     gap: 0rem;
+  }
+  button {
+    margin: auto;
+    width: 250px;
+    margin-top: 1rem;
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: gray;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+
+  button:hover {
+    background-color: #23c483;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+
+  button:active {
+    transform: translateY(-1px);
   }
 `;
 
@@ -62,7 +95,7 @@ const Title = styled.div`
     padding: 11px 10px;
     margin: auto;
     width: 90%;
-    font-size: 0.75rem;
+    font-size: 1rem;
     border: 2px solid black;
     border-radius: 5px;
     outline: none;
@@ -193,22 +226,27 @@ const MainTitle = styled.div`
 const FirstImage = styled.div`
   display: flex;
   margin-top: 1rem;
-  height: 100%;
-  padding-top: 1.5rem;
+  max-height: 393px;
   border: 3px solid black;
-  display: flex;
   width: 100%;
   div {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
+    label {
+      width: 100%;
+      height: 100%;
+    }
     img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
   @media (max-width: 768px) {
     width: 95%;
+    height: 100%;
   }
 `;
 
@@ -290,13 +328,15 @@ const ModelOneVersionEdit = ({
   UpdateBlog = {},
   guardarEdit,
 }: Props & { newPost?: boolean }) => {
+  const navigate = useNavigate();
+  const userData = getData();
   const [updateBlog, setUpdateBlog] = useState<Blog>({
     id: UpdateBlog.id ?? "",
     title: UpdateBlog.title ?? "",
     img: UpdateBlog.img ?? "",
     description: UpdateBlog.description ?? "",
-    userId: UpdateBlog.userId ?? "",
-    model: UpdateBlog.model ?? "",
+    userId: UpdateBlog.userId ?? userData.id,
+    model: UpdateBlog.model ?? "1",
     contentTop: UpdateBlog.contentTop ?? { subtitulo: "", textP: "", img: "" },
     contentMiddle: UpdateBlog.contentMiddle ?? {
       subtitulo: "",
@@ -327,8 +367,33 @@ const ModelOneVersionEdit = ({
       window.location.reload();
     }
   };
+
+  const handleChangeImageAndGetURL = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+    section: "contentTop" | "contentMiddle" | "contentBottom"
+  ) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+      const response = await uploadImages({ imagen: file });
+      if (response) {
+        handleChange(section, "img", response);
+      }
+    }
+  };
+
+  const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const resultado = await addNewBlog({ updateBlog });
+    if (resultado) {
+      window.location.reload();
+      navigate(`/post/${updateBlog.id}`);
+    }
+  };
   return (
-    <EditContainer className={newPost ? "NewPost" : ""}>
+    <EditContainer
+      className={newPost ? "NewPost" : ""}
+      onSubmit={handleOnSubmit}
+    >
       {guardarEdit && (
         <EditsButtons>
           <button className="cancelar" onClick={guardarEdit}>
@@ -339,10 +404,12 @@ const ModelOneVersionEdit = ({
           </button>
         </EditsButtons>
       )}
+      <button type="submit">Públicar</button>
       <MainTitle>
         <Title>
           <label htmlFor="titulo">Titulo</label>
           <input
+            required
             type="text"
             placeholder="Titulo"
             value={updateBlog.title}
@@ -359,6 +426,7 @@ const ModelOneVersionEdit = ({
             <Subtitulo>
               <label htmlFor="subtitulo1">SubTitulo</label>
               <input
+                required
                 type="text"
                 value={updateBlog.contentTop.subtitulo}
                 onChange={(e) =>
@@ -372,6 +440,7 @@ const ModelOneVersionEdit = ({
             <TextBody>
               <label htmlFor="">Texto</label>
               <textarea
+                required
                 id="myTextArea"
                 value={updateBlog.contentTop.textP}
                 onChange={(e) =>
@@ -385,13 +454,18 @@ const ModelOneVersionEdit = ({
           </TextLeft>
 
           <FirstImage>
-            <ImageUpload url={updateBlog.contentTop.img} />
+            <ImageUpload
+              url={updateBlog.contentTop.img}
+              UploadImage={(e) => handleChangeImageAndGetURL(e, "contentTop")}
+              id="1"
+            />
           </FirstImage>
 
           <TextRight>
             <Subtitulo>
               <label htmlFor="subtitulo2">SubTitulo</label>
               <input
+                required
                 type="text"
                 placeholder="subtitulo"
                 value={updateBlog.contentMiddle.subtitulo}
@@ -405,6 +479,7 @@ const ModelOneVersionEdit = ({
             <TextBody>
               <label htmlFor="">Texto</label>
               <textarea
+                required
                 id="myTextArea"
                 value={updateBlog.contentMiddle.textP}
                 onChange={(e) =>
@@ -421,13 +496,20 @@ const ModelOneVersionEdit = ({
       {updateBlog.contentMiddle && updateBlog.contentBottom && (
         <ContenidoAbajo>
           <SecondImage>
-            <ImageUpload url={updateBlog.contentMiddle.img} />
+            <ImageUpload
+              id="2"
+              url={updateBlog.contentMiddle.img}
+              UploadImage={(e) =>
+                handleChangeImageAndGetURL(e, "contentMiddle")
+              }
+            />
           </SecondImage>
 
           <TextCenter>
             <Subtitulo>
               <label htmlFor="subtitulo3">SubTitulo</label>
               <input
+                required
                 type="text"
                 placeholder="subtitulo"
                 value={updateBlog.contentBottom.subtitulo}
@@ -441,6 +523,7 @@ const ModelOneVersionEdit = ({
             <TextBody>
               <label htmlFor="">Texto</label>
               <textarea
+                required
                 id="myTextArea"
                 value={updateBlog.contentBottom.textP}
                 onChange={(e) =>
@@ -454,7 +537,13 @@ const ModelOneVersionEdit = ({
           </TextCenter>
 
           <ThirdImage>
-            <ImageUpload url={updateBlog.contentBottom.img} />
+            <ImageUpload
+              id="3"
+              url={updateBlog.contentBottom.img}
+              UploadImage={(e) =>
+                handleChangeImageAndGetURL(e, "contentBottom")
+              }
+            />
           </ThirdImage>
         </ContenidoAbajo>
       )}

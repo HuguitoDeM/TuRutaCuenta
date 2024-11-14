@@ -97,7 +97,9 @@ const ModelFour = () => {
   return (
     <PostContainer>
       <EditOption>
-        <MenuEdits />
+        {
+          //  <MenuEdits />
+        }
         <span>fecha</span>
       </EditOption>
       <ContentBody>
