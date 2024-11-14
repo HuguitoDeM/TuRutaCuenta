@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useBlog } from "../../context/BlogDataProvider";
+import { useNavigate } from "react-router-dom";
 
 const SearchResultContainer = styled.div`
   display: flex;
@@ -38,6 +39,9 @@ const SearchResultContainer = styled.div`
   }
   &.color {
     background-color: #bea17c;
+  }
+  &:hover {
+    cursor: pointer;
   }
 `;
 
@@ -80,7 +84,7 @@ interface props {
 const SearchResult = ({ busqueda }: props) => {
   const { blogData } = useBlog();
   const [resultados, setResultados] = useState<ResultadosBlogs[]>([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (blogData && busqueda !== "") {
       const filteredBlogs = Object.values(blogData).filter(
@@ -100,6 +104,7 @@ const SearchResult = ({ busqueda }: props) => {
             <SearchResultContainer
               key={post.title + index}
               className={index % 2 !== 0 ? "color" : ""}
+              onClick={() => navigate(`/post/${post.id}`)}
             >
               <img src={post.img} alt={post.title} />
               <Text className={index % 2 !== 0 ? "color" : ""}>
