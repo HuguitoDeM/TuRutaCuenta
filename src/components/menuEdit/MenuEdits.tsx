@@ -50,16 +50,17 @@ const PasteButtonWrapper = styled.div`
 
 interface Props {
   Edit: () => void;
+  Borrar: () => void;
 }
 
-const MenuEdits = ({ Edit }: Props) => {
+const MenuEdits = ({ Edit, Borrar }: Props) => {
   return (
     <MenuEditsContainer>
       <PasteButtonWrapper>
         <Button>▼</Button>
         <DropdownContent>
           <OptionsMenu text="Editar" ActivarFuncion={Edit} edit={true} />
-          <OptionsMenu text="Borrar" edit={false} ActivarFuncion={Edit} />
+          <OptionsMenu text="Borrar" edit={false} ActivarFuncion={Borrar} />
         </DropdownContent>
       </PasteButtonWrapper>
     </MenuEditsContainer>

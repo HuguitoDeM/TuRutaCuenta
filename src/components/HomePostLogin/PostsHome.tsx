@@ -1,4 +1,5 @@
 import Masonry from "react-masonry-css";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Post = styled.div`
@@ -52,9 +53,11 @@ const breakpointColumnsObj = {
 interface props {
   imagenes: string[];
   titulos: string[];
+  id: string[];
 }
 
-const PostsHome = ({ titulos, imagenes }: props) => {
+const PostsHome = ({ titulos, imagenes, id }: props) => {
+  const navigate = useNavigate();
   return (
     <>
       <MasonryGrid
@@ -63,7 +66,7 @@ const PostsHome = ({ titulos, imagenes }: props) => {
         columnClassName="my-masonry-grid_column"
       >
         {titulos.map((element, index) => (
-          <Post key={index}>
+          <Post key={index} onClick={() => navigate(`/post/${id[index]}`)}>
             <img src={imagenes[index]} alt={element} />
             <Title>{element}</Title>
           </Post>

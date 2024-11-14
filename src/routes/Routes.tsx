@@ -51,7 +51,7 @@ export const Rutas = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/post1" element={<NewPostEdit id="1" />} />
+        <Route path="/post/:id" element={<NewPostEdit />} />
         <Route path="/post2" element={<ModelTwo />} />
         <Route path="/post3" element={<ModelThree />} />
         <Route path="/post4" element={<ModelFour />} />

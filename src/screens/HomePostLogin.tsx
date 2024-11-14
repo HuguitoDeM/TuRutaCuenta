@@ -29,12 +29,18 @@ const HomePostLogin = () => {
         .map((blog) => blog.img)
         .reverse()
     : [];
+  const id = blogData
+    ? Object.values(blogData)
+        .filter((blog) => blog.id !== undefined)
+        .map((blog) => blog.id)
+        .reverse()
+    : [];
 
   return (
     <HomeContainer>
       {WidthScreen > 769 ? <NavbarDesktop /> : ""}
       <MainContent>
-        <PostsHome titulos={titles} imagenes={images} />
+        <PostsHome titulos={titles} id={id} imagenes={images} />
       </MainContent>
       {WidthScreen > 769 ? "" : <NavbarMobile />}
     </HomeContainer>

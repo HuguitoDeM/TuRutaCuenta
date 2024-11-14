@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import MenuEdits from "../../menuEdit/MenuEdits";
+import getData from "../../../services/getData";
 
 const PostContainer = styled.div`
   display: flex;
@@ -122,11 +123,13 @@ interface ContentItem {
 }
 
 interface Props {
+  userId: string;
   title: string;
   contentTop: ContentItem;
   contentMiddle: ContentItem;
   contentBottom: ContentItem;
   Edit: () => void;
+  Borrar: () => void;
 }
 
 const ModelOne = ({
@@ -135,12 +138,18 @@ const ModelOne = ({
   contentMiddle,
   contentBottom,
   Edit,
+  Borrar,
+  userId,
 }: Props) => {
+  const dataUser = getData();
+
   return (
     <PostContainer>
-      <EditOption>
-        <MenuEdits Edit={Edit} />
-      </EditOption>
+      {userId === dataUser.id && (
+        <EditOption>
+          <MenuEdits Edit={Edit} Borrar={Borrar} />
+        </EditOption>
+      )}
       <MainTitle>
         <h2>{title}</h2>
       </MainTitle>

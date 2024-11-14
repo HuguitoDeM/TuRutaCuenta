@@ -291,6 +291,7 @@ const ModelOneVersionEdit = ({
   guardarEdit,
 }: Props & { newPost?: boolean }) => {
   const [updateBlog, setUpdateBlog] = useState<Blog>({
+    id: UpdateBlog.id ?? "",
     title: UpdateBlog.title ?? "",
     img: UpdateBlog.img ?? "",
     description: UpdateBlog.description ?? "",
@@ -323,6 +324,7 @@ const ModelOneVersionEdit = ({
     const response = await updatePostBlogs({ updateBlog });
     if (response) {
       guardarEdit && guardarEdit();
+      window.location.reload();
     }
   };
   return (

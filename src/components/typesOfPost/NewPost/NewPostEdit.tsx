@@ -2,12 +2,12 @@ import { useState } from "react";
 import ModelOne from "../modelOne/ModelOne";
 import ModelOneVersionEdit from "../modelOne/ModelOneVersionEdit";
 import { useBlog } from "../../../context/BlogDataProvider";
+import deleteBlog from "../../../services/deleteBlog";
+import { useNavigate, useParams } from "react-router-dom";
 
-interface Props {
-  id: string;
-}
-
-const NewPostEdit = ({ id }: Props) => {
+const NewPostEdit = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
   const [Edit, setEdit] = useState(false);
 
   const { blogData } = useBlog();
@@ -26,6 +26,14 @@ const NewPostEdit = ({ id }: Props) => {
 
   const handleEditPost = () => {
     setEdit(!Edit);
+  };
+
+  const handleBorrarPost = async () => {
+    const response = await deleteBlog({ id: currentBlog.id });
+    if (response) {
+      navigate("/home");
+      window.location.reload();
+    }
   };
 
   return (
@@ -54,6 +62,8 @@ const NewPostEdit = ({ id }: Props) => {
             img: currentBlog.contentBottom.img,
           }}
           Edit={handleEditPost}
+          Borrar={handleBorrarPost}
+          userId={currentBlog.userId}
         />
       )}
     </>

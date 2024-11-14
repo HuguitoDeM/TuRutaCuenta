@@ -22,6 +22,7 @@ interface Props {
 
 const updatePostBlogs = async ({ updateBlog }: Props) => {
   const updatedData = {
+    id: updateBlog.id,
     title: updateBlog.title,
     img: updateBlog.img,
     description: updateBlog.description,
@@ -29,9 +30,10 @@ const updatePostBlogs = async ({ updateBlog }: Props) => {
     contentMiddle: updateBlog.contentMiddle,
     contentBottom: updateBlog.contentBottom,
   };
+  console.log("Datos de updateBlog:", updateBlog);
   try {
     const response = await fetch(
-      `https://6622071827fcd16fa6c8818c.mockapi.io/api/v1/blogs/23`,
+      `https://6622071827fcd16fa6c8818c.mockapi.io/api/v1/blogs/${updatedData.id}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
