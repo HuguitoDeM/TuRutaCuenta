@@ -5,7 +5,6 @@ import HomePostLogin from "../screens/HomePostLogin";
 import Searches from "../screens/Searches";
 import ModelFour from "../components/typesOfPost/modelFour/ModelFour";
 import { NewPost } from "../screens/NewPost";
-import ModelTwo from "../components/typesOfPost/modelTwo/ModelTwo";
 import ModelThree from "../components/typesOfPost/modelThree/ModelThree";
 import Register from "../components/register/Register";
 import UserSetting from "../screens/UserSetting";
@@ -52,7 +51,7 @@ export const Rutas = () => {
           }
         />
         <Route path="/post/:id" element={<NewPostEdit />} />
-        <Route path="/post2" element={<ModelTwo />} />
+
         <Route path="/post3" element={<ModelThree />} />
         <Route path="/post4" element={<ModelFour />} />
       </Routes>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import MenuEdits from "../../menuEdit/MenuEdits";
+import getData from "../../../services/getData";
 
 const PostContainer = styled.div`
   display: flex;
@@ -62,6 +63,7 @@ const Text = styled.div`
     margin: auto;
     font-size: 26px;
   }
+
   gap: 30px;
   @media (max-width: 768px) {
     font-size: 14px;
@@ -80,6 +82,12 @@ const TextBody = styled.div`
 const LeftText = styled(TextBody)`
   flex-direction: column;
   gap: 30px;
+  p {
+    height: 100%;
+    word-wrap: break-word;
+    white-space: normal;
+    width: 100%;
+  }
 `;
 const RightText = styled(LeftText)``;
 
@@ -101,89 +109,50 @@ interface contentItemMiddle {
   textP3: string;
   textP4: string;
 }
-interface Blog {
-  id: string;
+interface Props {
   title: string;
   userId: string;
-  model: "2";
   contentTop: contentItemTop;
   contentMiddle: contentItemMiddle;
+  Edit: () => void;
+  Borrar: () => void;
 }
 
-const ModelTwo = () => {
+const ModelTwo = ({
+  title,
+  userId,
+  contentTop,
+  contentMiddle,
+  Edit,
+  Borrar,
+}: Props) => {
+  const dataUser = getData();
+
   return (
     <PostContainer>
-      <EditOption>
-        {
-          //  <MenuEdits />
-        }
-        <span>fecha</span>
-      </EditOption>
+      {userId === dataUser.id && (
+        <EditOption>
+          <MenuEdits Edit={Edit} Borrar={Borrar} />
+        </EditOption>
+      )}
+
       <MainContent>
-        <h2>ON THE BLOG</h2>
+        <h2>{title}</h2>
         <Imagenes>
-          <img
-            src="https://www.nacion.com/resizer/wX5C3jmGAL6HDgoYzkDEOlxSLkA=/1440x0/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/gruponacion/7TMBJGTD4RGRTNFCFDKGXUZQFQ.jpeg"
-            alt=""
-          />
-          <img
-            src="https://th.bing.com/th/id/OIP.KzsvvpP1QHS63WLjdBRSOwHaE8?rs=1&pid=ImgDetMain"
-            alt=""
-          />
-          <img
-            src="https://th.bing.com/th/id/OIP.KzsvvpP1QHS63WLjdBRSOwHaE8?rs=1&pid=ImgDetMain"
-            alt=""
-          />
+          <img src={contentTop.img} alt={title} />
+          <img src={contentTop.img1} alt={title} />
+          <img src={contentTop.img2} alt={title} />
         </Imagenes>
         <Text>
-          <h3>Latest Trends in Photography</h3>
+          <h3>{contentMiddle.subtitulo}</h3>
           <TextBody>
             <LeftText>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit
-                amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat.{" "}
-              </p>
-              <p>
-                {" "}
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit
-                amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat.{" "}
-              </p>
+              <p>{contentMiddle.textP}</p>
+              <p>{contentMiddle.textP2}</p>
             </LeftText>
             <RightText>
-              <p>
-                {" "}
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit
-                amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat.{" "}
-              </p>
-              <p>
-                {" "}
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit
-                amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat.{" "}
-              </p>
+              <p>{contentMiddle.textP3}</p>
+              <p>{contentMiddle.textP4}</p>
             </RightText>
           </TextBody>
           <LineaAbajo />
