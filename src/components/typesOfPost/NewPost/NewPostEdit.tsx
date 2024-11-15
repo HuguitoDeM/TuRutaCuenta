@@ -4,9 +4,6 @@ import ModelOneVersionEdit from "../modelOne/ModelOneVersionEdit";
 import { useBlog } from "../../../context/BlogDataProvider";
 import deleteBlog from "../../../services/deleteBlog";
 import { useNavigate, useParams } from "react-router-dom";
-import { UseWindoWidth } from "../../../hooks/useWidthScreen";
-import NavbarDesktop from "../../navbar/NavbarDesktop";
-import NavbarMobile from "../../navbar/NavbarMobile";
 
 const NewPostEdit = () => {
   const navigate = useNavigate();
@@ -38,12 +35,9 @@ const NewPostEdit = () => {
       window.location.reload();
     }
   };
-  const WidthScreen = UseWindoWidth();
 
   return (
     <>
-      {WidthScreen > 769 ? <NavbarDesktop /> : ""}
-
       {Edit ? (
         <ModelOneVersionEdit
           UpdateBlog={currentBlog}
@@ -72,7 +66,6 @@ const NewPostEdit = () => {
           userId={currentBlog.userId}
         />
       )}
-      {WidthScreen > 769 ? "" : <NavbarMobile />}
     </>
   );
 };

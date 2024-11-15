@@ -407,9 +407,11 @@ const ModelOneVersionEdit = ({
           </button>
         </EditsButtons>
       )}
-      <button type="submit" className="button">
-        Públicar
-      </button>
+      {newPost && (
+        <button type="submit" className="button">
+          Públicar
+        </button>
+      )}
       <MainTitle>
         <Title>
           <label htmlFor="titulo">Titulo</label>

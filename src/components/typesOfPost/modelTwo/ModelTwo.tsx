@@ -89,6 +89,27 @@ const LineaAbajo = styled.div`
   margin: auto;
 `;
 
+interface contentItemTop {
+  img: string;
+  img1: string;
+  img2: string;
+}
+interface contentItemMiddle {
+  subtitulo: string;
+  textP: string;
+  textP2: string;
+  textP3: string;
+  textP4: string;
+}
+interface Blog {
+  id: string;
+  title: string;
+  userId: string;
+  model: "2";
+  contentTop: contentItemTop;
+  contentMiddle: contentItemMiddle;
+}
+
 const ModelTwo = () => {
   return (
     <PostContainer>

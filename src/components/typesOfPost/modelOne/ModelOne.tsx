@@ -6,7 +6,7 @@ const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     gap: 0rem;
   }
 `;
@@ -19,13 +19,18 @@ const TextLeft = styled.div`
   gap: 15px;
   margin-left: 15px;
   margin-right: 15px;
+  h2 {
+    font-size: 32px;
+    word-wrap: break-word;
+    white-space: normal;
+  }
   p {
     height: 100%;
     word-wrap: break-word;
     white-space: normal;
     width: 100%;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     width: 100%;
     font-size: 15px;
     gap: 0px;
@@ -49,7 +54,7 @@ const MainTitle = styled.div`
     font-size: 12px;
     margin-right: 15px;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     margin-top: 2rem;
     font-size: 25px;
     flex-direction: column;
@@ -65,6 +70,8 @@ const FirstImage = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
+  margin-left: 15px;
+  margin-right: 15px;
   img {
     width: 100%;
     height: 300px;
@@ -72,9 +79,11 @@ const FirstImage = styled.div`
   }
 
   border: 3px solid black;
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     width: 95%;
     margin-bottom: 1rem;
+    margin-left: 0;
+    margin-right: 0;
   }
 `;
 
@@ -82,7 +91,7 @@ const ContenidoArriba = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     width: 90%;
     margin: auto;
     justify-content: center;
@@ -95,30 +104,36 @@ const ContenidoArriba = styled.div`
 const TextRight = styled(TextLeft)``;
 const TextCenter = styled(TextLeft)`
   transform: translateY(-60px);
-  width: 30%;
-  @media (max-width: 768px) {
+  width: 45%;
+  margin-left: 15px;
+  margin-right: 15px;
+  @media (max-width: 1024px) {
     transform: translateY(0px);
     width: 100%;
+    margin-left: 0;
+    margin-right: 0;
   }
 `;
 const ContenidoAbajo = styled(ContenidoArriba)``;
 const SecondImage = styled(FirstImage)`
   margin-left: 15px;
-  height: 400px;
+  max-height: 400px;
+
   width: 100%;
   img {
     height: 100%;
     width: 100%;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     margin-left: 0px;
     width: 100%;
+    height: 400px;
   }
 `;
 const ThirdImage = styled(SecondImage)`
   justify-content: flex-end;
   margin-right: 15px;
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     margin-right: 0px;
   }
 `;
