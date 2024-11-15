@@ -138,7 +138,7 @@ const Title = styled.div`
     font-weight: 700;
     position: relative;
     top: 0.5rem;
-    margin: 0 25% 0 0;
+    margin: 0 17% 0 0;
     padding: 0 3px;
     background: white;
     width: fit-content;
@@ -192,33 +192,34 @@ const MainContent = styled.div`
 const AllImages = styled.div`
   display: flex;
   margin-top: 1rem;
-
   width: 100%;
-
   div {
     display: flex;
     align-items: center;
-    border: 3px solid black;
     margin: 5px;
     justify-content: center;
     width: 100%;
     height: 100%;
-    label {
+    .urlCargada {
       width: 100%;
       height: 100%;
+      img {
+        object-fit: cover;
+      }
     }
     img {
       width: 100%;
       height: 300px;
-      object-fit: cover;
     }
   }
 
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 10px;
-    width: 95%;
-    margin: auto;
+    width: 100%;
+    div {
+      margin: 0;
+    }
   }
 `;
 
@@ -324,7 +325,6 @@ const ModelTwoVersionEdit = ({
     field: keyof ContentItemMiddleModelTwo | keyof ContentItemTopModelTwo,
     value: string
   ) => {
-    console.log("cambiando la url de la imagen");
     setUpdateBlog((prev) => ({
       ...prev,
       [section]: { ...prev[section], [field]: value },
@@ -344,10 +344,8 @@ const ModelTwoVersionEdit = ({
     section: "contentTop",
     field: "img" | "img1" | "img2"
   ) => {
-    console.log("holaa");
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
-      console.log("aca anda");
       const response = await uploadImages({ imagen: file });
       console.log(response);
       if (response) {
@@ -358,12 +356,9 @@ const ModelTwoVersionEdit = ({
   };
 
   const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    console.log("aca anda");
     e.preventDefault();
     if (!guardarEdit) {
-      console.log("aca anda");
       const resultado = await addNewBlog({ updateBlog });
-      console.log("blogModelTwo creadooo!");
       if (resultado) {
         window.location.reload();
       }
@@ -393,7 +388,15 @@ const ModelTwoVersionEdit = ({
       <MainContent>
         <Title>
           <label htmlFor="titulo">Titulo</label>
-          <input type="text" placeholder="Titulo" name="titulo" />
+          <input
+            type="text"
+            placeholder="Titulo"
+            name="titulo"
+            value={updateBlog.title}
+            onChange={(e) =>
+              setUpdateBlog({ ...updateBlog, title: e.target.value })
+            }
+          />
         </Title>
         {updateBlog.contentTop && (
           <AllImages>
@@ -430,6 +433,7 @@ const ModelTwoVersionEdit = ({
                 onChange={(e) =>
                   handleChange("contentMiddle", "subtitulo", e.target.value)
                 }
+                id="subtitulo"
               />
             </Subtitulo>
 

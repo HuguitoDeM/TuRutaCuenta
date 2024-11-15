@@ -2,9 +2,17 @@ import styled from "styled-components";
 
 const Imagenes = styled.div`
   width: 100%;
+  border: 3px solid black;
 
   img {
     width: 100%;
+  }
+  .urlCargadaImg {
+    border: 3px solid black;
+  }
+
+  &.urlCargadaDiv {
+    border: none;
   }
 `;
 
@@ -19,7 +27,7 @@ const ImageUpload = ({ id, url, UploadImage }: Props) => {
     UploadImage(e);
   };
   return (
-    <Imagenes>
+    <Imagenes className={url ? "urlCargadaDiv" : "bordeDiv"}>
       <input
         id={`imagen${id}`}
         type="file"
@@ -27,8 +35,13 @@ const ImageUpload = ({ id, url, UploadImage }: Props) => {
         onChange={handleFileChange}
         style={{ display: "none" }}
       />
-      <label htmlFor={`imagen${id}`} style={{ cursor: "pointer" }}>
+      <label
+        htmlFor={`imagen${id}`}
+        className={url ? "urlCargada" : ""}
+        style={{ cursor: "pointer" }}
+      >
         <img
+          className={url ? "urlCargadaImg" : ""}
           src={
             url
               ? url

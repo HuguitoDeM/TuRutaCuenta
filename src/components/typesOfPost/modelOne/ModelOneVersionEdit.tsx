@@ -227,21 +227,23 @@ const FirstImage = styled.div`
   display: flex;
   margin-top: 1rem;
   max-height: 393px;
-  border: 3px solid black;
+
   width: 100%;
   div {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    label {
+    .urlCargada {
       width: 100%;
       height: 100%;
+      img {
+        object-fit: cover;
+      }
     }
     img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: 393px;
     }
   }
   @media (max-width: 768px) {
