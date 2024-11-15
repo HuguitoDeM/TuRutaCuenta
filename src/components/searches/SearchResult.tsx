@@ -47,7 +47,7 @@ const SearchResultContainer = styled.div`
 
 const Text = styled.div`
   display: flex;
-  width: 100%;
+  width: 50%;
   flex-direction: column;
   gap: 40px;
   margin-left: 30px;
@@ -58,6 +58,9 @@ const Text = styled.div`
   &.color {
     color: white;
   }
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const Title = styled.h2`
@@ -66,15 +69,37 @@ const Title = styled.h2`
 
 const Description = styled.p`
   font-size: 13px;
+
+  height: 53%;
+  word-wrap: break-word;
+  white-space: normal;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 6; /* Cambia este número para la cantidad de líneas visibles */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @media (max-width: 768px) {
+    height: 56%;
+  }
 `;
 
-interface ResultadosBlogs {
+interface contentItem {
+  subtitulo: string;
+  img: string;
+  textP: string;
+}
+
+interface Blog {
   id: string;
   title: string;
   img: string;
   description: string;
   userId: string;
   model: string;
+  contentTop: contentItem;
+  contentMiddle: contentItem;
+  contentBottom: contentItem;
 }
 
 interface props {
@@ -83,7 +108,7 @@ interface props {
 
 const SearchResult = ({ busqueda }: props) => {
   const { blogData } = useBlog();
-  const [resultados, setResultados] = useState<ResultadosBlogs[]>([]);
+  const [resultados, setResultados] = useState<Blog[]>([]);
   const navigate = useNavigate();
   useEffect(() => {
     if (blogData && busqueda !== "") {
@@ -106,10 +131,10 @@ const SearchResult = ({ busqueda }: props) => {
               className={index % 2 !== 0 ? "color" : ""}
               onClick={() => navigate(`/post/${post.id}`)}
             >
-              <img src={post.img} alt={post.title} />
+              <img src={post.contentTop.img} alt={post.title} />
               <Text className={index % 2 !== 0 ? "color" : ""}>
                 <Title>{post.title}</Title>
-                <Description>{post.description}</Description>
+                <Description>{post.contentMiddle.textP}</Description>
               </Text>
             </SearchResultContainer>
           ))

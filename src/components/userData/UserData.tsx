@@ -125,7 +125,7 @@ const UsersData = () => {
   const images = blogData
     ? Object.values(blogData)
         .filter((blog) => blog.userId === userData.id)
-        .map((blog) => blog.img)
+        .map((blog) => blog.contentTop.img)
         .reverse()
     : [];
 

@@ -15,10 +15,16 @@ const TextLeft = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 17px;
-  width: 40%;
+  width: 25%;
   gap: 15px;
   margin-left: 15px;
   margin-right: 15px;
+  p {
+    height: 100%;
+    word-wrap: break-word;
+    white-space: normal;
+    width: 100%;
+  }
   @media (max-width: 768px) {
     width: 100%;
     font-size: 15px;
@@ -64,7 +70,7 @@ const FirstImage = styled.div`
     height: 300px;
     object-fit: cover;
   }
-  padding: 5px;
+
   border: 3px solid black;
   @media (max-width: 768px) {
     width: 95%;
@@ -75,7 +81,7 @@ const FirstImage = styled.div`
 const ContenidoArriba = styled.div`
   display: flex;
   width: 100%;
-  heigth: 100%;
+  height: 100%;
   @media (max-width: 768px) {
     width: 90%;
     margin: auto;
@@ -88,17 +94,18 @@ const ContenidoArriba = styled.div`
 `;
 const TextRight = styled(TextLeft)``;
 const TextCenter = styled(TextLeft)`
-  transform: translateY(-30px);
-  width: 100%;
+  transform: translateY(-60px);
+  width: 30%;
   @media (max-width: 768px) {
     transform: translateY(0px);
+    width: 100%;
   }
 `;
 const ContenidoAbajo = styled(ContenidoArriba)``;
 const SecondImage = styled(FirstImage)`
   margin-left: 15px;
-  height: 300px;
-  width: 40%;
+  height: 400px;
+  width: 100%;
   img {
     height: 100%;
     width: 100%;

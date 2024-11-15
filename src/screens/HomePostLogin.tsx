@@ -25,8 +25,8 @@ const HomePostLogin = () => {
     : [];
   const images = blogData
     ? Object.values(blogData)
-        .filter((blog) => blog.img !== undefined)
-        .map((blog) => blog.img)
+        .filter((blog) => blog.contentTop.img !== undefined)
+        .map((blog) => blog.contentTop.img)
         .reverse()
     : [];
   const id = blogData

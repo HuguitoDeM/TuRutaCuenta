@@ -11,14 +11,14 @@ const EditContainer = styled.form`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  margin-top: 0.5rem;
+
   .NewPost {
     transform: scale(0.9);
   }
   @media (max-width: 768px) {
     gap: 0rem;
   }
-  button {
+  .button {
     margin: auto;
     width: 250px;
     margin-top: 1rem;
@@ -37,14 +37,14 @@ const EditContainer = styled.form`
     outline: none;
   }
 
-  button:hover {
+  .button:hover {
     background-color: #23c483;
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
     color: #fff;
     transform: translateY(-7px);
   }
 
-  button:active {
+  .button:active {
     transform: translateY(-1px);
   }
 `;
@@ -383,12 +383,15 @@ const ModelOneVersionEdit = ({
 
   const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const resultado = await addNewBlog({ updateBlog });
-    if (resultado) {
-      window.location.reload();
-      navigate(`/post/${updateBlog.id}`);
+    if (!guardarEdit) {
+      const resultado = await addNewBlog({ updateBlog });
+      if (resultado) {
+        navigate(`/post/${updateBlog.id}`);
+        window.location.reload();
+      }
     }
   };
+
   return (
     <EditContainer
       className={newPost ? "NewPost" : ""}
@@ -404,7 +407,9 @@ const ModelOneVersionEdit = ({
           </button>
         </EditsButtons>
       )}
-      <button type="submit">Públicar</button>
+      <button type="submit" className="button">
+        Públicar
+      </button>
       <MainTitle>
         <Title>
           <label htmlFor="titulo">Titulo</label>
