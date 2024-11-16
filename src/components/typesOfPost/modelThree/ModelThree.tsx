@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import MenuEdits from "../../menuEdit/MenuEdits";
+import getData from "../../../services/getData";
 
 const PostContainer = styled.div`
   display: flex;
@@ -69,7 +70,7 @@ const SecondImage = styled.div`
 `;
 const ThirdImage = styled.div`
   width: 100%;
-  margin: auto;
+
   img {
     width: 100%;
     height: 250px;
@@ -107,102 +108,63 @@ const DownText = styled(TextCenter)`
     margin-top: 15px;
   }
 `;
+interface contentItemTop {
+  img: string;
+  img1: string;
+  img2: string;
+}
+interface contentItemMiddle {
+  subtitulo: string;
+  textP: string;
+  textP2: string;
+  textP3: string;
+  textP4: string;
+}
+interface Props {
+  title: string;
+  userId: string;
+  contentTop: contentItemTop;
+  contentMiddle: contentItemMiddle;
+  Edit: () => void;
+  Borrar: () => void;
+}
 
-const ModelThree = () => {
+const ModelThree = ({
+  title,
+  userId,
+  contentTop,
+  contentMiddle,
+  Edit,
+  Borrar,
+}: Props) => {
+  const dataUser = getData();
   return (
     <PostContainer>
-      <EditOption>
-        {
-          //  <MenuEdits />
-        }
-        <span>fecha</span>
-      </EditOption>
-
-      <h2>ADVENTURE TRAVEL</h2>
+      {userId === dataUser.id && (
+        <EditOption>
+          <MenuEdits Edit={Edit} Borrar={Borrar} />
+        </EditOption>
+      )}
+      <h2>{title}</h2>
       <FirstImage>
-        <img
-          src="https://www.nacion.com/resizer/wX5C3jmGAL6HDgoYzkDEOlxSLkA=/1440x0/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/gruponacion/7TMBJGTD4RGRTNFCFDKGXUZQFQ.jpeg"
-          alt=""
-        />
+        <img src={contentTop.img} />
       </FirstImage>
       <ContentBody>
         <SecondImage>
-          <img
-            src="https://www.nacion.com/resizer/wX5C3jmGAL6HDgoYzkDEOlxSLkA=/1440x0/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/gruponacion/7TMBJGTD4RGRTNFCFDKGXUZQFQ.jpeg"
-            alt=""
-          />
-          <h3>Beach Destinations for Relaxation</h3>
+          <img src={contentTop.img1} />
+          <h3>{contentMiddle.subtitulo}</h3>
         </SecondImage>
         <ContentRight>
           <TextCenter>
-            <p>
-              Writing effectively is an art. Start by using simple, everyday
-              words people can easily understand. Be clear and direct to the
-              point. Keep your thoughts flowing logically, and aim for brevity
-              unless you’re writing in the long form. our ideas have a purpose
-              so choose words that accurately express them. Lorem ipsum, dolor
-              sit amet consectetur adipisicing elit. Enim dolores quis
-              laboriosam eaque dignissimos exercitationem possimus repudiandae
-              voluptate veritatis perspiciatis repellat debitis corporis
-              reiciendis magnam voluptatibus, at necessitatibus tenetur
-              consequuntur? Lorem ipsum dolor sit amet, consectetur adipisicing
-              elit. Maiores laborum beatae tenetur perspiciatis blanditiis,
-              culpa magni laudantium. Dignissimos ad sit laudantium dolores quos
-              quo, dolore obcaecati, cum ea, odit ipsam.
-            </p>
-            <p>
-              Writing effectively is an art. Start by using simple, everyday
-              words people can easily understand. Be clear and direct to the
-              point. Keep your thoughts flowing logically, and aim for brevity
-              unless you’re writing in the long form. our ideas have a purpose
-              so choose words that accurately express them. Lorem ipsum, dolor
-              sit amet consectetur adipisicing elit. Enim dolores quis
-              laboriosam eaque dignissimos exercitationem possimus repudiandae
-              voluptate veritatis perspiciatis repellat debitis corporis
-              reiciendis magnam voluptatibus, at necessitatibus tenetur
-              consequuntur? Lorem ipsum dolor sit amet, consectetur adipisicing
-              elit. Maiores laborum beatae tenetur perspiciatis blanditiis,
-              culpa magni laudantium. Dignissimos ad sit laudantium dolores quos
-              quo, dolore obcaecati, cum ea, odit ipsam.
-            </p>
+            <p>{contentMiddle.textP}</p>
+            <p>{contentMiddle.textP2}</p>
           </TextCenter>
           <ThirdImage>
-            <img
-              src="https://www.nacion.com/resizer/wX5C3jmGAL6HDgoYzkDEOlxSLkA=/1440x0/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/gruponacion/7TMBJGTD4RGRTNFCFDKGXUZQFQ.jpeg"
-              alt=""
-            />
+            <img src={contentTop.img2} />
           </ThirdImage>
           <DownText>
-            <p>
-              Writing effectively is an art. Start by using simple, everyday
-              words people can easily understand. Be clear and direct to the
-              point. Keep your thoughts flowing logically, and aim for brevity
-              unless you’re writing in the long form. our ideas have a purpose
-              so choose words that accurately express them. Lorem ipsum, dolor
-              sit amet consectetur adipisicing elit. Enim dolores quis
-              laboriosam eaque dignissimos exercitationem possimus repudiandae
-              voluptate veritatis perspiciatis repellat debitis corporis
-              reiciendis magnam voluptatibus, at necessitatibus tenetur
-              consequuntur? Lorem ipsum dolor sit amet, consectetur adipisicing
-              elit. Maiores laborum beatae tenetur perspiciatis blanditiis,
-              culpa magni laudantium. Dignissimos ad sit laudantium dolores quos
-              quo, dolore obcaecati, cum ea, odit ipsam.
-            </p>
-            <p>
-              Writing effectively is an art. Start by using simple, everyday
-              words people can easily understand. Be clear and direct to the
-              point. Keep your thoughts flowing logically, and aim for brevity
-              unless you’re writing in the long form. our ideas have a purpose
-              so choose words that accurately express them. Lorem ipsum, dolor
-              sit amet consectetur adipisicing elit. Enim dolores quis
-              laboriosam eaque dignissimos exercitationem possimus repudiandae
-              voluptate veritatis perspiciatis repellat debitis corporis
-              reiciendis magnam voluptatibus, at necessitatibus tenetur
-              consequuntur? Lorem ipsum dolor sit amet, consectetur adipisicing
-              elit. Maiores laborum beatae tenetur perspiciatis blanditiis,
-              culpa magni laudantium. Dignissimos ad sit laudantium dolores quos
-              quo, dolore obcaecati, cum ea, odit ipsam.
-            </p>
+            <p>{contentMiddle.textP3}</p>
+            <p>{contentMiddle.textP4}</p>
           </DownText>
         </ContentRight>
       </ContentBody>

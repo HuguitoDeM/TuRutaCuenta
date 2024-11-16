@@ -101,35 +101,37 @@ const NewPostEdit = () => {
       case "3":
         return Edit ? (
           <ModelThreeVersionEdit
-          //  UpdateBlog={currentBlog}
-          //   guardarEdit={handleEditPost}
+            UpdateBlog={currentBlog}
+            guardarEdit={handleEditPost}
           />
         ) : (
           <ModelThree
-          //   title={currentBlog.title}
-          //    contentTop={currentBlog.contentTop}
-          //    contentMiddle={currentBlog.contentMiddle}
-          //   contentBottom={currentBlog.contentBottom}
-          //   Edit={handleEditPost}
-          //    Borrar={handleBorrarPost}
-          //    userId={currentBlog.userId}
+            title={currentBlog.title}
+            contentTop={currentBlog.contentTop as ContentItemTopModelTwo}
+            contentMiddle={
+              currentBlog.contentMiddle as ContentItemMiddleModelTwo
+            }
+            Edit={handleEditPost}
+            Borrar={handleBorrarPost}
+            userId={currentBlog.userId}
           />
         );
       case "4":
         return Edit ? (
           <ModelFourVersionEdit
-          //     UpdateBlog={currentBlog}
-          //   guardarEdit={handleEditPost}
+            UpdateBlog={currentBlog}
+            guardarEdit={handleEditPost}
           />
         ) : (
           <ModelFour
-          //    title={currentBlog.title}
-          //   contentTop={currentBlog.contentTop}
-          //   contentMiddle={currentBlog.contentMiddle}
-          //    contentBottom={currentBlog.contentBottom}
-          //    Edit={handleEditPost}
-          //   Borrar={handleBorrarPost}
-          //   userId={currentBlog.userId}
+            title={currentBlog.title}
+            contentTop={currentBlog.contentTop as ContentItemTopModelTwo}
+            contentMiddle={
+              currentBlog.contentMiddle as ContentItemMiddleModelTwo
+            }
+            Edit={handleEditPost}
+            Borrar={handleBorrarPost}
+            userId={currentBlog.userId}
           />
         );
       default:

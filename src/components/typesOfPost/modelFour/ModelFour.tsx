@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import MenuEdits from "../../menuEdit/MenuEdits";
+import getData from "../../../services/getData";
 
 const PostContainer = styled.div`
   display: flex;
@@ -93,84 +94,61 @@ const RightImages = styled.div`
     }
   }
 `;
-const ModelFour = () => {
+
+interface contentItemTop {
+  img: string;
+  img1: string;
+  img2: string;
+}
+interface contentItemMiddle {
+  subtitulo: string;
+  textP: string;
+  textP2: string;
+  textP3: string;
+  textP4: string;
+}
+interface Props {
+  title: string;
+  userId: string;
+  contentTop: contentItemTop;
+  contentMiddle: contentItemMiddle;
+  Edit: () => void;
+  Borrar: () => void;
+}
+const ModelFour = ({
+  title,
+  userId,
+  contentTop,
+  contentMiddle,
+  Edit,
+  Borrar,
+}: Props) => {
+  const dataUser = getData();
   return (
     <PostContainer>
       <EditOption>
-        {
-          //  <MenuEdits />
-        }
-        <span>fecha</span>
+        {userId === dataUser.id && (
+          <EditOption>
+            <MenuEdits Edit={Edit} Borrar={Borrar} />
+          </EditOption>
+        )}
       </EditOption>
       <ContentBody>
         <FirstImage>
-          <img
-            src="https://www.nacion.com/resizer/wX5C3jmGAL6HDgoYzkDEOlxSLkA=/1440x0/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/gruponacion/7TMBJGTD4RGRTNFCFDKGXUZQFQ.jpeg"
-            alt=""
-          />
-          <h2>The World's Most Expensive Cities in 2023 to Live in</h2>
+          <img src={contentTop.img} alt={title} />
+          <h2>{title}</h2>
         </FirstImage>
         <ContentRight>
-          <h2>Breaking News</h2>
-          <p>
-            Writing effectively is an art. Start by using simple, everyday words
-            people can easily understand. Be clear and direct to the point. Keep
-            your thoughts flowing logically, and aim for brevity unless you’re
-            writing in the long form. our ideas have a purpose so choose words
-            that accurately express them. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Enim dolores quis laboriosam eaque
-            dignissimos exercitationem possimus repudiandae voluptate veritatis
-            perspiciatis repellat debitis corporis reiciendis magnam
-            voluptatibus, at necessitatibus tenetur consequuntur? Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit. Maiores laborum beatae
-            tenetur perspiciatis blanditiis, culpa magni laudantium. Dignissimos
-            ad sit laudantium dolores quos quo, dolore obcaecati, cum ea, odit
-            ipsam.
-          </p>
+          <h2>{contentMiddle.subtitulo}</h2>
+          <p>{contentMiddle.textP}</p>
           <TextCenter>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum
-            </p>
+            <p>{contentMiddle.textP2}</p>
+            <p>{contentMiddle.textP3}</p>
           </TextCenter>
-          <p>
-            Writing effectively is an art. Start by using simple, everyday words
-            people can easily understand. Be clear and direct to the point. Keep
-            your thoughts flowing logically, and aim for brevity unless you’re
-            writing in the long form. our ideas have a purpose so choose words
-            that accurately express them. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Enim dolores quis laboriosam eaque
-            dignissimos exercitationem possimus repudiandae voluptate veritatis
-            perspiciatis repellat debitis corporis reiciendis magnam
-            voluptatibus, at necessitatibus tenetur consequuntur? Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit. Maiores laborum beatae
-            tenetur perspiciatis blanditiis, culpa magni laudantium. Dignissimos
-            ad sit laudantium dolores quos quo, dolore obcaecati, cum ea, odit
-            ipsam.
-          </p>
+          <p>{contentMiddle.textP4}</p>
           <RightImages>
-            <img
-              src="https://www.nacion.com/resizer/wX5C3jmGAL6HDgoYzkDEOlxSLkA=/1440x0/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/gruponacion/7TMBJGTD4RGRTNFCFDKGXUZQFQ.jpeg"
-              alt=""
-            />
-            <img
-              src="https://www.nacion.com/resizer/wX5C3jmGAL6HDgoYzkDEOlxSLkA=/1440x0/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/gruponacion/7TMBJGTD4RGRTNFCFDKGXUZQFQ.jpeg"
-              alt=""
-            />
+            <img src={contentTop.img1} alt={title} />
+            <img src={contentTop.img2} alt={title} />
           </RightImages>
         </ContentRight>
       </ContentBody>

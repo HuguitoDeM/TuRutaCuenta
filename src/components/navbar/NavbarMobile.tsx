@@ -75,7 +75,7 @@ const NavbarMobile = () => {
           ) : (
             ""
           )}
-          ;
+
           {userData ? (
             <NewPost onClick={() => navigate("/new-post")}>
               <Icon name="newPost" size={40} />

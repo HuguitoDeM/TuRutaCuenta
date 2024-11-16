@@ -1,20 +1,4 @@
 import styled from "styled-components";
-import Icon from "../Icons/Icons";
-
-const ButtonCard = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #1d1e0b;
-  font-size: 1.3rem;
-  color: white;
-  border-radius: 999px;
-  height: 55px;
-  width: 166px;
-  border: none;
-  gap: 5px;
-  margin-left: 30px;
-`;
 
 const Card = styled.div`
   display: flex;
@@ -26,15 +10,16 @@ const Card = styled.div`
   border-radius: 5px;
   padding-bottom: 30px;
   box-sizing: border-box;
+  justify-content: space-around;
+  align-items: center;
   img {
     height: 50%;
     width: 90%;
     border-radius: 15px;
-    margin: auto;
   }
   h3 {
     font-size: 1.44rem;
-    margin: auto;
+
     margin: 0 30px 30px 30px;
   }
   p {
@@ -64,7 +49,6 @@ const Card = styled.div`
     gap: 10px;
     height: 620px;
     width: 450px;
-
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 10px;
@@ -188,9 +172,6 @@ const Cards = ({ title, body, img, className }: props) => {
       <img src={img} alt={title} />
       <h3>{title}</h3>
       <p>{body}</p>
-      <ButtonCard>
-        <span>Read More</span> <Icon name="arrow" size={35} />
-      </ButtonCard>
     </Card>
   );
 };

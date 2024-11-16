@@ -15,7 +15,7 @@ const TextLeft = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 17px;
-  width: 25%;
+  width: 35%;
   gap: 15px;
   margin-left: 15px;
   margin-right: 15px;
@@ -103,8 +103,8 @@ const ContenidoArriba = styled.div`
 `;
 const TextRight = styled(TextLeft)``;
 const TextCenter = styled(TextLeft)`
-  transform: translateY(-60px);
-  width: 45%;
+  transform: translateY(-30px);
+  width: 60%;
   margin-left: 15px;
   margin-right: 15px;
   @media (max-width: 1024px) {
@@ -121,7 +121,7 @@ const SecondImage = styled(FirstImage)`
 
   width: 100%;
   img {
-    height: 100%;
+    height: 400px;
     width: 100%;
   }
   @media (max-width: 1024px) {

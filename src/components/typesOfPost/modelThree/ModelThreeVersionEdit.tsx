@@ -515,9 +515,9 @@ const ModelThreeVersionEdit = ({
                 rows={15}
                 cols={50}
                 placeholder="Escribe tu texto"
-                value={updateBlog.contentMiddle?.textP3}
+                value={updateBlog.contentMiddle?.textP4}
                 onChange={(e) =>
-                  handleChange("contentMiddle", "textP3", e.target.value)
+                  handleChange("contentMiddle", "textP4", e.target.value)
                 }
               />
             </TextParrafo>
