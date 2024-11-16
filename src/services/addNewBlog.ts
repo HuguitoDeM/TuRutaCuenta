@@ -23,6 +23,7 @@ interface Props {
 const addNewBlog = async ({ updateBlog }: Props) => {
   const updatedData = {
     id: updateBlog.id,
+    name: updateBlog.title,
     title: updateBlog.title,
     img: updateBlog.img,
     description: updateBlog.description,
