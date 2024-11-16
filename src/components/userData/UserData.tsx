@@ -129,6 +129,12 @@ const UsersData = () => {
         .reverse()
     : [];
 
+  const id = blogData
+    ? Object.values(blogData)
+        .filter((blog) => blog.userId === userData.id)
+        .map((blog) => blog.id)
+        .reverse()
+    : [];
   const navigate = useNavigate();
   const handleCloseSesion = () => {
     localStorage.removeItem("loginUser");
@@ -182,7 +188,7 @@ const UsersData = () => {
         <p>Mis Destinos</p>
       </MisDestinos>
       <Destinos>
-        <PostUser titulos={titles} imagenes={images} />
+        <PostUser titulos={titles} id={id} imagenes={images} />
       </Destinos>
     </UserData>
   );

@@ -32,7 +32,7 @@ const FirstImage = styled.div`
   margin-top: 1rem;
 
   img {
-    height: 200px;
+    height: 400px;
     width: 100%;
   }
   @media (max-width: 768px) {

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Post = styled.div`
@@ -34,13 +35,15 @@ const Title = styled.h2`
 interface props {
   imagenes: string[];
   titulos: string[];
+  id: string[];
 }
 
-const PostUser = ({ titulos, imagenes }: props) => {
+const PostUser = ({ titulos, imagenes, id }: props) => {
+  const navigate = useNavigate();
   return (
     <>
       {titulos.map((element, index) => (
-        <Post key={index}>
+        <Post key={index} onClick={() => navigate(`/post/${id[index]}`)}>
           <img src={imagenes[index]} alt={element} />
           <Title>{element}</Title>
         </Post>
