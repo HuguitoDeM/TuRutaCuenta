@@ -56,7 +56,7 @@ const ContentRight = styled.div`
     font-size: 30px;
   }
   p {
-    font-size: 12px;
+    font-size: 16px;
   }
   @media (max-width: 768px) {
     h2 {

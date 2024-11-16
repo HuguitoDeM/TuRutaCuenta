@@ -10,6 +10,15 @@ import ModelThree from "../modelThree/ModelThree";
 import ModelThreeVersionEdit from "../modelThree/ModelThreeVersionEdit";
 import ModelFour from "../modelFour/ModelFour";
 import ModelFourVersionEdit from "../modelFour/ModelFourVersionEdit";
+import NavbarDesktop from "../../navbar/NavbarDesktop";
+import NavbarMobile from "../../navbar/NavbarMobile";
+import { UseWindoWidth } from "../../../hooks/useWidthScreen";
+import styled from "styled-components";
+
+const NewpostContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 interface ContentItem {
   subtitulo: string;
@@ -60,6 +69,8 @@ const NewPostEdit = () => {
       window.location.reload();
     }
   };
+
+  const WidthScreen = UseWindoWidth();
 
   const renderModel = () => {
     switch (currentBlog.model) {
@@ -139,7 +150,13 @@ const NewPostEdit = () => {
     }
   };
 
-  return <>{renderModel()}</>;
+  return (
+    <NewpostContainer>
+      {WidthScreen > 769 ? <NavbarDesktop /> : ""}
+      {renderModel()}
+      {WidthScreen > 769 ? "" : <NavbarMobile />}
+    </NewpostContainer>
+  );
 };
 
 export default NewPostEdit;
