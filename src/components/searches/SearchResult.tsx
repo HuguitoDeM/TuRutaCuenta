@@ -84,22 +84,36 @@ const Description = styled.p`
   }
 `;
 
-interface contentItem {
+interface ContentItem {
   subtitulo: string;
   img: string;
   textP: string;
 }
 
+interface ContentItemTopModelTwo {
+  img: string;
+  img1: string;
+  img2: string;
+}
+
+interface ContentItemMiddleModelTwo {
+  subtitulo: string;
+  textP: string;
+  textP2: string;
+  textP3: string;
+  textP4: string;
+}
+
 interface Blog {
   id: string;
   title: string;
-  img: string;
-  description: string;
+  img?: string;
+  description?: string;
   userId: string;
   model: string;
-  contentTop: contentItem;
-  contentMiddle: contentItem;
-  contentBottom: contentItem;
+  contentTop: ContentItem | ContentItemTopModelTwo;
+  contentMiddle: ContentItem | ContentItemMiddleModelTwo;
+  contentBottom?: ContentItem;
 }
 
 interface props {
