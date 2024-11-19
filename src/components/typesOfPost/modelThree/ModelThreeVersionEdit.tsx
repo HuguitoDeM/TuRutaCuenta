@@ -419,6 +419,7 @@ const ModelThreeVersionEdit = ({
             setUpdateBlog({ ...updateBlog, title: e.target.value })
           }
           name="titulo"
+          required
         />
       </Title>
 
@@ -450,6 +451,7 @@ const ModelThreeVersionEdit = ({
                 handleChange("contentMiddle", "subtitulo", e.target.value)
               }
               id="subtitulo"
+              required
             />
           </Subtitulo>
         </SecondImage>
@@ -467,6 +469,7 @@ const ModelThreeVersionEdit = ({
                 onChange={(e) =>
                   handleChange("contentMiddle", "textP", e.target.value)
                 }
+                required
               />
             </TextParrafo>
             <TextParrafo>
@@ -480,6 +483,7 @@ const ModelThreeVersionEdit = ({
                 onChange={(e) =>
                   handleChange("contentMiddle", "textP2", e.target.value)
                 }
+                required
               />
             </TextParrafo>
           </TextCenter>
@@ -506,6 +510,7 @@ const ModelThreeVersionEdit = ({
                 onChange={(e) =>
                   handleChange("contentMiddle", "textP3", e.target.value)
                 }
+                required
               />
             </TextParrafo>
             <TextParrafo>
@@ -519,6 +524,7 @@ const ModelThreeVersionEdit = ({
                 onChange={(e) =>
                   handleChange("contentMiddle", "textP4", e.target.value)
                 }
+                required
               />
             </TextParrafo>
           </DownText>

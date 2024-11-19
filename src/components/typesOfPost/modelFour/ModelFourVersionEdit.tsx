@@ -431,6 +431,7 @@ const ModelFourVersionEdit = ({
                 setUpdateBlog({ ...updateBlog, title: e.target.value })
               }
               name="titulo"
+              required
             />
           </Title>
         </FirstImage>
@@ -447,6 +448,7 @@ const ModelFourVersionEdit = ({
               onChange={(e) =>
                 handleChange("contentMiddle", "subtitulo", e.target.value)
               }
+              required
             />
           </Subtitulo>
           <TextParrafo>
@@ -461,6 +463,7 @@ const ModelFourVersionEdit = ({
               onChange={(e) =>
                 handleChange("contentMiddle", "textP", e.target.value)
               }
+              required
             />
           </TextParrafo>
           <TextCenter>
@@ -476,6 +479,7 @@ const ModelFourVersionEdit = ({
                 onChange={(e) =>
                   handleChange("contentMiddle", "textP2", e.target.value)
                 }
+                required
               />
             </TextParrafo>
             <TextParrafo>
@@ -490,6 +494,7 @@ const ModelFourVersionEdit = ({
                 onChange={(e) =>
                   handleChange("contentMiddle", "textP3", e.target.value)
                 }
+                required
               />
             </TextParrafo>
           </TextCenter>
@@ -505,6 +510,7 @@ const ModelFourVersionEdit = ({
               onChange={(e) =>
                 handleChange("contentMiddle", "textP4", e.target.value)
               }
+              required
             />
           </TextParrafo>
           <RightImages>

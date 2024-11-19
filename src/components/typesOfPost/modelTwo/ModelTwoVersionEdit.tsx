@@ -396,6 +396,7 @@ const ModelTwoVersionEdit = ({
             onChange={(e) =>
               setUpdateBlog({ ...updateBlog, title: e.target.value })
             }
+            required
           />
         </Title>
         {updateBlog.contentTop && (
@@ -434,6 +435,7 @@ const ModelTwoVersionEdit = ({
                   handleChange("contentMiddle", "subtitulo", e.target.value)
                 }
                 id="subtitulo"
+                required
               />
             </Subtitulo>
 
@@ -450,6 +452,7 @@ const ModelTwoVersionEdit = ({
                     onChange={(e) =>
                       handleChange("contentMiddle", "textP", e.target.value)
                     }
+                    required
                   />
                 </TextParrafo>
                 <TextParrafo>
@@ -463,6 +466,7 @@ const ModelTwoVersionEdit = ({
                     onChange={(e) =>
                       handleChange("contentMiddle", "textP2", e.target.value)
                     }
+                    required
                   />
                 </TextParrafo>
               </LeftText>
@@ -478,6 +482,7 @@ const ModelTwoVersionEdit = ({
                     onChange={(e) =>
                       handleChange("contentMiddle", "textP3", e.target.value)
                     }
+                    required
                   />
                 </TextParrafo>
                 <TextParrafo>
@@ -491,6 +496,7 @@ const ModelTwoVersionEdit = ({
                     onChange={(e) =>
                       handleChange("contentMiddle", "textP4", e.target.value)
                     }
+                    required
                   />
                 </TextParrafo>
               </RightText>

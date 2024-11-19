@@ -34,6 +34,7 @@ const ImageUpload = ({ id, url, UploadImage }: Props) => {
         accept="image/*"
         onChange={handleFileChange}
         style={{ display: "none" }}
+        required
       />
       <label
         htmlFor={`imagen${id}`}
