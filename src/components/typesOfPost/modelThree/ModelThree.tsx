@@ -18,6 +18,10 @@ const PostContainer = styled.div`
       font-size: 25px;
     }
   }
+  @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+  font-family: "Cormorant Garamond", serif;
+  background-color: #f6f2f1;
 `;
 const EditOption = styled.div`
   display: flex;
@@ -51,6 +55,9 @@ const ContentBody = styled.div`
     gap: 0px;
     width: 100%;
     flex-direction: column;
+  }
+  p {
+    font-family: "DM Sans", sans-serif;
   }
 `;
 const SecondImage = styled.div`
@@ -148,14 +155,14 @@ const ModelThree = ({
           <MenuEdits Edit={Edit} Borrar={Borrar} />
         </EditOption>
       )}
-      <h2>{title}</h2>
+      <h2>{title.toUpperCase()}</h2>
       <FirstImage>
         <img src={contentTop.img} />
       </FirstImage>
       <ContentBody>
         <SecondImage>
           <img src={contentTop.img1} />
-          <h3>{contentMiddle.subtitulo}</h3>
+          <h3>{contentMiddle.subtitulo.toUpperCase()}</h3>
         </SecondImage>
         <ContentRight>
           <TextCenter>

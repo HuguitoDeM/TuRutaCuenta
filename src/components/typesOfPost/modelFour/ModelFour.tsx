@@ -6,6 +6,9 @@ const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  @import url("https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+  color: #253439;
+  background-color: #fffdf6;
 `;
 
 const EditOption = styled.div`
@@ -21,6 +24,9 @@ const ContentBody = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
   }
+  p {
+    font-family: "Poppins", sans-serif;
+  }
 `;
 const FirstImage = styled.div`
   display: flex;
@@ -28,7 +34,8 @@ const FirstImage = styled.div`
   width: 90%;
   padding-left: 2rem;
   padding-right: 2rem;
-  font-size: 30px;
+  font-size: 35px;
+  gap: 15px;
   align-items: center;
   img {
     filter: grayscale(100%);
@@ -53,7 +60,7 @@ const ContentRight = styled.div`
 
   gap: 2rem;
   h2 {
-    font-size: 30px;
+    font-size: 35px;
   }
   p {
     font-size: 16px;
@@ -136,10 +143,10 @@ const ModelFour = ({
       <ContentBody>
         <FirstImage>
           <img src={contentTop.img} alt={title} />
-          <h2>{title}</h2>
+          <h2>{title.toUpperCase()}</h2>
         </FirstImage>
         <ContentRight>
-          <h2>{contentMiddle.subtitulo}</h2>
+          <h2>{contentMiddle.subtitulo.toUpperCase()}</h2>
           <p>{contentMiddle.textP}</p>
           <TextCenter>
             <p>{contentMiddle.textP2}</p>

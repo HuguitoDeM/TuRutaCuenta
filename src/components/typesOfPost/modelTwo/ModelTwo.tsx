@@ -5,6 +5,10 @@ import getData from "../../../services/getData";
 const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
+  @import url("https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+  font-family: "Playfair Display", serif;
+  background-color: #f6f3ee;
 `;
 
 const MainContent = styled.div`
@@ -78,6 +82,9 @@ const TextBody = styled.div`
   width: 90%;
   margin: auto;
   gap: 30px;
+  p {
+    font-family: "Montserrat", serif;
+  }
 `;
 const LeftText = styled(TextBody)`
   flex-direction: column;
@@ -137,14 +144,14 @@ const ModelTwo = ({
       )}
 
       <MainContent>
-        <h2>{title}</h2>
+        <h2>{title.toUpperCase()}</h2>
         <Imagenes>
           <img src={contentTop.img} alt={title} />
           <img src={contentTop.img1} alt={title} />
           <img src={contentTop.img2} alt={title} />
         </Imagenes>
         <Text>
-          <h3>{contentMiddle.subtitulo}</h3>
+          <h3>{contentMiddle.subtitulo.toUpperCase()}</h3>
           <TextBody>
             <LeftText>
               <p>{contentMiddle.textP}</p>

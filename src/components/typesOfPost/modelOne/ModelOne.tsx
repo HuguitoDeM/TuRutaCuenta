@@ -9,6 +9,10 @@ const PostContainer = styled.div`
   @media (max-width: 1024px) {
     gap: 0rem;
   }
+  @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+  p {
+    font-family: "DM Sans", sans-serif;
+  }
 `;
 
 const TextLeft = styled.div`
@@ -173,19 +177,19 @@ const ModelOne = ({
         </EditOption>
       )}
       <MainTitle>
-        <h2>{title}</h2>
+        <h2>{title.toUpperCase()}</h2>
       </MainTitle>
       <ContenidoArriba>
         <TextLeft>
-          <h2>{contentTop.subtitulo}</h2>
+          <h2>{contentTop.subtitulo.toUpperCase()}</h2>
           <p>{contentTop.textP}</p>
         </TextLeft>
 
         <FirstImage>
-          <img src={contentTop.img} alt={contentTop.subtitulo} />
+          <img src={contentTop.img} alt={contentTop.subtitulo.toUpperCase()} />
         </FirstImage>
         <TextRight>
-          <h2>{contentMiddle.subtitulo}</h2>
+          <h2>{contentMiddle.subtitulo.toUpperCase()}</h2>
           <p>{contentMiddle.textP}</p>
         </TextRight>
       </ContenidoArriba>
