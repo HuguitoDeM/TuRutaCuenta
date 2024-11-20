@@ -6,7 +6,7 @@ const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
   h2 {
-    font-size: 30px;
+    font-size: 35px;
     margin: auto;
   }
   span {
@@ -58,6 +58,9 @@ const SecondImage = styled.div`
   img {
     width: 100%;
     height: 69%;
+  }
+  h3 {
+    font-size: 28px;
   }
   @media (max-width: 768px) {
     h3 {
