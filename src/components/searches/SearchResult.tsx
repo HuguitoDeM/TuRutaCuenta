@@ -2,35 +2,51 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useBlog } from "../../context/BlogDataProvider";
 import { useNavigate } from "react-router-dom";
+import { UseWindoWidth } from "../../hooks/useWidthScreen";
+
+const truncateText = (text: string, maxLength: number) => {
+  if (text.length > maxLength) {
+    let truncated = text.slice(0, maxLength);
+
+    const UltimoEspacioOPunto = Math.max(
+      truncated.lastIndexOf(" "),
+      truncated.lastIndexOf(".")
+    );
+
+    if (UltimoEspacioOPunto !== -1) {
+      truncated = truncated.slice(0, UltimoEspacioOPunto);
+    }
+
+    return truncated + "...";
+  }
+  return text;
+};
 
 const SearchResultContainer = styled.div`
   display: flex;
   width: 60%;
   box-sizing: border-box;
-  heigth: 250px;
+  heigth: 500px;
   padding: 30px;
   background-color: gray;
   margin-bottom: 20px;
   border-radius: 30px;
   justify-content: space-between;
   img {
-    width: 480px;
-    height: 175px;
+    width: 50%;
+    height: 250px;
     border-radius: 30px;
   }
   @media (max-width: 1024px) {
-    img {
-      margin-left: 0px;
-      margin-right: 15px;
-    }
-  }
-  @media (max-width: 768px) {
     flex-direction: column;
     img {
       width: 100%;
       margin-right: 0px;
     }
+    align-items: center;
+    gap: 20px;
   }
+
   @media (max-width: 425px) {
     width: 90%;
     img {
@@ -54,12 +70,12 @@ const Text = styled.div`
   @media (max-width: 1024px) {
     margin-left: 0;
     gap: 20px;
+    width: 100%;
   }
   &.color {
     color: white;
   }
   @media (max-width: 768px) {
-    width: 100%;
   }
 `;
 
@@ -69,14 +85,9 @@ const Title = styled.h2`
 
 const Description = styled.p`
   font-size: 13px;
-
   height: 53%;
   word-wrap: break-word;
   white-space: normal;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 6; /* Cambia este número para la cantidad de líneas visibles */
-  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   @media (max-width: 768px) {
@@ -121,6 +132,7 @@ interface props {
 }
 
 const SearchResult = ({ busqueda }: props) => {
+  const windowWidth = UseWindoWidth();
   const { blogData } = useBlog();
   const [resultados, setResultados] = useState<Blog[]>([]);
   const navigate = useNavigate();
@@ -148,7 +160,11 @@ const SearchResult = ({ busqueda }: props) => {
               <img src={post.contentTop.img} alt={post.title} />
               <Text className={index % 2 !== 0 ? "color" : ""}>
                 <Title>{post.title}</Title>
-                <Description>{post.contentMiddle.textP}</Description>
+                <Description>
+                  {windowWidth >= 450
+                    ? truncateText(post.contentMiddle.textP, 250)
+                    : truncateText(post.contentMiddle.textP, 100)}
+                </Description>
               </Text>
             </SearchResultContainer>
           ))
